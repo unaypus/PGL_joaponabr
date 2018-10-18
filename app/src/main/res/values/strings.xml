@@ -1,0 +1,80 @@
+<resources>
+
+    <!-- Títulos actividades -->
+
+    <string name="app_name">Proyecto PGL juaponabr 3º DAM</string>
+    <string name="title_activity_ver_listado">Listado Actuaciones</string>
+    <string name="title_activity_edita_cliente">Cliente</string>
+    <string name="title_activity_edita_actuacion">Actuación</string>
+    <string name="title_activity_listado_clientes">Listado Clientes</string>
+    <string name="title_activity_listado_actuaciones">Listado Actuaciones</string>
+
+    <!-- textos botones -->
+
+    <string name="ver_actuaciones">Actuaciones</string>
+    <string name="ver_Clientes">Clientes</string>
+    <string name="guardar_actuacion">Nueva Actuación</string>
+    <string name="guardar_cliente">Nuevo Cliente</string>
+    <string name="cerrar_app">Salir</string>
+
+    <!--
+        textos dialogos
+                        -->
+
+    <!-- dialogo cerrar -->
+    <string name="atencion">¡ Atención !</string>
+    <string name="advertencia_salir">Se dispone a abandonar y cerrar la aplcación</string>
+    <string name="confirmar_salir">¿ Desea confirmar esta acción ?</string>
+    <string name="bAceptar">Aceptar</string>
+    <string name="bCancelar">Cancelar</string>
+
+    <!-- dialogo proceso en construcción -->
+    <string name="txt_titulo_mensaje">Advertencia</string>
+    <string name="txt_modulo_construccion">Módulo en construcción</string>
+
+    <!--
+        campos
+                        -->
+
+    <!-- campos actuaciones -->
+    <string name="cA_fecha">Fecha</string>
+    <string name="cA_lugar">Lugar</string>
+    <string name="cA_cliente">Cliente</string>
+    <string name="cA_precio">Precio</string>
+
+    <!-- campos cliente -->
+    <string name="cC_nombre">Nombre</string>
+    <string name="cC_direccion">Dirección</string>
+    <string name="cC_localidad">Localidad</string>
+    <string name="cC_km">Km. </string>
+
+    <!--
+        etiquetas actividades
+                        -->
+
+    <!-- EditaActuacion -->
+    <string name="txt_elegirDia">Seccionar Día/s</string>
+    <string name="txt_lunes">Lunes</string>
+    <string name="txt_martes">Martes</string>
+    <string name="txt_miercoles">Miércoles</string>
+    <string name="txt_jueves">Jueves</string>
+    <string name="txt_viernes">Viernes</string>
+    <string name="txt_sabado">Sábado</string>
+    <string name="txt_domingo">Domingo</string>
+    <string name="txt_periodicida">Periodicidad</string>
+    <string name="txt_semanal">Semanal</string>
+    <string name="txt_quincenal">Quincenal</string>
+    <string name="txt_mensual">Mensual</string>
+    <string name="txt_unica">Única</string>
+    <string name="txt_fecha">Fecha</string>
+    <string name="txt_cliente">Cliente</string>
+    <string name="txt_precio">Precio</string>
+    <string name="txt_simbolo_euro">€</string>
+    <string name="bot_guardar">Guardar</string>
+
+    <!-- EditaCliente -->
+
+    <!-- capa_botones_edita_registro -->
+
+
+</resources>
