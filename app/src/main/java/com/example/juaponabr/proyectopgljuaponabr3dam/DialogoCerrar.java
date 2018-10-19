@@ -63,10 +63,10 @@ public class DialogoCerrar extends DialogFragment {
 
         //////////////////////////////////////////////////////////////
         //
-        //  ¿¿¿¿¿¿¿¿¿¿¿ cómo leo un recurso string ??????????
+        //  así se lee un recurso string
         //
-        String txt_cancelar = getString(R.string.bCancelar);//"Cancelar";//R.string.bCancelar ;
-        String txt_aceptar = "Aceptar";//R.string.bAceptar;
+        String txt_cancelar = getString(R.string.bCancelar);
+        String txt_aceptar = getString(R.string.bAceptar);
         //
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

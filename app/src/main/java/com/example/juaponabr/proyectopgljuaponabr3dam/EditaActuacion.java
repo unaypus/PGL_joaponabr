@@ -16,7 +16,6 @@ public class EditaActuacion extends EditaRegistro {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edita_actuacion);
         iniBarraHerramientas();
-        findViewById(R.id.editTextDia).setFocusable(false);
         elContexto = EditaActuacion.this;
         activarEscuchadores( elContexto );
         activarElementos();
@@ -28,9 +27,8 @@ public class EditaActuacion extends EditaRegistro {
             @Override
             public void onClick(View v) { modEnConstruccion(); }
         });
-        EditText elDia = findViewById(R.id.editTextDia);
-        elDia.setFocusable(false);
-        elDia.setOnClickListener(new View.OnClickListener());
+
+
     }
 
 }
