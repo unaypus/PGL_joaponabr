@@ -1,20 +1,15 @@
 package com.example.juaponabr.proyectopgljuaponabr3dam;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
-import java.sql.Time;
 import java.util.Calendar;
-import java.util.Date;
 
 public class EditaActuacion extends EditaRegistro {
 
@@ -259,6 +254,18 @@ public class EditaActuacion extends EditaRegistro {
         sAuxiliar = edtPrecio.getText().toString() ;
         edtPrecio.setError( null ) ;
 
+        /*  // una prueba externalizar comprobación
+
+        if ( campoObligatorio( edtPrecio.getId(), R.string.error_precio ) ){
+            sValidado = sValidado                               +
+                    getString( R.string.txt_precio )        +   "\n"    +
+                    sAuxiliar                               +   " "     +
+                    getString( R.string.txt_simbolo_euro )  +   "\n\n"  ;
+        } else {
+            nError++ ;
+        }
+        */
+
         if ( TextUtils.isEmpty( sAuxiliar ) ){
 
             sError =    sError + getString( R.string.error_precio ) + "\n\n"  ;
@@ -272,10 +279,11 @@ public class EditaActuacion extends EditaRegistro {
 
             sValidado = sValidado                               +
                         getString( R.string.txt_precio )        +   "\n"    +
-                        sAuxiliar                               +
+                        sAuxiliar                               +   " "     +
                         getString( R.string.txt_simbolo_euro )  +   "\n\n"  ;
 
         }
+
 
 
 
@@ -428,6 +436,31 @@ public class EditaActuacion extends EditaRegistro {
     //
     //      MÉTODOS AUXILIARES
     //
+
+    private boolean campoObligatorio( int idCampo, int idError ){
+
+        EditText    edtAuxiliar = findViewById( idCampo ) ;
+        String      sAuxiliar2   = edtAuxiliar.getText().toString() ;
+
+        edtAuxiliar.setError( null ) ;
+
+        if ( TextUtils.isEmpty( sAuxiliar2 ) ){
+
+            //sError = sError + getString( idError ) + "\n\n" ;
+
+            edtAuxiliar.setError( getString( R.string.error_campo_obligatorio ) ) ;
+            edtAuxiliar.requestFocus() ;
+
+            //nError++ ;
+
+            return false ;
+
+        }
+
+        return true ;
+
+    }
+
 
     private int tieneTrentaUno( int nMesAux ) {
 
