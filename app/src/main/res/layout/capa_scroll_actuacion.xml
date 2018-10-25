@@ -2,8 +2,156 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/txt_cliente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/lLayoutCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCliente">
+
+        <EditText
+            android:id="@+id/editTextCliente"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:hint="@string/cC_nombre"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/iButtonBuscaCliente"
+            android:layout_width="60dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            app:srcCompat="@android:drawable/ic_search_category_default" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/lLayoutPrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lLayoutCliente">
+
+        <TextView
+            android:id="@+id/textViewPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_precio" />
+
+        <EditText
+            android:id="@+id/editTextPrecio"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:maxLength="7"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textViewSimbEuro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_simbolo_euro" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lLayoutFechaUnica"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lLayoutPrecio">
+
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:text="@string/txt_fecha" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_mes" />
+
+        <EditText
+            android:id="@+id/editTextMes"
+            android:layout_width="33dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="2" />
+
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_dia" />
+
+        <EditText
+            android:id="@+id/editTextDia"
+            android:layout_width="33dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="2"
+            android:numeric="integer" />
+
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textVSelecDia"
@@ -13,11 +161,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:text="@string/txt_elegirDia"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/lLayoutFechaUnica" />
 
 
     <LinearLayout
@@ -45,8 +194,8 @@
             android:gravity="center_vertical"
             android:paddingLeft="4dp"
             android:text="@string/txt_lunes"
-            android:textColor="@color/colorPrimaryDark"
-            android:focusableInTouchMode="true"><requestFocus/></CheckBox>
+            android:textColor="@color/colorPrimaryDark" />
+
 
         <CheckBox
             android:id="@+id/checkBoxMartes"
@@ -239,169 +388,5 @@
 
     </RadioGroup>
 
-    <LinearLayout
-        android:id="@+id/lLayoutFechaUnica"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rButGroupPeriodo">
-
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:text="@string/txt_fecha" />
-
-        <EditText
-            android:id="@+id/editTextDia"
-            android:layout_width="33dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:ems="10"
-            android:inputType="number"
-            android:maxLength="2"
-            android:numeric="integer" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/" />
-
-        <EditText
-            android:id="@+id/editTextMes"
-            android:layout_width="33dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:ems="10"
-            android:inputType="number"
-            android:maxLength="2" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/" />
-
-        <EditText
-            android:id="@+id/editTextAnno"
-            android:layout_width="55dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="50dp"
-            android:ems="10"
-            android:inputType="number"
-            android:maxLength="4" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textViewCliente"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/txt_cliente"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lLayoutFechaUnica" />
-
-
-    <LinearLayout
-        android:id="@+id/lLayoutCliente"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCliente">
-
-        <EditText
-            android:id="@+id/editTextCliente"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="2"
-            android:hint="@string/cC_nombre"
-            android:inputType="textPersonName"
-            android:textSize="14sp" />
-
-        <ImageButton
-            android:id="@+id/iButtonBuscaCliente"
-            android:layout_width="60dp"
-            android:layout_height="44dp"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            app:srcCompat="@android:drawable/ic_search_category_default" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/lLayoutPrecio"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lLayoutCliente">
-
-        <LinearLayout
-            android:id="@+id/lLayoutP"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <TextView
-                android:id="@+id/textViewPrecio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_precio" />
-
-            <EditText
-                android:id="@+id/editTextPrecio"
-                android:layout_width="65dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:ems="10"
-                android:inputType="numberDecimal"
-                android:maxLength="7"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/textViewSimbEuro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_simbolo_euro" />
-        </LinearLayout>
-
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
