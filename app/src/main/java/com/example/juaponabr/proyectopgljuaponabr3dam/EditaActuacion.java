@@ -2,6 +2,7 @@ package com.example.juaponabr.proyectopgljuaponabr3dam;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
@@ -10,6 +11,10 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import java.sql.Time;
+import java.util.Calendar;
+import java.util.Date;
 
 public class EditaActuacion extends EditaRegistro {
 
@@ -203,45 +208,195 @@ public class EditaActuacion extends EditaRegistro {
     @Override
     protected boolean validarDatos(){
 
-        int nError = 0;
-        String sError =  "\n";
-        String sValidado = "\n" ;
+        // contador de errores
+        int         nError      = 0     ;
+
+        // mensajes de error o la validación
+        String      sError      = "\n"  ;
+        String      sValidado   = "\n"  ;
+
+        // cadena auxilar para el contenido de los EdiText
+        String      sAuxiliar   = ""    ;
+
+        // variables para el control de la fecha
+        int         nMes        = 0     ;
+        int         nDia        = 0     ;
+        Calendar    dHoy        = Calendar.getInstance() ;
+
+
 
         /////////////////////////////////////
-        // validar cliente
+        //
+        //      VALIDACIÓN cliente
+        //
 
+        sAuxiliar = edtCliente.getText().toString() ;
+        edtCliente.setError( null ) ;
 
-        /////////////////////////////////////
-        // validar precio
+        if ( TextUtils.isEmpty( sAuxiliar ) ){
 
+            sError = sError + getString( R.string.error_cliente ) + "\n\n" ;
 
-        /////////////////////////////////////
-        // validar fecha
+            edtCliente.setError( getString( R.string.error_campo_obligatorio ) ) ;
+            edtCliente.requestFocus() ;
 
-        if ( sPeriodicidad.equals( getString( R.string.txt_unica )) ){
-            //
+            nError++ ;
+
         } else {
-            //
+
+            sValidado = sValidado + getString( R.string.txt_cliente ) + "\n" + sAuxiliar + "\n\n" ;
+
         }
 
+
+
+
         /////////////////////////////////////
-        // validar días de la semana
+        //
+        //      VALIDACIÓN precio
+        //
+
+        sAuxiliar = edtPrecio.getText().toString() ;
+        edtPrecio.setError( null ) ;
+
+        if ( TextUtils.isEmpty( sAuxiliar ) ){
+
+            sError =    sError + getString( R.string.error_precio ) + "\n\n"  ;
+
+            edtPrecio.setError( getString( R.string.error_campo_obligatorio ) ) ;
+            edtPrecio.requestFocus() ;
+
+            nError++ ;
+
+        } else {
+
+            sValidado = sValidado                               +
+                        getString( R.string.txt_precio )        +   "\n"    +
+                        sAuxiliar                               +
+                        getString( R.string.txt_simbolo_euro )  +   "\n\n"  ;
+
+        }
+
+
+
+        /////////////////////////////////////
+        //
+        //      VALIDACIÓN fecha
+        //
+
+        //      Campo obligatorio mes
+        sAuxiliar = edtMes.getText().toString() ;
+        edtMes.setError( null ) ;
+
+        if ( TextUtils.isEmpty( sAuxiliar ) ){
+
+            sError = sError + getString( R.string.error_mes ) + "\n\n" ;
+
+            edtMes.setError( getString( R.string.error_campo_obligatorio ) ) ;
+            edtMes.requestFocus() ;
+
+            nError++ ;
+
+        } else {
+
+            nMes = Integer.parseInt( sAuxiliar ) ;
+
+        }
+
+        //      Campo obligatorio día
+        sAuxiliar = edtDia.getText().toString() ;
+        edtDia.setError( null ) ;
+
+        if ( TextUtils.isEmpty( sAuxiliar ) ){
+
+            sError = sError + getString( R.string.error_dia ) + "\n\n" ;
+
+            edtDia.setError( getString( R.string.error_campo_obligatorio ) ) ;
+            edtDia.requestFocus() ;
+
+            nError++ ;
+
+        } else {
+
+            nDia = Integer.parseInt( sAuxiliar ) ;
+
+        }
+
+        //      fecha correcta
+        int mesAux = dHoy.get( Calendar.MONTH           ) ;
+        int diaAux = dHoy.get( Calendar.DAY_OF_MONTH    ) ;
+
+        if ( ( nMes > mesAux ) && ( nMes < 13 ) ){
+
+            int maxDia = tieneTrentaUno( nMes ) ;
+
+            if ( nDia < 1 || nDia > maxDia || ( ( nMes - 1 ) == mesAux ) && nDia < diaAux ) {
+
+                sError = sError + getString( R.string.error_fecha ) + "\n\n" ;
+
+                edtDia.setError( getString( R.string.error_dia_incorrecto ) ) ;
+                edtDia.requestFocus() ;
+
+                nError++ ;
+
+            } else {
+
+                sValidado = sValidado                           +
+                            getString(  R.string.txt_fecha  )   +   "\n"    +
+                            getString(  R.string.txt_dia    )   +   " "     +
+                            nDia                                +   " "     +
+                            getString(  R.string.txt_del    )   +   " "     +
+                            nMes                                +   " "     +
+                            getString(  R.string.txt_del    )   +   " "     +
+                            dHoy.get(   Calendar.YEAR       )   +   "\n\n"  ;
+
+            }
+
+        } else {
+
+            sError = sError + getString( R.string.error_fecha ) + "\n\n" ;
+
+            edtMes.setError( getString( R.string.error_mes_incorrecto ) ) ;
+            edtMes.requestFocus( );
+
+            nError++ ;
+
+        }
+
+
+
+        /////////////////////////////////////
+        //
+        //      VALIDACIÓN días de la semana
+        //
 
         if(nDias > 0 ) {
-            sValidado = sValidado + crearCadenaDias();
+
+            sValidado = sValidado + crearCadenaDias() ;
+
         }else{
+
             sError = sError + getString( R.string.error_dias ) + "\n\n" ;
-            nError++;
+            nError++ ;
+
         }
 
+
+
         /////////////////////////////////////
-        // validar periodicidad
+        //
+        //      VALIDACIÓN periodicidad
+        //
 
         if ( sPeriodicidad.equals( "" ) ){
+
             sError = sError + getString( R.string.error_periodicidad ) + "\n\n" ;
-            nError++;
+            nError++ ;
+
         } else {
-            sValidado = sValidado + getString( R.string.txt_periodicida ) + "\n" + sPeriodicidad + "\n\n";
+
+            sValidado = sValidado + getString( R.string.txt_periodicida ) + "\n" + sPeriodicidad + "\n\n" ;
+
         }
 
 
@@ -249,37 +404,81 @@ public class EditaActuacion extends EditaRegistro {
 
 
         /////////////////////////////////////
-        // devolvemos validado o no
-        if (nError > 0 ) {
-            this.setsErrorValidacion( sError );
+        //
+        //      FIN VALIDACIÓN devolvemos validado o no
+        //
+
+        if ( nError > 0 ) {
+
+            this.setsErrorValidacion( sError ) ;
+
             return false;
-        }else{
-            this.setsDatosValidados( sValidado );
+
+        } else {
+
+            this.setsDatosValidados( sValidado ) ;
+
             return true;
         }
+
+    }
+
+
+    /////////////////////////////////////
+    //
+    //      MÉTODOS AUXILIARES
+    //
+
+    private int tieneTrentaUno( int nMesAux ) {
+
+        switch ( nMesAux ){
+
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+                return 31;
+
+            case 2:
+                // añadir función busca BISIESTO
+                return 28 ;
+
+        }
+
+        return 30 ;
+
     }
 
     private String crearCadenaDias() {
 
-        int insertados = 0;
-        String losDias = "Día o días seleccionados:\n";
+        int insertados = 0 ;
+        String losDias = "Día o días seleccionados:\n" ;
 
         for ( int queDia = 0; queDia < 7; queDia++ ) {
 
             final int finalQueDia = queDia;
+
             if (chBoxDias[queDia].isChecked()) {
-                losDias = losDias + chBoxDias[queDia].getText().toString();
-                insertados++;
+
+                losDias = losDias + chBoxDias[queDia].getText().toString() ;
+                insertados++ ;
+
                 if ( insertados == (nDias -1)){
-                    losDias = losDias + " y ";
+
+                    losDias = losDias + " y " ;
+
                 } else {
-                    losDias = losDias +", ";
+
+                    losDias = losDias + ", " ;
+
                 }
+
             }
 
         }
 
-        losDias = losDias.substring( 0, losDias.length()-2)+"\n\n";
+        losDias = losDias.substring( 0, losDias.length() - 2 ) + "\n\n" ;
 
         return losDias ;
 

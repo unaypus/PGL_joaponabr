@@ -17,6 +17,10 @@
     <string name="guardar_cliente">Nuevo Cliente</string>
     <string name="cerrar_app">Salir</string>
 
+    <!-- auxiliares para construir frases -->
+    <string name="txt_de">de</string>
+    <string name="txt_del">del</string>
+
     <!--
         textos dialogos
                         -->
@@ -69,15 +73,32 @@
     <string name="txt_quincenal">Quincenal</string>
     <string name="txt_mensual">Mensual</string>
     <string name="txt_unica">Única</string>
-    <string name="txt_fecha">Fecha</string>
+    <string name="txt_fecha">Fecha de inicio</string>
+    <string name="txt_dia">Día</string>
+    <string name="txt_mes">Mes</string>
     <string name="txt_cliente">Cliente</string>
     <string name="txt_precio">Precio</string>
     <string name="txt_simbolo_euro">€</string>
     <string name="bot_guardar">Guardar</string>
 
+    <!--
+        errores
+                    -->
+
+    <!-- validaciones de formularios -->
+    <string name="error_campo_obligatorio">Campo Obligatorio</string>
+
+
     <!-- validadción actuación -->
-    <string name="error_dias">No se ha elegido ningún día de la semana</string>
-    <string name="error_periodicidad">No se ha elegido la periodicidad</string>
+    <string name="error_cliente">No se ha asignado ningún cliente</string>
+    <string name="error_precio">No se ha establecido ningún precio</string>
+    <string name="error_mes">No se ha introducido el mes</string>
+    <string name="error_mes_incorrecto">Mes fuera de rango</string>
+    <string name="error_dia">No se ha introducido el día</string>
+    <string name="error_dia_incorrecto">Día fuera de rango</string>
+    <string name="error_fecha">La fecha debe ser entre hoy y el 31/12 del año en curso, ambos inclusive</string>
+    <string name="error_dias">No se ha elgido ningún día de la semana</string>
+    <string name="error_periodicidad">No se ha seleccionado la periodicidad</string>
 
     <!-- EditaCliente -->
 
