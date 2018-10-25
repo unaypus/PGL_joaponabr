@@ -45,7 +45,8 @@
             android:gravity="center_vertical"
             android:paddingLeft="4dp"
             android:text="@string/txt_lunes"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            android:focusableInTouchMode="true"><requestFocus/></CheckBox>
 
         <CheckBox
             android:id="@+id/checkBoxMartes"

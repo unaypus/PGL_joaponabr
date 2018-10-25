@@ -32,6 +32,9 @@
     <string name="txt_titulo_mensaje">Advertencia</string>
     <string name="txt_modulo_construccion">Módulo en construcción</string>
 
+    <!--  dialogo guardando registro -->
+    <string name="titulo_guardando">Datos a guardar</string>
+
     <!--
         campos
                         -->
@@ -71,6 +74,10 @@
     <string name="txt_precio">Precio</string>
     <string name="txt_simbolo_euro">€</string>
     <string name="bot_guardar">Guardar</string>
+
+    <!-- validadción actuación -->
+    <string name="error_dias">No se ha elegido ningún día de la semana</string>
+    <string name="error_periodicidad">No se ha elegido la periodicidad</string>
 
     <!-- EditaCliente -->
 
