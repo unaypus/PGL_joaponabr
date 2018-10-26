@@ -68,24 +68,19 @@ public class EditaActuacion extends EditaRegistro {
         edtDia = findViewById( R.id.editTextDia );
         edtMes = findViewById( R.id.editTextMes );
 
-        /*
-
-        //      van por ahí los tiros
-
-
-        //TextWatcher textWatcher;
-        TextWatcher textWatcher = ;
-        edtDia.addTextChangedListener(textWatcher);
-
-        */
 
         //////////////////////////////////////////////////////////////
         //
         //  EdiText para el precio
         //
 
-        edtPrecio = findViewById( R.id.editTextPrecio);
+        edtPrecio = findViewById( R.id.editTextPrecio ) ;
 
+
+        ///////////////////////////////////////////////////////
+        //
+        //      CUADROS DE SELECCIÓN
+        //
         /////////////////////////////////////////////////////
         //
         // Cargar los checkbox de los días de la semana
@@ -93,6 +88,7 @@ public class EditaActuacion extends EditaRegistro {
 
         chBoxDias   = new CheckBox[ 7 ]     ;
 
+        //      ¿ se podrá meter esto en el bucle ?
         chBoxDias[ 0 ] = findViewById( R.id.checkBoxLunes       );
         chBoxDias[ 1 ] = findViewById( R.id.checkBoxMartes      );
         chBoxDias[ 2 ] = findViewById( R.id.checkBoxMiercoles   );
@@ -101,31 +97,6 @@ public class EditaActuacion extends EditaRegistro {
         chBoxDias[ 5 ] = findViewById( R.id.checkBoxSabado      );
         chBoxDias[ 6 ] = findViewById( R.id.checkBoxDomingo     );
 
-        ///////////////////////////////////////////////////////
-        //
-        //  CONSEJO PARA LA OBTENCIÓN DEL FOCUS
-        //
-        ///////////////////////////////////////////////////////
-        //
-        //      ¿¿¿¿ como optener el foco automaticamente ????
-        //
-        //      //////////////////////////////////////////////
-        //
-        //      Poner el foco por defecto en xml
-        //
-        // android:focusableInTouchMode="true"><requestFocus/></CheckBox>
-        //
-        //      Activarlo en tiempo de ejecución con java
-        //
-        // chBoxDias[queDia].setFocusableInTouchMode(true);
-        // chBoxDias[queDia].requestFocus();
-        //
-        ///////////////////////////////////////////////////////
-
-        ///////////////////////////////////////////////////////
-        //
-        //      CUADROS DE SELECCIÓN
-        //
         ///////////////////////////////////////////////////////
         //
         // activar los escuchadores
@@ -141,13 +112,12 @@ public class EditaActuacion extends EditaRegistro {
                 @Override
                 public void onClick( View v ) {
 
-                    /*
-
-                    actualiza la variables nDias
-                    0 para ningún día escogido
-                    7 como máximo
-
-                     */
+                    ////////////////////////////////
+                    //
+                    //  actualiza la variables nDias
+                    //  0 para ningún día escogido
+                    //  7 como máximo
+                    //
 
                     if ( chBoxDias[ finalQueDia ].isChecked() ) {
                         nDias++ ;
@@ -159,7 +129,7 @@ public class EditaActuacion extends EditaRegistro {
             } )    ;
 
         }
-        //////////////////////////////////////////////////////////
+
 
         //////////////////////////////////////////////////////////////
         //
@@ -183,8 +153,6 @@ public class EditaActuacion extends EditaRegistro {
             }
 
         } ) ;
-
-
      
     }
 
@@ -219,7 +187,6 @@ public class EditaActuacion extends EditaRegistro {
         Calendar    dHoy        = Calendar.getInstance() ;
 
 
-
         /////////////////////////////////////
         //
         //      VALIDACIÓN cliente
@@ -242,8 +209,6 @@ public class EditaActuacion extends EditaRegistro {
             sValidado = sValidado + getString( R.string.txt_cliente ) + "\n" + sAuxiliar + "\n\n" ;
 
         }
-
-
 
 
         /////////////////////////////////////
@@ -461,7 +426,6 @@ public class EditaActuacion extends EditaRegistro {
 
     }
 
-
     private int tieneTrentaUno( int nMesAux ) {
 
         switch ( nMesAux ){
@@ -516,5 +480,26 @@ public class EditaActuacion extends EditaRegistro {
         return losDias ;
 
     }
+
+    ///////////////////////////////////////////////////////
+    //
+    //  CONSEJO PARA LA OBTENCIÓN DEL FOCUS
+    //
+    ///////////////////////////////////////////////////////
+    //
+    //      ¿¿¿¿ como optener el foco automaticamente ????
+    //
+    //      //////////////////////////////////////////////
+    //
+    //      Poner el foco por defecto en xml
+    //
+    // android:focusableInTouchMode="true"><requestFocus/></CheckBox>
+    //
+    //      Activarlo en tiempo de ejecución con java
+    //
+    // chBoxDias[queDia].setFocusableInTouchMode(true);
+    // chBoxDias[queDia].requestFocus();
+    //
+    ///////////////////////////////////////////////////////
 
 }

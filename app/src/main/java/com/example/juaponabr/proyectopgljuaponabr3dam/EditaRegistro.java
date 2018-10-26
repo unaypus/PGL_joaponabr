@@ -152,7 +152,7 @@ public class EditaRegistro extends AppCompatActivity {
     }
 
     protected boolean validarDatos() {
-        return false;
+        return true;
     }
 
     protected void guardarRegistro() {
