@@ -8,6 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Iniciamos la rama (branch) entrega2 con la edición de este comentario
+ * gracias al cual comprobaremos que:
+ *
+ * 1 - la rama entrega1 ha sido mezclada correctamente con master
+ * 2 - la rama entrega2 está creada a partir de la unión de master y entrega1
+ * 3 - se realizará un push para que el githup esté igual que el git local
+ *
+ */
 public class MainActivity extends AppCompatActivity implements DialogoCerrar.EscuchadorDialogoCerrar {
 
     // variables de clase
