@@ -18,6 +18,18 @@ import android.widget.Button;
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
+ *      Domingo 04/11/2018 11:06
+ *
+ * /////////////////////////////
+ *
+ * Aunque pareciese redundante se realizará otro "commit" y posteriormnte crearemos una subrama
+ * dentro de -entrega2- para asegurar  que no rompemos nada y poder volver en  caso de desastre
+ *
+ * La nueva rama  en cuestión se  llamara 'navegaPestanyas' y  para el "commit"  pondremos  el
+ * comentario ' Preparación para la navegación por pestañas deslizantes '
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
  *      Domingo 04/11/2018 10:43
  *
  * /////////////////////////////
