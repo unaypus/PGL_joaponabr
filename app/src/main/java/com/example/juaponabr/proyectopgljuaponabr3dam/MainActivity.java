@@ -9,6 +9,32 @@ import android.view.View;
 import android.widget.Button;
 
 /**
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *  Histórico
+ *
+ *  de lo mas nuevo a lo mas antiguo
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Domingo 04/11/2018 10:43
+ *
+ * /////////////////////////////
+ *
+ * Vamos ha dar por finalizada la navegación por botones y se pasará a la navegación por pestañas
+ * deslizantes.
+ *
+ * Con la finalidad de poder seguir mas adelante con la navegación por botones o en caso de fallo
+ * general en el nuevo diseño de navegación por pestañas, realizaremos un "commit" de este estado
+ * con el comentario ' Navegación por botones terminada y estable '
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Viernes 26/10/2018 11:05
+ *
+ * /////////////////////////////
+ *
  * Iniciamos la rama (branch) entrega2 con la edición de este comentario
  * gracias al cual comprobaremos que:
  *
@@ -16,20 +42,22 @@ import android.widget.Button;
  * 2 - la rama entrega2 está creada a partir de la unión de master y entrega1
  * 3 - se realizará un push para que el githup esté igual que el git local
  *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
  */
 public class MainActivity extends AppCompatActivity implements DialogoCerrar.EscuchadorDialogoCerrar {
 
     // variables de clase
 	
 	// botones
-    Button bActuaciones;
-    Button bNuevaActuacion ;
-    Button bClientes;
-    Button bNuevoCliente ;
-    Button bSalir ;
+    Button  bActuaciones    ;
+    Button  bNuevaActuacion ;
+    Button  bClientes       ;
+    Button  bNuevoCliente   ;
+    Button  bSalir          ;
 	
 	// intentos ( para lanzar activitys )
-    Intent intento;
+    Intent  intento         ;
 	
 	/**
 	 *
@@ -37,11 +65,11 @@ public class MainActivity extends AppCompatActivity implements DialogoCerrar.Esc
 	 *
 	 */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState ) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        activarEscuchadores();
+        super.onCreate( savedInstanceState      )   ;
+        setContentView( R.layout.activity_main  )   ;
+        activarEscuchadores()                       ;
 
     }
 	
@@ -51,85 +79,121 @@ public class MainActivity extends AppCompatActivity implements DialogoCerrar.Esc
 	 *
 	 */
     private void activarEscuchadores() {
-		
-		//
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        //  Botones Navegación entre Activitys      ////////////////////////////////////////////////
+        //
+        ////////////////////////////////////////////
+        //
 		//	botones actuaciones
 		//
-		// para ver el listado o crear una nueva
+        ////////////////////////////////////////////
+        //
+        // botón para ir al listado de actuaciones
 		//
-        bActuaciones = findViewById(R.id.buttonActuaciones);
 
-        bActuaciones.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intento = new Intent(MainActivity.this,ListadoActuaciones.class);
-                startActivity(intento);
-            }
-        });
-		
-		bNuevaActuacion = findViewById(R.id.buttonNueva);
+        bActuaciones = findViewById( R.id.buttonActuaciones ) ;
 
-        bNuevaActuacion.setOnClickListener(new View.OnClickListener() {
+        bActuaciones.setOnClickListener( new View.OnClickListener() {
+
             @Override
-            public void onClick(View v) {
-                intento = new Intent(MainActivity.this,EditaActuacion.class);
-                startActivity(intento);
+            public void onClick( View v ) {
+
+                intento = new Intent( MainActivity.this, ListadoActuaciones.class ) ;
+                startActivity( intento ) ;
+
             }
-        });
-		
-		
-		
-	
-		//
+
+        }) ;
+
+        ////////////////////////////////////////////
+        //
+        // botón para crear una nueva
+        //
+
+		bNuevaActuacion = findViewById( R.id.buttonNueva ) ;
+
+        bNuevaActuacion.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick( View v ) {
+
+                intento = new Intent( MainActivity.this, EditaActuacion.class ) ;
+                startActivity( intento ) ;
+
+            }
+
+        }) ;
+
+        ////////////////////////////////////////////
+        //
 		//	botones cliente
 		//
-		// para ver el listado o crear uno nuevo
+        ////////////////////////////////////////////
+        //
+        // botón para ir al listado de clientes
 		//
-        bClientes = findViewById(R.id.buttonClientes);
+
+        bClientes = findViewById( R.id.buttonClientes ) ;
 
         bClientes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intento = new Intent(MainActivity.this,ListadoClientes.class);
-                startActivity(intento);
-            }
-        });
 
-        bNuevoCliente = findViewById(R.id.buttonNuevo);
-
-        bNuevoCliente.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                intento = new Intent(MainActivity.this,EditaCliente.class);
-                startActivity(intento);
+            public void onClick( View v ) {
+
+                intento = new Intent( MainActivity.this, ListadoClientes.class ) ;
+                startActivity( intento ) ;
+
             }
-        });
-		
-		
-		
-		
-		//
-		//	boton de salida 
+
+        }) ;
+
+        ////////////////////////////////////////////
+        //
+        // botón para crear uno nuevo
+        //
+
+        bNuevoCliente = findViewById( R.id.buttonNuevo ) ;
+
+        bNuevoCliente.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick( View v ) {
+
+                intento = new Intent( MainActivity.this, EditaCliente.class ) ;
+                startActivity( intento ) ;
+
+            }
+
+        }) ;
+
+        ////////////////////////////////////////////
+        //
+        // botón de salida
 		//
 		// que lanza un cuadro de dialogo para preguntar
 		// al usuario si desea cerrar la aplicación
-		// 
-		bSalir = findViewById(R.id.buttonSalir);
+		//
 
-        bSalir.setOnClickListener(new View.OnClickListener() {
+		bSalir = findViewById( R.id.buttonSalir ) ;
+
+        bSalir.setOnClickListener( new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
+            public void onClick( View v ) {
 
-                FragmentManager manejador = getFragmentManager();
-                DialogoCerrar dCerrar = new DialogoCerrar();
-                dCerrar.show(manejador,"elDialogoCerrar");
+                FragmentManager manejador   = getFragmentManager()  ;
+                DialogoCerrar   dCerrar     = new DialogoCerrar()   ;
+
+                dCerrar.show( manejador, "elDialogoCerrar" )        ;
 
             }
-        });
+
+        }) ;
 
     }
-	
+
 	/**
 	 *
 	 * método del interface EscuchadorDialogoCerrar
@@ -137,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements DialogoCerrar.Esc
 	 *
 	 */
     @Override
-    public void DialogoCerrarClickPositivo(DialogFragment dialog) {
+    public void DialogoCerrarClickPositivo( DialogFragment dialog ) {
 		
 		///////////////////////////////////////////////////////
 		//
@@ -156,7 +220,8 @@ public class MainActivity extends AppCompatActivity implements DialogoCerrar.Esc
 		// aplicación del todo
 		//
 		
-        MainActivity.super.finishAndRemoveTask();
+        MainActivity.super.finishAndRemoveTask() ;
+
     }
 	
 	/**
@@ -166,8 +231,10 @@ public class MainActivity extends AppCompatActivity implements DialogoCerrar.Esc
 	 *
 	 */
     @Override
-    public void DialogoCerrarClickNegativo(DialogFragment dialog) {
+    public void DialogoCerrarClickNegativo( DialogFragment dialog ) {
+
         // no hacer nada y volver al MainActivity
+
     }
 	
 }
