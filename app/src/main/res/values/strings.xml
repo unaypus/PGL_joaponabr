@@ -3,6 +3,11 @@
     <!-- Títulos actividades -->
 
     <string name="app_name">Proyecto PGL juaponabr 3º DAM</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_secciones">SeccionesActivity</string>
+
     <string name="title_activity_ver_listado">Listado Actuaciones</string>
     <string name="title_activity_edita_cliente">Cliente</string>
     <string name="title_activity_edita_actuacion">Actuación</string>
@@ -99,6 +104,11 @@
     <string name="error_fecha">La fecha debe ser entre hoy y el 31/12 del año en curso, ambos inclusive</string>
     <string name="error_dias">No se ha elgido ningún día de la semana</string>
     <string name="error_periodicidad">No se ha seleccionado la periodicidad</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
     <!-- EditaCliente -->
 
