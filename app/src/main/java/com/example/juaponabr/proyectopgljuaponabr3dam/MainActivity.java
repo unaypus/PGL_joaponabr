@@ -1,5 +1,6 @@
 package com.example.juaponabr.proyectopgljuaponabr3dam;
 
+import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
@@ -91,10 +92,8 @@ import android.widget.Button;
  *
  */
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, DialogoCerrar.EscuchadorDialogoCerrar {
 
-
-//DialogoCerrar.EscuchadorDialogoCerrar,
     // variables de clase
 	
 	// botones
@@ -127,10 +126,10 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById( R.id.drawer_layout ) ;
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(   this                                ,
-                drawer                              ,
-                toolbar                             ,
-                R.string.navigation_drawer_open     ,
-                R.string.navigation_drawer_close    ) ;
+                                                                    drawer                              ,
+                                                                    toolbar                             ,
+                                                                    R.string.navigation_drawer_open     ,
+                                                                    R.string.navigation_drawer_close    ) ;
 
         drawer.addDrawerListener( toggle )  ;
         toggle.syncState()                  ;
@@ -139,9 +138,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById( R.id.nav_view ) ;
         navigationView.setNavigationItemSelectedListener( this ) ;
 
-
-
-        activarEscuchadores()                       ;
+        activarEscuchadores() ;
 
     }
 
@@ -192,6 +189,16 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        switch ( id ){
+            case R.id.nav_gallery :
+                break ;
+            case R.id.nav_secciones :
+                Intent intento = new Intent( getApplicationContext(), SeccionesActivity.class ) ;
+                startActivity( intento ) ;
+                break ;
+        }
+
+        /*
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
@@ -208,6 +215,7 @@ public class MainActivity extends AppCompatActivity
             Intent intento = new Intent( getApplicationContext(), SeccionesActivity.class ) ;
             startActivity( intento ) ;
         }
+        */
 
         DrawerLayout drawer = findViewById (R.id.drawer_layout ) ;
         drawer.closeDrawer( GravityCompat.START ) ;
@@ -347,7 +355,7 @@ public class MainActivity extends AppCompatActivity
 	 * que cierra la aplicación y libera la memoria
 	 *
 	 */
-    /*@Override
+    @Override
     public void DialogoCerrarClickPositivo( DialogFragment dialog ) {
 		
 		///////////////////////////////////////////////////////
@@ -369,7 +377,7 @@ public class MainActivity extends AppCompatActivity
 		
         MainActivity.super.finishAndRemoveTask() ;
 
-    }*/
+    }
 	
 	/**
 	 *
@@ -377,11 +385,11 @@ public class MainActivity extends AppCompatActivity
 	 * que no hace nada y permite seguir con la aplicación
 	 *
 	 */
-    /*@Override
+    @Override
     public void DialogoCerrarClickNegativo( DialogFragment dialog ) {
 
         // no hacer nada y volver al MainActivity
 
-    }*/
+    }
 	
 }

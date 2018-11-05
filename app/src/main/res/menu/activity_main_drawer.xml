@@ -4,14 +4,18 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+
+
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="@string/menu_galeria" />
+        <item
+            android:id="@+id/nav_secciones"
+            android:icon="@drawable/ic_input_get"
+            android:title="@string/menu_secciones" />
+
+        <!--
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
@@ -20,12 +24,19 @@
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
             android:title="Tools" />
+
+
         <item
-            android:id="@+id/nav_secciones"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Secciones" />
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Import" />
+
+        -->
+
     </group>
 
+
+    <!--
     <item android:title="Communicate">
         <menu>
             <item
@@ -38,5 +49,6 @@
                 android:title="Send" />
         </menu>
     </item>
+    -->
 
 </menu>
