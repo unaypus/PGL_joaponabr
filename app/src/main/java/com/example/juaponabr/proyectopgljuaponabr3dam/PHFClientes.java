@@ -38,7 +38,7 @@ public class PHFClientes extends Fragment {
 
 
         int laSeccion = getArguments().getInt(ARG_SECTION_NUMBER);
-        View rootView = inflater.inflate(R.layout.content_edita_cliente, container, false);
+        View rootView = inflater.inflate(R.layout.content_listado_clientes, container, false);
 
             /*
             switch ( laSeccion ){

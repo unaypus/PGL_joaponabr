@@ -21,36 +21,39 @@ public class SeccionesActivity extends AppCompatActivity {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private SectionsPagerAdapter mSectionsPagerAdapter ;
 
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    private ViewPager mViewPager;
+    private ViewPager mViewPager ;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState ) {
 
         super.onCreate( savedInstanceState          ) ;
         setContentView( R.layout.activity_secciones ) ;
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+        Toolbar toolbar = findViewById( R.id.toolbar )          ;
+        setSupportActionBar( toolbar )                          ;
+        getSupportActionBar().setDisplayHomeAsUpEnabled( true ) ;
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter( getSupportFragmentManager() );
+        mSectionsPagerAdapter = new SectionsPagerAdapter( getSupportFragmentManager() ) ;
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter( mSectionsPagerAdapter );
+        mViewPager = findViewById( R.id.container )     ;
+        mViewPager.setAdapter( mSectionsPagerAdapter )  ;
 
-        TabLayout losTab = findViewById( R.id.tabs );
-        losTab.setupWithViewPager( mViewPager );
+        // Barra con el título de cada pestaña
+        TabLayout losTab = findViewById( R.id.tabs )    ;
+        losTab.setupWithViewPager( mViewPager )         ;
 
         /*
+
         //  por ahora no usaremos este botón
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +64,6 @@ public class SeccionesActivity extends AppCompatActivity {
         });*/
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,30 +87,19 @@ public class SeccionesActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
+        public SectionsPagerAdapter( FragmentManager fm ) { super( fm ) ; }
 
         @Override
-        public Fragment getItem(int position) {
+        public int getCount() { return 2 ; }
+
+        @Override
+        public Fragment getItem( int position ) {
 
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
@@ -125,28 +116,26 @@ public class SeccionesActivity extends AppCompatActivity {
             switch ( quePestanya ){
 
                 case 1: return PHFActuaciones.newInstance(  quePestanya ) ;
-
                 case 2: return PHFClientes.newInstance(     quePestanya ) ;
 
             }
 
-            return null;//PHFActuaciones.newInstance(position + 1);
+            return null;    //PHFActuaciones.newInstance(position + 1);
 
-        }
-
-        @Override
-        public int getCount() {
-            // Show 3 total pages.
-            return 2;
         }
 
         @Override
         public CharSequence getPageTitle( int position){
+
             switch ( position ) {
+
                 case 0: return "Actuación"  ;
                 case 1: return "Cliente"    ;
+
             }
+
             return null;
+
         }
     }
 

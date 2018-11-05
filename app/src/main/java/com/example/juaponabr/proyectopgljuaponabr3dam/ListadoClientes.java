@@ -50,7 +50,8 @@ public class ListadoClientes extends AppCompatActivity {
 	 *
 	 */
     private void activarEscuchadores() {
-		
+
+        /*
 		// botón para ir al listado de actuaciones
         bActuaciones = findViewById(R.id.buttonVerActuaciones);
 
@@ -61,7 +62,8 @@ public class ListadoClientes extends AppCompatActivity {
                 startActivity(intento);
             }
         });
-		
+		*/
+
 		// botón para añadir un cliente
         bNuevoCliente = findViewById(R.id.buttonNuevoCliente);
 

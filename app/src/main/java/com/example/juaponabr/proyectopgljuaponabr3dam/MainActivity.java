@@ -91,8 +91,9 @@ import android.widget.Button;
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
  */
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, DialogoCerrar.EscuchadorDialogoCerrar {
+public class MainActivity   extends     AppCompatActivity
+                            implements  NavigationView.OnNavigationItemSelectedListener ,
+                                        DialogoCerrar.EscuchadorDialogoCerrar {
 
     // variables de clase
 	
@@ -118,8 +119,8 @@ public class MainActivity extends AppCompatActivity
         setContentView( R.layout.activity_main  )   ;
 
         // Crear la barra de herramientas
-        Toolbar toolbar = findViewById( R.id.toolbar ) ;
-        setSupportActionBar( toolbar ) ;
+        Toolbar toolbar = findViewById( R.id.toolbar )  ;
+        setSupportActionBar( toolbar )                  ;
 
         // Ahora no me acuerdo de que es esto
         // ¿ sera el menú emergente ?
@@ -135,12 +136,18 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState()                  ;
 
         // La vista de navegación por las pestañas
-        NavigationView navigationView = findViewById( R.id.nav_view ) ;
-        navigationView.setNavigationItemSelectedListener( this ) ;
+        NavigationView navigationView = findViewById( R.id.nav_view )   ;
+        navigationView.setNavigationItemSelectedListener( this )        ;
 
         activarEscuchadores() ;
 
     }
+
+    //////////////////////////////////////////////////////////////////////
+    //
+    //  Métodos del menú emergente
+    //
+    ///////////////////////////////
 
     @Override
     public void onBackPressed() {
@@ -189,16 +196,30 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        //  me entiendo mejor con el modo switch()
         switch ( id ){
+
             case R.id.nav_gallery :
+
                 break ;
+
             case R.id.nav_secciones :
+
                 Intent intento = new Intent( getApplicationContext(), SeccionesActivity.class ) ;
                 startActivity( intento ) ;
+
                 break ;
         }
 
+        DrawerLayout drawer = findViewById ( R.id.drawer_layout )   ;
+        drawer.closeDrawer( GravityCompat.START )                   ;
+
+        return true ;
+
         /*
+
+        // modo creado por el asistente
+
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
@@ -217,16 +238,13 @@ public class MainActivity extends AppCompatActivity
         }
         */
 
-        DrawerLayout drawer = findViewById (R.id.drawer_layout ) ;
-        drawer.closeDrawer( GravityCompat.START ) ;
-        return true ;
     }
 
-
-
-
-
-
+    //////////////////////////////////////////////////////////////////////
+    //
+    //  Navegación por botones
+    //
+    //////////////////////////
 
 	/**
 	 *
@@ -325,7 +343,7 @@ public class MainActivity extends AppCompatActivity
 
         ////////////////////////////////////////////
         //
-        // botón de salida
+        // botón de salida  ( se mantendrá en la navegación por pestañas )
 		//
 		// que lanza un cuadro de dialogo para preguntar
 		// al usuario si desea cerrar la aplicación

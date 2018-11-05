@@ -103,12 +103,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <!--
         <Button
             android:id="@+id/buttonVerClientes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/ver_Clientes" />
+            android:text="@string/ver_Clientes" />-->
 
         <Button
             android:id="@+id/buttonNuevaActuacion"
