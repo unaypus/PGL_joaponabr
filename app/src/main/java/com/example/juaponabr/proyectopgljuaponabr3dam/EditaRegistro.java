@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -44,10 +46,35 @@ public class EditaRegistro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) { super.onCreate( savedInstanceState ) ; }
 
+    @Override
+    public boolean onCreateOptionsMenu( Menu menu ) {
+
+        getMenuInflater().inflate( R.menu.main, menu ) ;
+        return true ;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item ) {
+
+        switch ( item.getItemId() ){
+            case R.id.action_settings:
+                modEnConstruccion() ;
+                return true ;
+            case R.id.action_help :
+                modEnConstruccion( );
+                return true ;
+        }
+
+        return super.onOptionsItemSelected( item ) ;
+
+    }
+
     protected void iniBarraHerramientas(){
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeAsUpIndicator( R.drawable.ic_action_home ) ;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
@@ -252,9 +279,9 @@ public class EditaRegistro extends AppCompatActivity {
 
     }
 
-    protected String    getsErrorValidacion()   { return this.sErrorValidacion  ; }
-    protected String    getsDatosValidados()    { return this.sDatosValidados   ; }
+    protected String getsErrorValidacion()   { return this.sErrorValidacion  ; }
+    protected String getsDatosValidados()    { return this.sDatosValidados   ; }
 
-    protected void  setsErrorValidacion(    String sErrorValidacion ){ this.sErrorValidacion    = sErrorValidacion  ; }
-    protected void  setsDatosValidados(     String sDatosValidados  ){ this.sDatosValidados     = sDatosValidados   ; }
+    protected void setsErrorValidacion( String sErrorValidacion ){ this.sErrorValidacion    = sErrorValidacion  ; }
+    protected void setsDatosValidados(  String sDatosValidados  ){ this.sDatosValidados     = sDatosValidados   ; }
 }

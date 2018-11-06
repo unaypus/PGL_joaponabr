@@ -135,7 +135,7 @@ public class MainActivity   extends     AppCompatActivity
         drawer.addDrawerListener( toggle )  ;
         toggle.syncState()                  ;
 
-        // La vista de navegación por las pestañas
+        // Esto es hacer la opción del menú emergente escogida
         NavigationView navigationView = findViewById( R.id.nav_view )   ;
         navigationView.setNavigationItemSelectedListener( this )        ;
 
@@ -178,12 +178,23 @@ public class MainActivity   extends     AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId() ;
+        //int id = item.getItemId() ;
 
+        switch ( item.getItemId() ){
+            case R.id.action_settings:
+                modEnConstruccion() ;
+                return true ;
+            case R.id.action_help :
+                modEnConstruccion( );
+                return true ;
+        }
+        /*
         //noinspection SimplifiableIfStatement
         if ( id == R.id.action_settings ) {
+            modEnConstruccion();
             return true ;
         }
+        */
 
         return super.onOptionsItemSelected( item ) ;
     }
@@ -205,7 +216,7 @@ public class MainActivity   extends     AppCompatActivity
 
             case R.id.nav_secciones :
 
-                Intent intento = new Intent( getApplicationContext(), SeccionesActivity.class ) ;
+                Intent intento = new Intent( MainActivity.this, SeccionesActivity.class ) ;
                 startActivity( intento ) ;
 
                 break ;
@@ -409,5 +420,15 @@ public class MainActivity   extends     AppCompatActivity
         // no hacer nada y volver al MainActivity
 
     }
-	
+
+    protected void modEnConstruccion() {
+
+        //  Para los módulos en construcción
+        FragmentManager manejador   = getFragmentManager();
+        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )    ,
+                getString( R.string.txt_modulo_construccion )    ) ;
+
+        dMensaje.show(manejador,"elDialogoEnConstruccion");
+
+    }
 }

@@ -34,9 +34,11 @@ public class SeccionesActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState          ) ;
         setContentView( R.layout.activity_secciones ) ;
 
-        Toolbar toolbar = findViewById( R.id.toolbar )          ;
+        Toolbar toolbar = findViewById( R.id.toolbar_sec )      ;
         setSupportActionBar( toolbar )                          ;
+        getSupportActionBar().setHomeAsUpIndicator( R.drawable.ic_action_home ) ;
         getSupportActionBar().setDisplayHomeAsUpEnabled( true ) ;
+
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -73,18 +75,26 @@ public class SeccionesActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected( MenuItem item ) {
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch ( item.getItemId() ){
+
+            case R.id.action_settings   :
+                modEnConstruccion()     ;
+                return true             ;
+
+            case R.id.action_help       :
+                modEnConstruccion()     ;
+                return true             ;
+
         }
 
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected( item ) ;
+
     }
 
     /**
@@ -139,5 +149,15 @@ public class SeccionesActivity extends AppCompatActivity {
         }
     }
 
+    protected void modEnConstruccion() {
+
+        //  Para los módulos en construcción
+        android.app.FragmentManager manejador   = getFragmentManager();
+        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )    ,
+                getString( R.string.txt_modulo_construccion )    ) ;
+
+        dMensaje.show(manejador,"elDialogoEnConstruccion");
+
+    }
 
 }

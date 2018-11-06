@@ -115,7 +115,8 @@
     <string name="nav_header_title">Joan Pons Live Music</string>
     <string name="nav_header_subtitle">www.joanponslivemusic.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Configuración</string>
+    <string name="action_help">Ayuda</string>
 
     <!-- EditaCliente -->
 

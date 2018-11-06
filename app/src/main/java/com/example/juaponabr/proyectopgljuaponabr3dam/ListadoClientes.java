@@ -1,11 +1,14 @@
 package com.example.juaponabr.proyectopgljuaponabr3dam;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 //import android.support.design.widget.FloatingActionButton;
 //import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -40,8 +43,33 @@ public class ListadoClientes extends AppCompatActivity {
             }
         });
 		*/
+        getSupportActionBar().setHomeAsUpIndicator( R.drawable.ic_action_home ) ;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activarEscuchadores();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu( Menu menu ) {
+
+        getMenuInflater().inflate( R.menu.main, menu ) ;
+        return true ;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item ) {
+
+        switch ( item.getItemId() ){
+            case R.id.action_settings:
+                modEnConstruccion() ;
+                return true ;
+            case R.id.action_help :
+                modEnConstruccion( );
+                return true ;
+        }
+
+        return super.onOptionsItemSelected( item ) ;
+
     }
 	
 	/**
@@ -51,9 +79,10 @@ public class ListadoClientes extends AppCompatActivity {
 	 */
     private void activarEscuchadores() {
 
-        /*
+        /**/
 		// botón para ir al listado de actuaciones
-        bActuaciones = findViewById(R.id.buttonVerActuaciones);
+        bActuaciones = findViewById(    R.id.buttonVerActuaciones   ) ;
+        bActuaciones.setVisibility(     View.VISIBLE                ) ;
 
         bActuaciones.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +91,7 @@ public class ListadoClientes extends AppCompatActivity {
                 startActivity(intento);
             }
         });
-		*/
+		/**/
 
 		// botón para añadir un cliente
         bNuevoCliente = findViewById(R.id.buttonNuevoCliente);
@@ -74,6 +103,17 @@ public class ListadoClientes extends AppCompatActivity {
                 startActivity(intento);
             }
         });
+
+    }
+
+    protected void modEnConstruccion() {
+
+        //  Para los módulos en construcción
+        FragmentManager manejador   = getFragmentManager();
+        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )    ,
+                getString( R.string.txt_modulo_construccion )    ) ;
+
+        dMensaje.show(manejador,"elDialogoEnConstruccion");
 
     }
 
