@@ -42,6 +42,18 @@ import android.widget.Button;
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
+ *      Jueves   08/11/2018 21:48
+ *
+ * /////////////////////////////
+ *
+ * commit 'navegaPestanyas lista para merge con entrega2'
+ *
+ *      ATENCIÓN        En realidad antes del merge con master hay que replegar entrega2
+ *
+ * Este es el commit de seguridad una vez duplicado el final de navegaPestanyas
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
  *      Jueves   08/11/2018 21:46
  *
  * /////////////////////////////
