@@ -56,8 +56,17 @@
                 android:value="com.example.juaponabr.proyectopgljuaponabr3dam.MainActivity" />
         </activity>
         <activity
-            android:name=".SeccionesActivity"
+            android:name=".Secciones"
             android:label="@string/title_activity_secciones"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.juaponabr.proyectopgljuaponabr3dam.MainActivity" />
+        </activity>
+        <activity
+            android:name=".GaleriaPhotos"
+            android:label="@string/title_activity_galeria"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class SeccionesActivity extends AppCompatActivity {
+public class Secciones extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -34,10 +34,10 @@ public class SeccionesActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState          ) ;
         setContentView( R.layout.activity_secciones ) ;
 
-        Toolbar toolbar = findViewById( R.id.toolbar_sec )      ;
-        setSupportActionBar( toolbar )                          ;
-        getSupportActionBar().setHomeAsUpIndicator( R.drawable.ic_action_home ) ;
-        getSupportActionBar().setDisplayHomeAsUpEnabled( true ) ;
+        Toolbar toolbar = findViewById(                     R.id.toolbar_sec            ) ;
+        setSupportActionBar(                                toolbar                     ) ;
+        getSupportActionBar().setHomeAsUpIndicator(         R.drawable.ic_action_home   ) ;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(    true                        ) ;
 
 
         // Create the adapter that will return a fragment for each of the three
@@ -45,12 +45,12 @@ public class SeccionesActivity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter( getSupportFragmentManager() ) ;
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = findViewById( R.id.container )     ;
-        mViewPager.setAdapter( mSectionsPagerAdapter )  ;
+        mViewPager = findViewById(  R.id.container          ) ;
+        mViewPager.setAdapter(      mSectionsPagerAdapter   ) ;
 
         // Barra con el título de cada pestaña
-        TabLayout losTab = findViewById( R.id.tabs )    ;
-        losTab.setupWithViewPager( mViewPager )         ;
+        TabLayout losTab = findViewById(    R.id.tabs   ) ;
+        losTab.setupWithViewPager(          mViewPager  ) ;
 
         /*
 
@@ -68,18 +68,16 @@ public class SeccionesActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu( Menu menu ) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_secciones, menu);
-        return true;
+        getMenuInflater().inflate( R.menu.menu_secciones, menu ) ;
+        return true ;
+
     }
 
     @Override
     public boolean onOptionsItemSelected( MenuItem item ) {
-
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
 
         switch ( item.getItemId() ){
 
@@ -111,9 +109,6 @@ public class SeccionesActivity extends AppCompatActivity {
         @Override
         public Fragment getItem( int position ) {
 
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-
             /////////////////////////////////////////////////////
             //
             //  este es el lugar donde poner el switch ( quePestanya )
@@ -139,8 +134,8 @@ public class SeccionesActivity extends AppCompatActivity {
 
             switch ( position ) {
 
-                case 0: return "Actuación"  ;
-                case 1: return "Cliente"    ;
+                case 0: return "Actuaciones"    ;
+                case 1: return "Clientes"       ;
 
             }
 
@@ -152,9 +147,10 @@ public class SeccionesActivity extends AppCompatActivity {
     protected void modEnConstruccion() {
 
         //  Para los módulos en construcción
-        android.app.FragmentManager manejador   = getFragmentManager();
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )    ,
-                getString( R.string.txt_modulo_construccion )    ) ;
+        android.app.FragmentManager manejador   = getFragmentManager() ;
+
+        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )                                   ,
+                                                            getString( R.string.txt_modulo_construccion )   ) ;
 
         dMensaje.show(manejador,"elDialogoEnConstruccion");
 

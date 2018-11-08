@@ -155,9 +155,13 @@ public class MainActivity   extends     AppCompatActivity
         DrawerLayout drawer = findViewById( R.id.drawer_layout ) ;
 
         if ( drawer.isDrawerOpen( GravityCompat.START ) ) {
+
             drawer.closeDrawer( GravityCompat.START ) ;
+
         } else {
+
             super.onBackPressed() ;
+
         }
 
     }
@@ -181,22 +185,21 @@ public class MainActivity   extends     AppCompatActivity
         //int id = item.getItemId() ;
 
         switch ( item.getItemId() ){
+
             case R.id.action_settings:
+
                 modEnConstruccion() ;
                 return true ;
+
             case R.id.action_help :
-                modEnConstruccion( );
+
+                modEnConstruccion();
                 return true ;
+
         }
-        /*
-        //noinspection SimplifiableIfStatement
-        if ( id == R.id.action_settings ) {
-            modEnConstruccion();
-            return true ;
-        }
-        */
 
         return super.onOptionsItemSelected( item ) ;
+
     }
 
 
@@ -205,49 +208,36 @@ public class MainActivity   extends     AppCompatActivity
     public boolean onNavigationItemSelected( MenuItem item ) {
 
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        int id = item.getItemId() ;
 
         //  me entiendo mejor con el modo switch()
         switch ( id ){
 
             case R.id.nav_gallery :
 
+                intento = new Intent( MainActivity.this, GaleriaPhotos.class ) ;
+                startActivity( intento ) ;
+
                 break ;
 
             case R.id.nav_secciones :
 
-                Intent intento = new Intent( MainActivity.this, SeccionesActivity.class ) ;
+                intento = new Intent( MainActivity.this, Secciones.class ) ;
                 startActivity( intento ) ;
 
                 break ;
+
+            case R.id.nav_cerrar :
+
+                cerrarSalir() ;
+                break ;
+
         }
 
         DrawerLayout drawer = findViewById ( R.id.drawer_layout )   ;
         drawer.closeDrawer( GravityCompat.START )                   ;
 
         return true ;
-
-        /*
-
-        // modo creado por el asistente
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        } else if (id == R.id.nav_secciones) {
-            Intent intento = new Intent( getApplicationContext(), SeccionesActivity.class ) ;
-            startActivity( intento ) ;
-        }
-        */
 
     }
 
@@ -367,11 +357,7 @@ public class MainActivity   extends     AppCompatActivity
             @Override
             public void onClick( View v ) {
 
-                FragmentManager manejador   = getFragmentManager()  ;
-                DialogoCerrar   dCerrar     = new DialogoCerrar()   ;
-
-                dCerrar.show( manejador, "elDialogoCerrar" )        ;
-
+                cerrarSalir() ;
             }
 
         }) ;
@@ -400,7 +386,7 @@ public class MainActivity   extends     AppCompatActivity
 		//
         //		MainActivity.super.finishAndRemoveTask();
 		//
-        // usamos la segunda forma porque queromas cerrar la 
+        // usamos la segunda forma porque queremas cerrar la
 		// aplicación del todo
 		//
 		
@@ -426,9 +412,18 @@ public class MainActivity   extends     AppCompatActivity
         //  Para los módulos en construcción
         FragmentManager manejador   = getFragmentManager();
         DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )    ,
-                getString( R.string.txt_modulo_construccion )    ) ;
+                                                            getString( R.string.txt_modulo_construccion )    ) ;
 
         dMensaje.show(manejador,"elDialogoEnConstruccion");
+
+    }
+
+    private void cerrarSalir(){
+
+        FragmentManager manejador   = getFragmentManager()  ;
+        DialogoCerrar   dCerrar     = new DialogoCerrar()   ;
+
+        dCerrar.show( manejador, "elDialogoCerrar" )        ;
 
     }
 }
