@@ -42,6 +42,15 @@ import android.widget.Button;
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
+ *      Sábado   10/11/2018 20:02
+ *
+ * /////////////////////////////
+ *
+ * Después del commit 'Ya estamos en entrega3', realizaremos el push para que el githup esté igual
+ * que el git local
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
  *      Jueves   08/11/2018 22:08
  *
  * /////////////////////////////
@@ -234,11 +243,8 @@ public class MainActivity   extends     AppCompatActivity
     @Override
     public boolean onOptionsItemSelected( MenuItem item ) {
 
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        //int id = item.getItemId() ;
-
+        // esta función nos devuelve el id de un item de menú
+        // y según este número sabremos que opción se a pulsado
         switch ( item.getItemId() ){
 
             case R.id.action_settings:
@@ -262,11 +268,7 @@ public class MainActivity   extends     AppCompatActivity
     @Override
     public boolean onNavigationItemSelected( MenuItem item ) {
 
-        // Handle navigation view item clicks here.
-        int id = item.getItemId() ;
-
-        //  me entiendo mejor con el modo switch()
-        switch ( id ){
+        switch ( item.getItemId() ){
 
             case R.id.nav_gallery :
 
@@ -410,10 +412,7 @@ public class MainActivity   extends     AppCompatActivity
         bSalir.setOnClickListener( new View.OnClickListener() {
 
             @Override
-            public void onClick( View v ) {
-
-                cerrarSalir() ;
-            }
+            public void onClick( View v ) { cerrarSalir() ; }
 
         }) ;
 
@@ -465,11 +464,10 @@ public class MainActivity   extends     AppCompatActivity
     protected void modEnConstruccion() {
 
         //  Para los módulos en construcción
-        FragmentManager manejador   = getFragmentManager();
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )    ,
-                                                            getString( R.string.txt_modulo_construccion )    ) ;
-
-        dMensaje.show(manejador,"elDialogoEnConstruccion");
+        FragmentManager manejador   = getFragmentManager()                                                    ;
+        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )   ,
+                                                            getString( R.string.txt_modulo_construccion )   ) ;
+        dMensaje.show(                                      manejador, "elDialogoEnConstruccion"            ) ;
 
     }
 
@@ -481,4 +479,5 @@ public class MainActivity   extends     AppCompatActivity
         dCerrar.show( manejador, "elDialogoCerrar" )        ;
 
     }
+
 }
