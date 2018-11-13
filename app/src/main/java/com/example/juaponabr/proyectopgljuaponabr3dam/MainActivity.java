@@ -15,6 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaCliente;
+import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaContrato;
+
 /**
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,6 +42,17 @@ import android.widget.Button;
  *  Histórico
  *
  *  de lo mas nuevo a lo mas antiguo
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Martes   13/11/2018 07:14
+ *
+ * /////////////////////////////
+ *
+ * Se añade la entidad Contrato y se cambian los nombres y referencias de las actividades y los
+ * leyouts que llevan la palabra actuacion y similares
+ *
+ * commit 'Reestructurado Actuaciones por Contratos'
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *

@@ -38,7 +38,7 @@
                 android:value="com.example.juaponabr.proyectopgljuaponabr3dam.MainActivity" />
         </activity>
         <activity
-            android:name=".EditaCliente"
+            android:name=".controlador.EditaCliente"
             android:label="@string/title_activity_edita_cliente"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -47,7 +47,7 @@
                 android:value="com.example.juaponabr.proyectopgljuaponabr3dam.MainActivity" />
         </activity>
         <activity
-            android:name=".EditaContrato"
+            android:name=".controlador.EditaContrato"
             android:label="@string/title_activity_edita_contrato"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

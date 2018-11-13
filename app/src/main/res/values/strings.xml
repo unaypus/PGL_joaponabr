@@ -69,7 +69,7 @@
     <string name="cC_nombre">Nombre</string>
     <string name="cC_direccion">Dirección</string>
     <string name="cC_localidad">Localidad</string>
-    <string name="cC_km">Km. </string>
+    <string name="cC_km">Km.</string>
 
     <!-- campos contratos -->
     <string name="cCt_">ct</string>
@@ -118,13 +118,33 @@
     <string name="error_fecha">La fecha debe ser entre hoy y el 31/12 del año en curso, ambos inclusive</string>
     <string name="error_dias">No se ha elgido ningún día de la semana</string>
     <string name="error_periodicidad">No se ha seleccionado la periodicidad</string>
+
     <string name="nav_header_title">Joan Pons Live Music</string>
     <string name="nav_header_subtitle">www.joanponslivemusic.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Configuración</string>
     <string name="action_help">Ayuda</string>
 
+    <!-- validadción cliente -->
+    <string name="error_campo_vacio">No se ha introducido ningún dato en : </string>
+    <string name="error_DNI">El DNI debe tener almenos 8 digitos y una letra</string>
+    <string name="error_telefono">El teléfono debe tener almenos 9 digitos</string>
+    <string name="error_CP">El CP debe tener almenos 5 digitos</string>
+
     <!-- EditaCliente -->
+    <string name="txt_cl_identidad">Datos identificativos</string>
+    <string name="txt_cl_nombre">Nombre</string>
+    <string name="txt_cl_dni">D.N.I.</string>
+    <string name="txt_dir_direccion">Dirección</string>
+    <string name="txt_dir_via">Vía</string>
+    <string name="txt_dir_num">Nº</string>
+    <string name="txt_dir_cp">C.P.</string>
+    <string name="txt_dir_localidad">Municipio</string>
+    <string name="txt_distanacia">Distancia</string>
+    <string name="txt_km">Km.</string>
+    <string name="txt_cl_datos_contacto">Datos de contacto</string>
+    <string name="txt_cl_telefono">Teléfono</string>
+    <string name="txt_cl_per_contacto">Persona de contacto</string>
 
     <!-- capa_botones_edita_registro -->
 

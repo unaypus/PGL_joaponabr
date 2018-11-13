@@ -76,6 +76,7 @@
         </LinearLayout>
     </LinearLayout>
 
+    <!--
     <LinearLayout
         android:id="@+id/LayoutBotones"
         android:layout_width="match_parent"
@@ -106,5 +107,6 @@
             android:text="@string/ver_contratos" />
 
     </LinearLayout>
+    -->
 
 </android.support.constraint.ConstraintLayout>

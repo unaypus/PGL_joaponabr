@@ -1,4 +1,4 @@
-package com.example.juaponabr.proyectopgljuaponabr3dam;
+package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 
 import java.util.Calendar;
 
@@ -33,9 +35,9 @@ public class EditaContrato extends EditaRegistro {
     protected void onCreate( Bundle savedInstanceState ) {
 
         super.onCreate( savedInstanceState )                ;
-        setContentView( R.layout.activity_edita_contrato) ;
+        setContentView( R.layout.activity_edita_contrato)   ;
         iniBarraHerramientas()                              ;
-        activarEscuchadores( EditaContrato.this )          ;
+        activarEscuchadores( EditaContrato.this )           ;
         activarElementos()                                  ;
 
     }
@@ -397,34 +399,12 @@ public class EditaContrato extends EditaRegistro {
     }
 
 
+
+
     /////////////////////////////////////
     //
     //      MÉTODOS AUXILIARES
     //
-
-    private boolean campoObligatorio( int idCampo, int idError ){
-
-        EditText    edtAuxiliar = findViewById( idCampo ) ;
-        String      sAuxiliar2   = edtAuxiliar.getText().toString() ;
-
-        edtAuxiliar.setError( null ) ;
-
-        if ( TextUtils.isEmpty( sAuxiliar2 ) ){
-
-            //sError = sError + getString( idError ) + "\n\n" ;
-
-            edtAuxiliar.setError( getString( R.string.error_campo_obligatorio ) ) ;
-            edtAuxiliar.requestFocus() ;
-
-            //nError++ ;
-
-            return false ;
-
-        }
-
-        return true ;
-
-    }
 
     private int tieneTrentaUno( int nMesAux ) {
 

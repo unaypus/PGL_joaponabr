@@ -1,0 +1,130 @@
+package com.example.juaponabr.proyectopgljuaponabr3dam.pojos;
+
+public class Cliente {
+
+    private int     cl_id           ; // Clave principal
+    private String  cl_nombre       ;
+    private String  cl_dni          ;
+
+    private String  dir_via         ;
+    private int     dir_num         ;
+    private String  dir_cp          ;
+    private String  dir_localidad   ;
+    private int     distanacia      ;
+
+    private String  cl_telefono     ;
+    private String  cl_per_contacto ; // persona de contacto del cliente
+
+    public Cliente(){
+
+        this.cl_id              = 0     ;
+        this.cl_nombre          = ""    ;
+        this.cl_dni             = ""    ;
+        this.dir_via            = ""    ;
+        this.dir_num            = 0     ;
+        this.dir_cp             = ""    ;
+        this.dir_localidad      = ""    ;
+        this.distanacia         = 0     ;
+        this.cl_telefono        = ""    ;
+        this.cl_per_contacto    = ""    ;
+
+    }
+
+    public Cliente( int     cl_id            , String   cl_nombre       , String cl_dni ,
+                    String  dir_via          , int      dir_num         , String dir_cp ,
+                    String  dir_localidad    , int      distanacia      ,
+                    String  cl_telefono      , String   cl_per_contacto ) {
+
+        this.cl_id              = cl_id             ;
+        this.cl_nombre          = cl_nombre         ;
+        this.cl_dni             = cl_dni            ;
+        this.dir_via            = dir_via           ;
+        this.dir_num            = dir_num           ;
+        this.dir_cp             = dir_cp            ;
+        this.dir_localidad      = dir_localidad     ;
+        this.distanacia         = distanacia        ;
+        this.cl_telefono        = cl_telefono       ;
+        this.cl_per_contacto    = cl_per_contacto   ;
+
+    }
+
+    public int getCl_id() {
+        return cl_id;
+    }
+
+    public void setCl_id(int cl_id) {
+        this.cl_id = cl_id;
+    }
+
+    public String getCl_nombre() {
+        return cl_nombre;
+    }
+
+    public void setCl_nombre(String cl_nombre) {
+        this.cl_nombre = cl_nombre;
+    }
+
+    public String getCl_dni() {
+        return cl_dni;
+    }
+
+    public void setCl_dni(String cl_dni) {
+        this.cl_dni = cl_dni;
+    }
+
+    public String getDir_via() {
+        return dir_via;
+    }
+
+    public void setDir_via(String dir_via) {
+        this.dir_via = dir_via;
+    }
+
+    public int getDir_num() {
+        return dir_num;
+    }
+
+    public void setDir_num(int dir_num) {
+        this.dir_num = dir_num;
+    }
+
+    public String getDir_cp() {
+        return dir_cp;
+    }
+
+    public void setDir_cp(String dir_cp) {
+        this.dir_cp = dir_cp;
+    }
+
+    public String getDir_localidad() {
+        return dir_localidad;
+    }
+
+    public void setDir_localidad(String dir_localidad) {
+        this.dir_localidad = dir_localidad;
+    }
+
+    public int getDistanacia() {
+        return distanacia;
+    }
+
+    public void setDistanacia(int distanacia) {
+        this.distanacia = distanacia;
+    }
+
+    public String getCl_telefono() {
+        return cl_telefono;
+    }
+
+    public void setCl_telefono(String cl_telefono) {
+        this.cl_telefono = cl_telefono;
+    }
+
+    public String getCl_per_contacto() {
+        return cl_per_contacto;
+    }
+
+    public void setCl_per_contacto(String cl_per_contacto) {
+        this.cl_per_contacto = cl_per_contacto;
+    }
+}

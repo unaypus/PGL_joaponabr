@@ -1,4 +1,4 @@
-package com.example.juaponabr.proyectopgljuaponabr3dam;
+package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
 
 import android.app.FragmentManager;
 import android.content.Context;
@@ -6,11 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.example.juaponabr.proyectopgljuaponabr3dam.DialogoMensaje;
+//import com.example.juaponabr.proyectopgljuaponabr3dam.ListadoClientes;
+//import com.example.juaponabr.proyectopgljuaponabr3dam.ListadoContratos;
+import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 
 public class EditaRegistro extends AppCompatActivity {
         //implements View.OnClickListener{
@@ -18,8 +25,8 @@ public class EditaRegistro extends AppCompatActivity {
     // variables de clase
 
     // botones actividades
-    private Button bActuaciones;
-    private Button bClientes ;
+    //private Button bActuaciones;
+    //private Button bClientes ;
 
     // botones edición de registro
     private ImageButton bNuevo;
@@ -37,7 +44,7 @@ public class EditaRegistro extends AppCompatActivity {
     private String sDatosValidados ;
 
     // intentos ( para lanzar activitys )
-    private Intent intento;
+    //private Intent intento;
     // En las clase hijas
     // crear la variable : private Context elContexto ;
     // crear la sentencia : elContexto = la_activity.this;
@@ -72,10 +79,10 @@ public class EditaRegistro extends AppCompatActivity {
 
     protected void iniBarraHerramientas(){
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeAsUpIndicator( R.drawable.ic_action_home ) ;
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Toolbar toolbar = findViewById(                     R.id.toolbar                ) ;
+        setSupportActionBar(                                toolbar                     ) ;
+        getSupportActionBar().setHomeAsUpIndicator(         R.drawable.ic_action_home   ) ;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(    true                        ) ;
 
     }
 
@@ -86,6 +93,7 @@ public class EditaRegistro extends AppCompatActivity {
      */
     protected void activarEscuchadores( final Context elContexto ) {
 
+        /*
         ////////////////////////////////////////////////////////////////////////////////////////////
         //
         //  Botones Navegación entre Activitys      ////////////////////////////////////////////////
@@ -126,6 +134,7 @@ public class EditaRegistro extends AppCompatActivity {
             }
 
         });
+        */
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //
@@ -248,7 +257,7 @@ public class EditaRegistro extends AppCompatActivity {
     protected void mensajeNoValidado() {
 
         FragmentManager manejador   = getFragmentManager() ;
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.atencion )  ,
+        DialogoMensaje dMensaje    = new DialogoMensaje(   getString( R.string.atencion )  ,
                                                             getsErrorValidacion()           ) ;
 
         dMensaje.show(manejador,"elDialogoNoValidado");
@@ -278,6 +287,7 @@ public class EditaRegistro extends AppCompatActivity {
         dMensaje.show(manejador,"elDialogoEnConstruccion");
 
     }
+
 
     protected String getsErrorValidacion()   { return this.sErrorValidacion  ; }
     protected String getsDatosValidados()    { return this.sDatosValidados   ; }
