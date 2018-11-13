@@ -199,10 +199,11 @@ public class MainActivity   extends     AppCompatActivity
         drawer.addDrawerListener( toggle )  ;
         toggle.syncState()                  ;
 
-        // Esto es hacer la opción del menú emergente escogida
+        // Esto es cargar el escuchador del menú emergente?????????
         NavigationView navigationView = findViewById( R.id.nav_view )   ;
         navigationView.setNavigationItemSelectedListener( this )        ;
 
+        // para la navegación por botones
         activarEscuchadores() ;
 
     }
@@ -324,14 +325,14 @@ public class MainActivity   extends     AppCompatActivity
         // botón para ir al listado de actuaciones
 		//
 
-        bActuaciones = findViewById( R.id.buttonActuaciones ) ;
+        bActuaciones = findViewById( R.id.buttonContratos) ;
 
         bActuaciones.setOnClickListener( new View.OnClickListener() {
 
             @Override
             public void onClick( View v ) {
 
-                intento = new Intent( MainActivity.this, ListadoActuaciones.class ) ;
+                intento = new Intent( MainActivity.this, ListadoContratos.class ) ;
                 startActivity( intento ) ;
 
             }
@@ -350,7 +351,7 @@ public class MainActivity   extends     AppCompatActivity
             @Override
             public void onClick( View v ) {
 
-                intento = new Intent( MainActivity.this, EditaActuacion.class ) ;
+                intento = new Intent( MainActivity.this, EditaContrato.class ) ;
                 startActivity( intento ) ;
 
             }

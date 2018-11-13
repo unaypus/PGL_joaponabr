@@ -11,7 +11,7 @@ import android.widget.RadioGroup;
 
 import java.util.Calendar;
 
-public class EditaActuacion extends EditaRegistro {
+public class EditaContrato extends EditaRegistro {
 
     // variables de clase
     //private Context elContexto              ;
@@ -33,9 +33,9 @@ public class EditaActuacion extends EditaRegistro {
     protected void onCreate( Bundle savedInstanceState ) {
 
         super.onCreate( savedInstanceState )                ;
-        setContentView( R.layout.activity_edita_actuacion ) ;
+        setContentView( R.layout.activity_edita_contrato) ;
         iniBarraHerramientas()                              ;
-        activarEscuchadores( EditaActuacion.this )          ;
+        activarEscuchadores( EditaContrato.this )          ;
         activarElementos()                                  ;
 
     }

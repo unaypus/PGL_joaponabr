@@ -29,8 +29,8 @@
                 android:value="com.example.juaponabr.proyectopgljuaponabr3dam.MainActivity" />
         </activity>
         <activity
-            android:name=".ListadoActuaciones"
-            android:label="@string/title_activity_listado_actuaciones"
+            android:name=".ListadoContratos"
+            android:label="@string/title_activity_listado_contratos"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -47,8 +47,8 @@
                 android:value="com.example.juaponabr.proyectopgljuaponabr3dam.MainActivity" />
         </activity>
         <activity
-            android:name=".EditaActuacion"
-            android:label="@string/title_activity_edita_actuacion"
+            android:name=".EditaContrato"
+            android:label="@string/title_activity_edita_contrato"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

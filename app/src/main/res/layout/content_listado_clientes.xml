@@ -106,11 +106,11 @@
 
         <!-- -->
         <Button
-            android:id="@+id/buttonVerActuaciones"
+            android:id="@+id/buttonVerContratos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/ver_actuaciones" />
+            android:text="@string/ver_contratos" />
         <!-- -->
 
         <Button

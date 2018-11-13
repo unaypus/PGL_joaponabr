@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class ListadoActuaciones extends AppCompatActivity {
+public class ListadoContratos extends AppCompatActivity {
 
     // variables de clase
 	
@@ -32,7 +32,7 @@ public class ListadoActuaciones extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 		
         super.onCreate( savedInstanceState                      ) ;
-        setContentView( R.layout.activity_listado_actuaciones   ) ;
+        setContentView( R.layout.activity_listado_contratos) ;
 
         Toolbar toolbar = findViewById( R.id.toolbar    ) ;
         setSupportActionBar(            toolbar         ) ;
@@ -97,18 +97,18 @@ public class ListadoActuaciones extends AppCompatActivity {
         bClientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intento = new Intent(ListadoActuaciones.this,ListadoClientes.class);
+                Intent intento = new Intent(ListadoContratos.this,ListadoClientes.class);
                 startActivity(intento);
             }
         });
 		/**/
 		// botón para añadir una actuación
-		bNuevaActuacion = findViewById(R.id.buttonNuevaActuacion);
+		bNuevaActuacion = findViewById(R.id.buttonNuevoContrato);
 
         bNuevaActuacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intento = new Intent(ListadoActuaciones.this,EditaActuacion.class);
+                intento = new Intent(ListadoContratos.this,EditaContrato.class);
                 startActivity(intento);
             }
         });

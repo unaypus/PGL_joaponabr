@@ -81,13 +81,13 @@ public class ListadoClientes extends AppCompatActivity {
 
         /**/
 		// botón para ir al listado de actuaciones
-        bActuaciones = findViewById(    R.id.buttonVerActuaciones   ) ;
+        bActuaciones = findViewById(    R.id.buttonVerContratos) ;
         bActuaciones.setVisibility(     View.VISIBLE                ) ;
 
         bActuaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intento = new Intent(ListadoClientes.this,ListadoActuaciones.class);
+                Intent intento = new Intent(ListadoClientes.this,ListadoContratos.class);
                 startActivity(intento);
             }
         });

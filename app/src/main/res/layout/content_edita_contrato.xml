@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".EditaActuacion"
-    tools:showIn="@layout/activity_edita_actuacion">
+    tools:context=".EditaContrato"
+    tools:showIn="@layout/activity_edita_contrato">
 
 
     <ScrollView
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            layout="@layout/capa_scroll_actuacion"
+            layout="@layout/capa_scroll_contrato"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout_editor_absoluteX="4dp" />

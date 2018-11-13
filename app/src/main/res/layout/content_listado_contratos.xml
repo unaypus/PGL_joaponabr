@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ListadoActuaciones"
-    tools:showIn="@layout/activity_listado_actuaciones">
+    tools:context=".ListadoContratos"
+    tools:showIn="@layout/activity_listado_contratos">
 
     <LinearLayout
         android:id="@+id/LayoutCabecera"
@@ -109,15 +109,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/ver_Clientes" />
+            android:text="@string/ver_clientes" />
         <!-- -->
 
         <Button
-            android:id="@+id/buttonNuevaActuacion"
+            android:id="@+id/buttonNuevoContrato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/guardar_actuacion" />
+            android:text="@string/guardar_contrato" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/ver_Clientes" />
+            android:text="@string/ver_clientes" />
 
         <Button
             android:id="@+id/buttonNuevo"
@@ -80,11 +80,11 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/buttonActuaciones"
+            android:id="@+id/buttonContratos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/ver_actuaciones" />
+            android:text="@string/ver_contratos" />
 
         <Button
             android:id="@+id/buttonNueva"
@@ -93,7 +93,7 @@
             android:layout_alignParentTop="true"
             android:layout_weight="1"
             android:baselineAligned="false"
-            android:text="@string/guardar_actuacion" />
+            android:text="@string/guardar_contrato" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

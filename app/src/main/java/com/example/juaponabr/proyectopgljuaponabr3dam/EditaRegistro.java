@@ -95,14 +95,14 @@ public class EditaRegistro extends AppCompatActivity {
         // botón para ir al listado de actuaciones
         //
 
-        bActuaciones = findViewById(R.id.buttonVerActuaciones);
+        bActuaciones = findViewById(R.id.buttonVerContratos);
 
         bActuaciones.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Intent intento = new Intent(elContexto,ListadoActuaciones.class);
+                Intent intento = new Intent(elContexto,ListadoContratos.class);
                 startActivity(intento);
             }
 

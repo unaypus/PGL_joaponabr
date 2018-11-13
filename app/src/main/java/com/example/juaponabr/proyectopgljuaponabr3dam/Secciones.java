@@ -120,12 +120,12 @@ public class Secciones extends AppCompatActivity {
 
             switch ( quePestanya ){
 
-                case 1: return PHFActuaciones.newInstance(  quePestanya ) ;
+                case 1: return PHFContratos.newInstance(  quePestanya ) ;
                 case 2: return PHFClientes.newInstance(     quePestanya ) ;
 
             }
 
-            return null;    //PHFActuaciones.newInstance(position + 1);
+            return null;    //PHFContratos.newInstance(position + 1);
 
         }
 
@@ -134,8 +134,8 @@ public class Secciones extends AppCompatActivity {
 
             switch ( position ) {
 
-                case 0: return "Actuaciones"    ;
-                case 1: return "Clientes"       ;
+                case 0: return "Contratos"  ;
+                case 1: return "Clientes"   ;
 
             }
 

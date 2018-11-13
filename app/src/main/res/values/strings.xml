@@ -10,11 +10,10 @@
     <string name="title_activity_secciones">SeccionesActivity</string>
     <string name="title_activity_galeria">Galería Photos</string>
 
-    <string name="title_activity_ver_listado">Listado Actuaciones</string>
     <string name="title_activity_edita_cliente">Cliente</string>
-    <string name="title_activity_edita_actuacion">Actuación</string>
+    <string name="title_activity_edita_contrato">Contrato</string>
     <string name="title_activity_listado_clientes">Listado Clientes</string>
-    <string name="title_activity_listado_actuaciones">Listado Actuaciones</string>
+    <string name="title_activity_listado_contratos">Listado Contratos</string>
 
     <!-- Menus -->
 
@@ -27,8 +26,10 @@
     <!-- textos botones -->
 
     <string name="ver_actuaciones">Actuaciones</string>
-    <string name="ver_Clientes">Clientes</string>
+    <string name="ver_contratos">Contratos</string>
+    <string name="ver_clientes">Clientes</string>
     <string name="guardar_actuacion">Nueva Actuación</string>
+    <string name="guardar_contrato">Nuevo Contrato</string>
     <string name="guardar_cliente">Nuevo Cliente</string>
     <string name="cerrar_app">Salir</string>
 
@@ -70,11 +71,14 @@
     <string name="cC_localidad">Localidad</string>
     <string name="cC_km">Km. </string>
 
+    <!-- campos contratos -->
+    <string name="cCt_">ct</string>
+
     <!--
         etiquetas actividades
                         -->
 
-    <!-- EditaActuacion -->
+    <!-- EditaContrato -->
     <string name="txt_elegirDia">Seccionar Día/s</string>
     <string name="txt_lunes">Lunes</string>
     <string name="txt_martes">Martes</string>
@@ -104,7 +108,7 @@
     <string name="error_campo_obligatorio">Campo Obligatorio</string>
 
 
-    <!-- validadción actuación -->
+    <!-- validadción contrato -->
     <string name="error_cliente">No se ha asignado ningún cliente</string>
     <string name="error_precio">No se ha establecido ningún precio</string>
     <string name="error_mes">No se ha introducido el mes</string>
@@ -114,7 +118,6 @@
     <string name="error_fecha">La fecha debe ser entre hoy y el 31/12 del año en curso, ambos inclusive</string>
     <string name="error_dias">No se ha elgido ningún día de la semana</string>
     <string name="error_periodicidad">No se ha seleccionado la periodicidad</string>
-    <string name="title_activity_main2">Main2Activity</string>
     <string name="nav_header_title">Joan Pons Live Music</string>
     <string name="nav_header_subtitle">www.joanponslivemusic.com</string>
     <string name="nav_header_desc">Navigation header</string>
