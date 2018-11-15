@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.DialogoMensaje;
-//import com.example.juaponabr.proyectopgljuaponabr3dam.ListadoClientes;
+//import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoClientes;
 //import com.example.juaponabr.proyectopgljuaponabr3dam.ListadoContratos;
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 

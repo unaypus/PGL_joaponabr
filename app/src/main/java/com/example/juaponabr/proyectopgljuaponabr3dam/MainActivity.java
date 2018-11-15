@@ -17,6 +17,7 @@ import android.widget.Button;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaCliente;
 import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaContrato;
+import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoClientes;
 
 /**
  *
@@ -42,6 +43,28 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaContrato;
  *  Histórico
  *
  *  de lo mas nuevo a lo mas antiguo
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Jueves   15/11/2018 14:58
+ *
+ * /////////////////////////////
+ *
+ * Casi listo para probar la primera tabla que será la de Cliente. Vamos a crear un Listfragment
+ * como en el ejemplo del profe  para posteriormente integrarlo  en PHFClientes o llamarlo desde
+ * ese fragment.
+ *
+ * commit 'Crear Listfragment para la tabla Cliente"
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Martes   13/11/2018 21:25
+ *
+ * /////////////////////////////
+ *
+ * Empezar a crear el ProveedorDeContenidos
+ *
+ * commit 'Preparado objeto Cliente para crear el Proveedor de Contenido"
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *

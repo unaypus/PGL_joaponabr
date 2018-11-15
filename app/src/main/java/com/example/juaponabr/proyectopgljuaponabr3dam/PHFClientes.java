@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaCliente;
 
-public class PHFClientes extends Fragment {
+public class PHFClientes extends Fragment{
 
     // variables de clase
 

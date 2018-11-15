@@ -1,4 +1,4 @@
-package com.example.juaponabr.proyectopgljuaponabr3dam;
+package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
 
 import android.app.FragmentManager;
 import android.content.Intent;
@@ -12,7 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaCliente;
+import com.example.juaponabr.proyectopgljuaponabr3dam.DialogoMensaje;
+import com.example.juaponabr.proyectopgljuaponabr3dam.ListadoContratos;
+import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 
 public class ListadoClientes extends AppCompatActivity {
 
@@ -27,10 +29,14 @@ public class ListadoClientes extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listado_clientes);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        super.onCreate( savedInstanceState                  ) ;
+        setContentView( R.layout.activity_listado_clientes  ) ;
+
+        Toolbar toolbar = findViewById(                     R.id.toolbar                ) ;
+        setSupportActionBar(                                toolbar                     ) ;
+        getSupportActionBar().setHomeAsUpIndicator(         R.drawable.ic_action_home   ) ;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(    true                        ) ;
 
         /*
 		
@@ -45,9 +51,15 @@ public class ListadoClientes extends AppCompatActivity {
             }
         });
 		*/
-        getSupportActionBar().setHomeAsUpIndicator( R.drawable.ic_action_home ) ;
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        activarEscuchadores();
+
+
+
+
+        activarEscuchadores() ;
+
+
+
+
     }
 
     @Override
@@ -112,7 +124,7 @@ public class ListadoClientes extends AppCompatActivity {
 
         //  Para los módulos en construcción
         FragmentManager manejador   = getFragmentManager();
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )    ,
+        DialogoMensaje dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )    ,
                 getString( R.string.txt_modulo_construccion )    ) ;
 
         dMensaje.show(manejador,"elDialogoEnConstruccion");
