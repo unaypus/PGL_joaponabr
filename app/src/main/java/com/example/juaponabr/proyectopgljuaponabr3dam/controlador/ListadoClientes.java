@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 //import android.support.design.widget.FloatingActionButton;
 //import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -33,10 +34,19 @@ public class ListadoClientes extends AppCompatActivity {
         super.onCreate( savedInstanceState                  ) ;
         setContentView( R.layout.activity_listado_clientes  ) ;
 
+        ElListadoClientes laTablaListFragment = new ElListadoClientes();
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.frameLelListado, laTablaListFragment);
+        transaction.commit();
+
+
         Toolbar toolbar = findViewById(                     R.id.toolbar                ) ;
         setSupportActionBar(                                toolbar                     ) ;
         getSupportActionBar().setHomeAsUpIndicator(         R.drawable.ic_action_home   ) ;
         getSupportActionBar().setDisplayHomeAsUpEnabled(    true                        ) ;
+
+        activarEscuchadores() ;
 
         /*
 		
@@ -51,14 +61,6 @@ public class ListadoClientes extends AppCompatActivity {
             }
         });
 		*/
-
-
-
-
-        activarEscuchadores() ;
-
-
-
 
     }
 
@@ -114,6 +116,7 @@ public class ListadoClientes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intento = new Intent(ListadoClientes.this,EditaCliente.class);
+                intento.putExtra( "Nuevo", true );
                 startActivity(intento);
             }
         });

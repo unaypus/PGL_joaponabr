@@ -3,12 +3,12 @@ package com.example.juaponabr.proyectopgljuaponabr3dam;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,6 +43,18 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoCliente
  *  Histórico
  *
  *  de lo mas nuevo a lo mas antiguo
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Sábado   17/11/2018 23:10
+ *
+ * /////////////////////////////
+ *
+ * Iniciado el CRUD de Clientes
+ *
+ * revisar leerCliente al cargar una int en un ediTextView
+ *
+ * commit 'Iniciado CRUD Cliente Revisar error int to ediText"
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
@@ -431,6 +443,7 @@ public class MainActivity   extends     AppCompatActivity
             public void onClick( View v ) {
 
                 intento = new Intent( MainActivity.this, EditaCliente.class ) ;
+                intento.putExtra( "Nuevo", true );
                 startActivity( intento ) ;
 
             }

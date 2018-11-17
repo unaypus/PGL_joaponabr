@@ -21,7 +21,7 @@ public class Contrato {
     public static final String EL_PROVEEDOR     = "proveedor.ProveedorDeContenido"                  ;
 
     public static final String AUTHORITY        = LA_AUTORIDAD + EL_PROVEEDOR                       ;
-
+    //public static final String AUTHORITY        ="com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido"  ;
     public static final String TABLA_CLIENTES   = "Cliente"                                         ;
 
     /**
@@ -40,19 +40,21 @@ public class Contrato {
         // Columnas de la tabla
 
 
-        //public static final String CL_ID            = "ID"          ; // Clave principal
+        //public static final String _ID              = "ID"          ; // Clave principal
         public static final String CL_NOMBRE        = "Nombre"      ;
-        public static final String CL_DNI           = "D.N.I."      ;
+        public static final String CL_DNI           = "DNI"      ;
 
-        public static final String DIR_VIA          = "Vía"         ;
-        public static final String DIR_NUM          = "Nº"          ;
-        public static final String DIR_CP           = "C.P."        ;
+        public static final String DIR_VIA          = "Via"         ;
+        public static final String DIR_NUM          = "Num"          ;
+        public static final String DIR_CP           = "CP"          ;
         public static final String DIR_MUNICIPIO    = "Municipio"   ;
-        public static final String DISTANCIA_KM     = "Km."         ;
+        public static final String DISTANCIA_KM     = "Km"         ;
 
-        public static final String CL_TELEFONO      = "Tel."        ;
-        public static final String CL_PER_CONTACTO  = "Per. Cont."  ;
+        public static final String CL_TELEFONO      = "Tel"        ;
+        public static final String CL_PER_CONTACTO  = "PerCont"  ;
 
     }
+
+
 
 }

@@ -8,6 +8,7 @@
     tools:context=".controlador.ListadoClientes"
     tools:showIn="@layout/activity_listado_clientes">
 
+    <!--
     <LinearLayout
         android:id="@+id/LayoutCabecera"
         android:layout_width="match_parent"
@@ -74,10 +75,11 @@
             android:paddingLeft="4dp"
             android:text="@string/cC_km" />
     </LinearLayout>
+    -->
 
-    <ListView
-        android:id="@+id/listadoClientes"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/frameLelListado"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -85,11 +87,29 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/LayoutBotones"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LayoutCabecera" />
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <!--
+    <include
+        layout="@layout/el_listado_clientes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/LayoutBotones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutCabecera" /> />
+        -->
 
     <LinearLayout
         android:id="@+id/LayoutBotones"

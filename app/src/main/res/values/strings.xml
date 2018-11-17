@@ -59,6 +59,9 @@
         campos
                         -->
 
+    <string name="progress_cargando_datos">Cargando datos&#8230;</string>
+    <string name="sin_datos">Sin datos.</string>
+
     <!-- campos actuaciones -->
     <string name="cA_fecha">Fecha</string>
     <string name="cA_lugar">Lugar</string>

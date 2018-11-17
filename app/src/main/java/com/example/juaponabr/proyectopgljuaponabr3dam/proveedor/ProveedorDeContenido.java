@@ -33,17 +33,22 @@ public class ProveedorDeContenido extends ContentProvider {
 
     //private static final String LOGTAG = "juaponabr - ProveedorDeContenido";
 
-    //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido/EjpTabla/#
-    private static final int CLIENTE_ONE_REG = 1 ;
-    //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido/EjpTabla
-    private static final int CLIENTE_ALL_REGS = 2 ;
+    private static final    String          CLIENTE_TABLE_NAME      = "Cliente"     ;
+    //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido/Cliente/#
+    private static final    int             CLIENTE_ONE_REG         = 1             ;
+    //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido/Cliente
+    private static final    int             CLIENTE_ALL_REGS        = 2             ;
 
-    private                 SQLiteDatabase  sqlDB                           ;
-    public                  DatabaseHelper  dbHelper                        ;
-    private static final    String          DATABASE_NAME       = "JPLM.db" ;
-    private static final    int             DATABASE_VERSION    = 1         ;
+    private static final    String          CONTRATOS_TABLE_NAME    = "Contratos"   ;
+    //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido/Contratos/#
+    private static final    int             CONTRATOS_ONE_REG       = 3             ;
+    //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido/Contratos
+    private static final    int             CONTRATOS_ALL_REGS      = 4             ;
 
-    private static final    String          CLIENTE_TABLE_NAME  = "Cliente" ;
+    private                 SQLiteDatabase  sqlDB                                   ;
+    public                  DatabaseHelper  dbHelper                                ;
+    private static final    String          DATABASE_NAME           = "JPLM.db"     ;
+    private static final    int             DATABASE_VERSION        = 1             ;
 
     // Indicates an invalid content URI
     public static final int INVALID_URI = -1 ;
@@ -87,27 +92,31 @@ public class ProveedorDeContenido extends ContentProvider {
         //                                                                                        //
         ////////////////////////////////////////////////////////////////////////////////////////////
 
-        sUriMatcher.addURI( Contrato.AUTHORITY  ,
-                            CLIENTE_TABLE_NAME  ,
-                            CLIENTE_ALL_REGS    ) ;
+        sUriMatcher.addURI( Contrato.AUTHORITY              ,
+                            CLIENTE_TABLE_NAME              ,
+                            CLIENTE_ALL_REGS                ) ;
         
         sUriMatcher.addURI( Contrato.AUTHORITY              ,
                             CLIENTE_TABLE_NAME  +   "/#"    ,
                             CLIENTE_ONE_REG                 ) ;
 
+        sUriMatcher.addURI( Contrato.AUTHORITY              ,
+                CLIENTE_TABLE_NAME  + "/Contratos"    ,
+                9                ) ;
+
         // Specifies a custom MIME type for the picture URL table
 
-        sMimeTypes.put( CLIENTE_ALL_REGS                ,
-                        "vnd.android.cursor.dir/vnd."   +
-                        Contrato.AUTHORITY              + 
-                        "."                             +
-                        CLIENTE_TABLE_NAME              )   ;
+        sMimeTypes.put( CLIENTE_ALL_REGS                    ,
+                        "vnd.android.cursor.dir/vnd."       +
+                        Contrato.AUTHORITY                  +
+                        "."                                 +
+                        CLIENTE_TABLE_NAME                  )   ;
         
         sMimeTypes.put( CLIENTE_ONE_REG,
-                        "vnd.android.cursor.item/vnd."  +
-                        Contrato.AUTHORITY              +
-                        "."                             +
-                        CLIENTE_TABLE_NAME              )   ;
+                        "vnd.android.cursor.item/vnd."      +
+                        Contrato.AUTHORITY                  +
+                        "."                                 +
+                        CLIENTE_TABLE_NAME                  )   ;
     }
 
     public static class DatabaseHelper extends SQLiteOpenHelper {
@@ -118,6 +127,7 @@ public class ProveedorDeContenido extends ContentProvider {
 
         @Override
         public void onOpen(SQLiteDatabase db) {
+
             super.onOpen(db);
 
             //if (!db.isReadOnly()){
@@ -125,11 +135,11 @@ public class ProveedorDeContenido extends ContentProvider {
             db.execSQL("PRAGMA foreign_keys=ON;");
             //}
 
-
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
+
             // create table to store
 
             db.execSQL( "Create table "                         + CLIENTE_TABLE_NAME        +
@@ -161,29 +171,29 @@ public class ProveedorDeContenido extends ContentProvider {
                             Contrato.TClientes.DISTANCIA_KM     + ","   +
                             Contrato.TClientes.CL_TELEFONO      + ","   +
                             Contrato.TClientes.CL_PER_CONTACTO  + ") "  +
-                        "VALUES (   1,'Cliente 1','11111111A','Calle cliente 1',1,'01110','Ciudad C1',11,'928111111','Pepe 1')");
+                        "VALUES (1,'Cliente 1','11111111A','Calle cliente 1','1','01110','Ciudad C1','11','928111111','Pepe 1')");
 
             db.execSQL( "INSERT INTO " + CLIENTE_TABLE_NAME     + " ("  +
-                    Contrato.TClientes._ID              + ","   +
-                    Contrato.TClientes.CL_NOMBRE        + ","   +
-                    Contrato.TClientes.CL_DNI           + ","   +
-                    Contrato.TClientes.DIR_VIA          + ","   +
-                    Contrato.TClientes.DIR_NUM          + ","   +
-                    Contrato.TClientes.DIR_CP           + ","   +
-                    Contrato.TClientes.DIR_MUNICIPIO    + ","   +
-                    Contrato.TClientes.DISTANCIA_KM     + ","   +
-                    Contrato.TClientes.CL_TELEFONO      + ","   +
-                    Contrato.TClientes.CL_PER_CONTACTO  + ") "  +
-                    "VALUES (   2,'Cliente 2','22222222B','Calle cliente 2',1,'02220','Ciudad C2',22,'928222222','Pepe 2')");
-
+                            Contrato.TClientes._ID              + ","   +
+                            Contrato.TClientes.CL_NOMBRE        + ","   +
+                            Contrato.TClientes.CL_DNI           + ","   +
+                            Contrato.TClientes.DIR_VIA          + ","   +
+                            Contrato.TClientes.DIR_NUM          + ","   +
+                            Contrato.TClientes.DIR_CP           + ","   +
+                            Contrato.TClientes.DIR_MUNICIPIO    + ","   +
+                            Contrato.TClientes.DISTANCIA_KM     + ","   +
+                            Contrato.TClientes.CL_TELEFONO      + ","   +
+                            Contrato.TClientes.CL_PER_CONTACTO  + ") "  +
+                        "VALUES (2,'Cliente 2','22222222B','Calle cliente 2','2','02220','Ciudad C2','22','928222222','Pepe 2')");
 
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			db.execSQL("DROP TABLE IF EXISTS " + CLIENTE_TABLE_NAME);
 
+			db.execSQL("DROP TABLE IF EXISTS " + CLIENTE_TABLE_NAME);
             onCreate(db);
+
         }
 
     }
@@ -199,39 +209,47 @@ public class ProveedorDeContenido extends ContentProvider {
 
     @Override
     public boolean onCreate() {
+
         dbHelper = new DatabaseHelper(getContext());
         return (dbHelper == null) ? false : true;
+
     }
 
     public void resetDatabase() {
+
         dbHelper.close();
         dbHelper = new DatabaseHelper(getContext());
+
     }
 
     @Override
-    public Uri insert(Uri uri, ContentValues values) {
+    public Uri insert( Uri uri, ContentValues values ) {
 
-        sqlDB = dbHelper.getWritableDatabase();
+        sqlDB = dbHelper.getWritableDatabase() ;
 
-        String table = "";
-        switch (sUriMatcher.match(uri)) {
-            case CLIENTE_ALL_REGS:
-                table = CLIENTE_TABLE_NAME;
-                break;
+        String table = "" ;
+
+        switch ( sUriMatcher.match( uri ) ) {
+
+            case CLIENTE_ALL_REGS :
+
+                table = CLIENTE_TABLE_NAME ;
+                break ;
+
         }
 
-        long rowId = sqlDB.insert(table, "", values);
+        long rowId = sqlDB.insert( table, "", values ) ;
 
-        if (rowId > 0) {
+        if ( rowId > 0 ) {
 
-            Uri rowUri = ContentUris.appendId(
-                    uri.buildUpon(), rowId).build();
-            getContext().getContentResolver().notifyChange(rowUri, null);
+            Uri rowUri = ContentUris.appendId( uri.buildUpon(), rowId ).build() ;
+            getContext().getContentResolver().notifyChange( rowUri, null ) ;
 
-            return rowUri;
+            return rowUri ;
+
         }
 
-        throw new SQLException("Failed to insert row into " + uri);
+        throw new SQLException( "Failed to insert row into " + uri ) ;
     }
 
 

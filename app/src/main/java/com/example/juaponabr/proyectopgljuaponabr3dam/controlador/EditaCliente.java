@@ -1,6 +1,5 @@
 package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
@@ -8,6 +7,7 @@ import android.widget.TextView;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 import com.example.juaponabr.proyectopgljuaponabr3dam.pojos.Cliente;
+import com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ClienteProveedor;
 
 public class EditaCliente extends EditaRegistro {
 
@@ -16,38 +16,44 @@ public class EditaCliente extends EditaRegistro {
 
     // variables de la vista
     EditText edtMat[] ;
-    //TextView textViewAux ;
-    int idEditext[]     ;
     int idCabeceras[]   ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        unCliente = new Cliente();
+
         super.onCreate(         savedInstanceState              )   ;
         setContentView(         R.layout.activity_edita_cliente )   ;
         iniBarraHerramientas()                                      ;
 
-        unCliente = new Cliente();
+        activarElementos()                                          ;
+
+        if( !this.getIntent().getExtras().getBoolean( "Nuevo" ) ){
+            unCliente = this.getIntent().getExtras().getParcelable( "elCliente" ) ;
+           this.leerCliente() ;
+        }
+
+
+
 
         activarEscuchadores(    EditaCliente.this               )   ;
-        activarElementos()                                          ;
+
 
 
     }
 
     private void activarElementos() {
 
-        idEditext   = new int[ 9 ] ;
-        idCabeceras = new int[ 9 ] ;
+        idCabeceras = new int[      9 ] ;
         edtMat      = new EditText[ 9 ] ;
 
         //      identidad                  //
         idCabeceras[    0 ] = R.id.textViewNombre       ;
         idCabeceras[    1 ] = R.id.textViewDNI          ;
 
-        idEditext[      0 ] = R.id.editTextNombre       ;
-        edtMat[         0 ] = findViewById( idEditext[      0 ]);
-        idEditext[      1 ] = R.id.editTextDNI          ;
+        edtMat[         0 ] = findViewById( R.id.editTextNombre ) ;
+        edtMat[         1 ] = findViewById( R.id.editTextDNI    ) ;
 
 
         //      dirección                  //
@@ -56,22 +62,26 @@ public class EditaCliente extends EditaRegistro {
         idCabeceras[    4 ] = R.id.textViewMunicipio    ;
         idCabeceras[    5 ] = R.id.textViewCP           ;
         idCabeceras[    6 ] = R.id.textViewDistancia    ;
-        idEditext[      2 ] = R.id.editTextVia          ;
-        idEditext[      3 ] = R.id.editTextNumero       ;
-        idEditext[      4 ] = R.id.editTextMunicipio    ;
-        idEditext[      5 ] = R.id.editTextCP           ;
-        idEditext[      6 ] = R.id.editTextDistancia    ;
+
+
+        edtMat[         2 ] = findViewById( R.id.editTextVia        ) ;
+        edtMat[         3 ] = findViewById( R.id.editTextNumero     ) ;
+        edtMat[         4 ] = findViewById( R.id.editTextMunicipio  ) ;
+        edtMat[         5 ] = findViewById( R.id.editTextCP         ) ;
+        edtMat[         6 ] = findViewById( R.id.editTextDistancia  ) ;
 
         //      contacto                   //
         idCabeceras[    7 ] = R.id.textViewPersona      ;
         idCabeceras[    8 ] = R.id.textViewTelefono     ;
-        idEditext[      7 ] = R.id.editTextPersona      ;
-        idEditext[      8 ] = R.id.editTextTelefono     ;
+
+        edtMat[         7 ] = findViewById( R.id.editTextPersona    ) ;
+        edtMat[         8 ] = findViewById( R.id.editTextTelefono   ) ;
 
     }
 
-    private  void cargarCliente(){
+    private void cargarCliente(){
 
+        unCliente.setCl_id(                             -1                                 ) ;
         unCliente.setCl_nombre(                         edtMat[ 0 ].getText().toString()   ) ;
         unCliente.setCl_dni(                            edtMat[ 1 ].getText().toString()   ) ;
         unCliente.setDir_via(                           edtMat[ 2 ].getText().toString()   ) ;
@@ -84,17 +94,31 @@ public class EditaCliente extends EditaRegistro {
 
     }
 
+    private void leerCliente(){
+
+        edtMat[ 0 ].setText( unCliente.getCl_nombre()       ) ;
+        edtMat[ 1 ].setText( unCliente.getCl_dni()          ) ;
+        edtMat[ 2 ].setText( unCliente.getDir_via()         ) ;
+        //edtMat[ 3 ].setText( unCliente.getDir_num()         ) ;
+        edtMat[ 4 ].setText( unCliente.getDir_localidad()   ) ;
+        edtMat[ 5 ].setText( unCliente.getDir_cp()          ) ;
+        //edtMat[ 6 ].setText( unCliente.getDistanacia()      ) ;
+        edtMat[ 7 ].setText( unCliente.getCl_per_contacto() ) ;
+        edtMat[ 8 ].setText( unCliente.getCl_telefono()     ) ;
+
+    }
+
     @Override
     protected void guardarRegistro(){
 
-        // Aqui nos conectamos al proveedor y le pasamos el objeto unCliente
-        //
-        /*
+        cargarCliente();
         ClienteProveedor.insert( getContentResolver(), unCliente ) ;
         finish();
-         */
 
     }
+
+
+
 
     /**
      * <pre>
@@ -119,7 +143,6 @@ public class EditaCliente extends EditaRegistro {
         String sValidado    = "\n" ; // la validación
 
         // auxiliares para el bucle
-        EditText edtAuxiliar ;
         TextView textViewAux ;
 
         int         idString ;
@@ -133,20 +156,19 @@ public class EditaCliente extends EditaRegistro {
 
         for( int cont = 0 ; cont < 9 ; cont++){
 
-            edtAuxiliar = findViewById( idEditext[      cont ] ) ;
             textViewAux = findViewById( idCabeceras[    cont ] ) ;
 
-            sAuxiliar   = edtAuxiliar.getText().toString() ;
+            sAuxiliar   = edtMat[ cont ].getText().toString() ;
             sAuxiliar2  = textViewAux.getText().toString() ;
 
-            edtAuxiliar.setError( null ) ;
+            edtMat[ cont ].setError( null ) ;
 
             if ( TextUtils.isEmpty( sAuxiliar ) ){
 
                 sError = sError + getString( R.string.error_campo_vacio ) + sAuxiliar2 + "\n\n" ;
 
-                edtAuxiliar.setError( getString( R.string.error_campo_obligatorio ) ) ;
-                edtAuxiliar.requestFocus() ;
+                edtMat[ cont ].setError( getString( R.string.error_campo_obligatorio ) ) ;
+                edtMat[ cont ].requestFocus() ;
 
                 nError++ ;
 
@@ -163,15 +185,14 @@ public class EditaCliente extends EditaRegistro {
         //     Formato DNI
         //
 
-        edtAuxiliar = findViewById( idEditext[ 1 ] ) ;
-        sAuxiliar   = edtAuxiliar.getText().toString() ;
+        sAuxiliar   = edtMat[ 1 ].getText().toString() ;
 
         if(  sAuxiliar.length() < 9 ){
 
             sError = sError + getString( R.string.error_DNI )  + "\n\n" ;
 
-            edtAuxiliar.setError( getString( R.string.error_DNI ) ) ;
-            edtAuxiliar.requestFocus() ;
+            edtMat[ 1 ].setError( getString( R.string.error_DNI ) ) ;
+            edtMat[ 1 ].requestFocus() ;
 
             nError++ ;
 
@@ -182,15 +203,14 @@ public class EditaCliente extends EditaRegistro {
         //     Formato CP
         //
 
-        edtAuxiliar = findViewById( idEditext[ 5 ] ) ;
-        sAuxiliar   = edtAuxiliar.getText().toString() ;
+        sAuxiliar   = edtMat[ 5 ].getText().toString() ;
 
         if( sAuxiliar.length() < 5 ){
 
             sError = sError + getString( R.string.error_CP )  + "\n\n" ;
 
-            edtAuxiliar.setError( getString( R.string.error_CP ) ) ;
-            edtAuxiliar.requestFocus() ;
+            edtMat[ 5 ].setError( getString( R.string.error_CP ) ) ;
+            edtMat[ 5 ].requestFocus() ;
 
             nError++ ;
 
@@ -201,15 +221,14 @@ public class EditaCliente extends EditaRegistro {
         //     Formato Teléfono
         //
 
-        edtAuxiliar = findViewById( idEditext[ 8 ] ) ;
-        sAuxiliar   = edtAuxiliar.getText().toString() ;
+        sAuxiliar   = edtMat[ 8 ].getText().toString() ;
 
         if( sAuxiliar.length() < 9 ){
 
             sError = sError + getString( R.string.error_telefono )  + "\n\n" ;
 
-            edtAuxiliar.setError( getString( R.string.error_telefono ) ) ;
-            edtAuxiliar.requestFocus() ;
+            edtMat[ 8 ].setError( getString( R.string.error_telefono ) ) ;
+            edtMat[ 8 ].requestFocus() ;
 
             nError++ ;
 
@@ -229,7 +248,7 @@ public class EditaCliente extends EditaRegistro {
         } else {
 
             this.setsDatosValidados( sValidado ) ;
-            cargarCliente();
+
 
             return true;
         }

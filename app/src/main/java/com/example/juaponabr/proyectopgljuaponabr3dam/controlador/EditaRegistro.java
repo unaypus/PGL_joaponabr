@@ -2,16 +2,12 @@ package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
 
 import android.app.FragmentManager;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.DialogoMensaje;
@@ -186,7 +182,7 @@ public class EditaRegistro extends AppCompatActivity {
         bBorrar.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) { modEnConstruccion(); }
+            public void onClick(View v) { borrarRegistro(); }
 
         });
 
@@ -249,6 +245,8 @@ public class EditaRegistro extends AppCompatActivity {
 
     }
 
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //
     //  Métodos
@@ -274,6 +272,16 @@ public class EditaRegistro extends AppCompatActivity {
 
         dMensaje.show(manejador,"elDialogoGuardar");
         //Toast.makeText(EditaRegistro.this,R.string.bot_guardar,Toast.LENGTH_LONG).show();
+
+    }
+
+    private void borrarRegistro() {
+
+        FragmentManager manejador   = getFragmentManager() ;
+        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.titulo_guardando )  ,
+                                                            getsDatosValidados()                    ) ;
+
+        dMensaje.show(manejador,"elDialogoBorrar");
 
     }
 

@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ElListadoClientes;
+
 public class Secciones extends AppCompatActivity {
 
     /**
@@ -44,6 +46,8 @@ public class Secciones extends AppCompatActivity {
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter( getSupportFragmentManager() ) ;
 
+
+
         // Set up the ViewPager with the sections adapter.
         mViewPager = findViewById(  R.id.container          ) ;
         mViewPager.setAdapter(      mSectionsPagerAdapter   ) ;
@@ -51,6 +55,11 @@ public class Secciones extends AppCompatActivity {
         // Barra con el título de cada pestaña
         TabLayout losTab = findViewById(    R.id.tabs   ) ;
         losTab.setupWithViewPager(          mViewPager  ) ;
+
+
+
+
+
 
         /*
 
@@ -121,7 +130,7 @@ public class Secciones extends AppCompatActivity {
             switch ( quePestanya ){
 
                 case 1: return PHFContratos.newInstance(  quePestanya ) ;
-                case 2: return PHFClientes.newInstance(     quePestanya ) ;
+                case 2: return ElListadoClientes.newInstance() ;
 
             }
 

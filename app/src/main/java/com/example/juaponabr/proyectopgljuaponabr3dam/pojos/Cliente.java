@@ -1,6 +1,9 @@
 package com.example.juaponabr.proyectopgljuaponabr3dam.pojos;
 
-public class Cliente {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Cliente implements Parcelable {
 
     private int     cl_id           ; // Clave principal
     private String  cl_nombre       ;
@@ -47,6 +50,31 @@ public class Cliente {
         this.cl_per_contacto    = cl_per_contacto   ;
 
     }
+
+    protected Cliente(Parcel in) {
+        cl_id = in.readInt();
+        cl_nombre = in.readString();
+        cl_dni = in.readString();
+        dir_via = in.readString();
+        dir_num = in.readInt();
+        dir_cp = in.readString();
+        dir_localidad = in.readString();
+        distanacia = in.readInt();
+        cl_telefono = in.readString();
+        cl_per_contacto = in.readString();
+    }
+
+    public static final Creator<Cliente> CREATOR = new Creator<Cliente>() {
+        @Override
+        public Cliente createFromParcel(Parcel in) {
+            return new Cliente(in);
+        }
+
+        @Override
+        public Cliente[] newArray(int size) {
+            return new Cliente[size];
+        }
+    };
 
     public int getCl_id() {
         return cl_id;
@@ -126,5 +154,30 @@ public class Cliente {
 
     public void setCl_per_contacto(String cl_per_contacto) {
         this.cl_per_contacto = cl_per_contacto;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel( Parcel dest, int flags ) {
+
+        dest.writeInt(      this.cl_id              ) ;
+        dest.writeString(   this.cl_nombre          ) ;
+        dest.writeString(   this.cl_dni             ) ;
+
+        dest.writeString(   this.dir_via            ) ;
+        dest.writeInt(      this.dir_num            ) ;
+        dest.writeString(   this.dir_cp             ) ;
+        dest.writeString(   this.dir_localidad      ) ;
+
+        dest.writeInt(      this.distanacia         ) ;
+
+        dest.writeString(   this.cl_telefono        ) ;
+        dest.writeString(   this.cl_per_contacto    ) ;
+
+
     }
 }

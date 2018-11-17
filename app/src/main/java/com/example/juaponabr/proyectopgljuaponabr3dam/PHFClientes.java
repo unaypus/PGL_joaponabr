@@ -64,6 +64,8 @@ public class PHFClientes extends Fragment{
                                                 container                           ,
                                                 false                               ) ;
 
+
+
         return rootView ;
     }
 
