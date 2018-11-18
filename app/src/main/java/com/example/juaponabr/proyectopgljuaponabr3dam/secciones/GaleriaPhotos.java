@@ -1,4 +1,8 @@
-package com.example.juaponabr.proyectopgljuaponabr3dam;
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
+package com.example.juaponabr.proyectopgljuaponabr3dam.secciones;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -12,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 
 public class GaleriaPhotos extends AppCompatActivity {
 

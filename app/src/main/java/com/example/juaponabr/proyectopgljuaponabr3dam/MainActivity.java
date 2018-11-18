@@ -22,6 +22,8 @@ import android.widget.Button;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoCerrar;
 import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
+import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GaleriaPhotos;
+import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                        //
@@ -31,7 +33,7 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
 //                                                                                        //
 //                      A T E N C I Ó N  -  P R E G U N T A                               //
 //                                                                                        //
-//      clase Secciones                                                                   //
+//      clase GestionDatos                                                                   //
 //      boton flotante  y menú para todas las pestañas                                    //
 //                                                                                        //
 //      No puedo usar la variable quePestanya para saber en que pestaña estoy. Al         //
@@ -81,6 +83,17 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
  *  Histórico
  *
  *  de lo mas nuevo a lo mas antiguo
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Domingo   18/11/2018 15:10
+ *
+ * /////////////////////////////
+ *
+ *  Terminada la rama entrega3 lista para corregir, pero por el momento no se unirá a master
+ *  hasta que no esté realizada toda la reestructuración de clases y limpieza de código
+ *
+ * commit 'Terminada rama entrega3 pero no está lista para el merge con master'
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
@@ -383,8 +396,8 @@ public class MainActivity   extends     AppCompatActivity
 
             case R.id.action_help :
 
-                modEnConstruccion();
-                return true ;
+                verLaAyuda()            ;
+                return true             ;
 
         }
 
@@ -408,7 +421,7 @@ public class MainActivity   extends     AppCompatActivity
 
             case R.id.nav_secciones :
 
-                intento = new Intent( MainActivity.this, Secciones.class ) ;
+                intento = new Intent( MainActivity.this, GestionDatos.class ) ;
                 startActivity( intento ) ;
 
                 break ;
@@ -629,6 +642,17 @@ public class MainActivity   extends     AppCompatActivity
                 getString( R.string.txt_texto_setings)   ) ;
 
         dMensaje.show(manejador,"elDialogoSetings");
+    }
+
+    private void verLaAyuda() {
+
+        android.app.FragmentManager manejador   = getFragmentManager() ;
+
+        DialogoMensaje dMensaje    = new DialogoMensaje(    getString( R.string.txt_titulo_ayuda_app    )                                   ,
+                                                            getString( R.string.txt_texto_ayuda_app     )   ) ;
+
+        dMensaje.show(manejador,"elDialogoAyudaRegistros");
+
     }
 
     private void cerrarSalir(){

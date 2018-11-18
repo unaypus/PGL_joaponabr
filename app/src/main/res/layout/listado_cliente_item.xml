@@ -25,17 +25,20 @@
 			android:orientation="vertical">
 
 			<TextView
-				android:id="@+id/tvListCLnum"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginBottom="@dimen/appbar_padding_top"
-				android:layout_marginTop="@dimen/appbar_padding_top" />
-
-			<TextView
 				android:id="@+id/tvListCLnombre"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginBottom="@dimen/appbar_padding_top" />
+				android:layout_marginBottom="@dimen/appbar_padding_top"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvListDistancia"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="@dimen/appbar_padding_top"
+				android:layout_marginTop="@dimen/appbar_padding_top"
+				android:textSize="12sp" />
+
 		</LinearLayout>
 	</LinearLayout>
 

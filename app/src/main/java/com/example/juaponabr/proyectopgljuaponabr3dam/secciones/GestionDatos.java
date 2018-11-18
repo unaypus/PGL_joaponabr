@@ -1,4 +1,8 @@
-package com.example.juaponabr.proyectopgljuaponabr3dam;
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
+package com.example.juaponabr.proyectopgljuaponabr3dam.secciones;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -11,10 +15,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.PHFContratos;
+import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ElListadoClientes;
 import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
 
-public class Secciones extends AppCompatActivity {
+public class GestionDatos extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -63,7 +69,7 @@ public class Secciones extends AppCompatActivity {
         //                                                                                        //
         //                      A T E N C I Ó N  -  P R E G U N T A                               //
         //                                                                                        //
-        //      clase Secciones                                                                   //
+        //      clase GestionDatos                                                                   //
         //      boton flotante  y menú para todas las pestañas                                    //
         //                                                                                        //
         //      No puedo usar la variable quePestanya para saber en que pestaña estoy. Al         //
@@ -88,7 +94,7 @@ public class Secciones extends AppCompatActivity {
                         break;
 
                     case 2 :
-                        Intent intento = new Intent( Secciones.this,EditaCliente.class);
+                        Intent intento = new Intent( GestionDatos.this,EditaCliente.class);
                         intento.putExtra( "Nuevo", true );
                         startActivity(intento);
                         break;

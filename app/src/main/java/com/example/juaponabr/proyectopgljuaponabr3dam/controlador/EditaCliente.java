@@ -6,7 +6,9 @@ package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
@@ -21,6 +23,7 @@ public class EditaCliente extends EditaRegistro {
 
     // variables de la vista
     EditText edtMat[] ;
+    ImageButton unBotonImg ;
     int idCabeceras[]   ;
 
     @Override
@@ -39,7 +42,10 @@ public class EditaCliente extends EditaRegistro {
             unCliente = this.getIntent().getExtras().getParcelable( "elCliente" ) ;
             this.leerCliente() ;
             this.setNuevoRegistro( false ) ;
+            unBotonImg.setVisibility( View.VISIBLE ) ;
 
+        } else {
+            unBotonImg.setVisibility( View.INVISIBLE ) ;
         }
 
         activarEscuchadores(    EditaCliente.this               )   ;
@@ -50,6 +56,8 @@ public class EditaCliente extends EditaRegistro {
 
         idCabeceras = new int[      9 ] ;
         edtMat      = new EditText[ 9 ] ;
+
+        unBotonImg = findViewById( R.id.imgBtonBorrar ) ;
 
         //      identidad                  //
         idCabeceras[    0 ] = R.id.textViewNombre       ;

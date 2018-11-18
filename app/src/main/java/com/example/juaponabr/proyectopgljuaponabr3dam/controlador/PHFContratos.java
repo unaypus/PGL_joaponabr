@@ -1,4 +1,8 @@
-package com.example.juaponabr.proyectopgljuaponabr3dam;
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
+package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaContrato;
+import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 
 public class PHFContratos extends Fragment {
 

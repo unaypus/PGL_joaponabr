@@ -1,4 +1,8 @@
-package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
+package com.example.juaponabr.proyectopgljuaponabr3dam.nousadosparaborrar;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -6,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
+import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ElListadoClientes;
 
 
 public class TablaActivity extends AppCompatActivity {

@@ -53,6 +53,9 @@
     <string name="txt_modulo_construccion">Módulo en construcción</string>
 
 
+    <string name="txt_titulo_ayuda_app">Ayuda general de la Aplicación</string>
+    <string name="txt_texto_ayuda_app">Esta va a ser la ayuda general de toda la aplicación con acceso a todos los contenidos de la misma</string>
+
     <string name="txt_titulo_ayuda_registros">Ayuda a la Edición de Registros</string>
     <string name="txt_texto_ayuda_registros">Aquí se pondrá la ayuda referente a la edición de registros</string>
     <string name="txt_titulo_setings">Parametros Customizables</string>

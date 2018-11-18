@@ -163,7 +163,7 @@ public class ElListadoClientes  extends ListFragment
         // currently filtering.
         String columns[] = new String[] { Contrato.TClientes._ID,
                 Contrato.TClientes.CL_NOMBRE,
-                Contrato.TClientes.DIR_VIA
+                Contrato.TClientes.DISTANCIA_KM
         };
 
         Uri baseUri = Contrato.TClientes.CONTENT_URI;
@@ -203,20 +203,22 @@ public class ElListadoClientes  extends ListFragment
         @Override
         public void bindView( View view, Context context, Cursor cursor ) {
 
-            int     nID     = cursor.getInt(    cursor.getColumnIndex( Contrato.TClientes._ID       ) ) ;
-            String  sNombre = cursor.getString( cursor.getColumnIndex( Contrato.TClientes.CL_NOMBRE ) ) ;
-            String  sVia    = cursor.getString( cursor.getColumnIndex( Contrato.TClientes.DIR_VIA   ) ) ;
+            int     nID         = cursor.getInt(    cursor.getColumnIndex( Contrato.TClientes._ID       ) ) ;
 
-            TextView textviewNombre         = view.findViewById( R.id.tvListCLnombre    ) ;
-            TextView textviewAbreviatura    = view.findViewById( R.id.tvListCLnum       ) ;
+            String  sNombre     = "Cliente : " +  cursor.getString( cursor.getColumnIndex( Contrato.TClientes.CL_NOMBRE ) ) ;
+            int     laDistancia = cursor.getInt(    cursor.getColumnIndex( Contrato.TClientes.DISTANCIA_KM    ) ) ;
+            String  sDistancia  = "Distancia : " + laDistancia + " Km.";
 
-            textviewNombre.setText(         sNombre    ) ;
-            textviewAbreviatura.setText(    sVia       ) ;
+            TextView textviewNombre     = view.findViewById( R.id.tvListCLnombre    ) ;
+            TextView textviewDistancia  = view.findViewById( R.id.tvListDistancia   ) ;
+
+            textviewNombre.setText(     sNombre     ) ;
+            textviewDistancia.setText(  sDistancia  ) ;
 
             ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT
-            int color = generator.getColor(sVia); //Genera un color según el nombre
+            int color = generator.getColor( "." + laDistancia + "." ) ; //Genera un color según el nombre
             TextDrawable drawable = TextDrawable.builder()
-                    .buildRound(sVia.substring(0,1), color);
+                    .buildRound( sDistancia.substring( 12, 14 ), color ) ;
 
             ImageView image = view.findViewById(R.id.image_view);
             image.setImageDrawable(drawable);

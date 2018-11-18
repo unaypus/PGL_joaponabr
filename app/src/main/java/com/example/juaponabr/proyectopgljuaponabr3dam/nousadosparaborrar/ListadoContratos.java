@@ -2,67 +2,68 @@
  * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
  */
 
-package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
+package com.example.juaponabr.proyectopgljuaponabr3dam.nousadosparaborrar;
 
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
+//import android.support.design.widget.FloatingActionButton;
+//import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
-import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
+import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaContrato;
+import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
 
-public class ListadoClientes extends AppCompatActivity {
+public class ListadoContratos extends AppCompatActivity {
 
     // variables de clase
 	
 	// botones
-    Button bActuaciones;
-    Button bNuevoCliente ;
-    
+    Button bClientes;
+	Button bNuevaActuacion ;
+	
 	// intentos ( para lanzar activitys )
-	Intent intento;
-
+    Intent intento;
+	
+	/**
+	 *
+	 * Crear e iniciar la activity
+	 *
+	 */	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+		
+        super.onCreate( savedInstanceState                      ) ;
+        setContentView( R.layout.activity_listado_contratos) ;
 
-        super.onCreate( savedInstanceState                  ) ;
-        setContentView( R.layout.activity_listado_clientes  ) ;
-
-        ElListadoClientes laTablaListFragment = new ElListadoClientes();
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.frameLelListado, laTablaListFragment);
-        transaction.commit();
-
-
-        Toolbar toolbar = findViewById(                     R.id.toolbar                ) ;
-        setSupportActionBar(                                toolbar                     ) ;
-        getSupportActionBar().setHomeAsUpIndicator(         R.drawable.ic_action_home   ) ;
-        getSupportActionBar().setDisplayHomeAsUpEnabled(    true                        ) ;
-
-        //activarEscuchadores() ;
+        Toolbar toolbar = findViewById( R.id.toolbar    ) ;
+        setSupportActionBar(            toolbar         ) ;
 
         /*
 		
 		Por el momento no usaremos este botón
-
-		FloatingActionButton fab = findViewById(R.id.fab);
+		
+		FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intento = new Intent(ListadoClientes.this,EditaCliente.class);
-                intento.putExtra( "Nuevo", true );
-                startActivity(intento);
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 		*/
 
+        getSupportActionBar().setHomeAsUpIndicator( R.drawable.ic_action_home ) ;
+        getSupportActionBar().setDisplayHomeAsUpEnabled( true ) ;
+
+        activarEscuchadores() ;
+		
     }
 
     @Override
@@ -96,32 +97,29 @@ public class ListadoClientes extends AppCompatActivity {
 	 */
     private void activarEscuchadores() {
 
-        /*
-		// botón para ir al listado de actuaciones
-        bActuaciones = findViewById(    R.id.buttonVerContratos) ;
-        bActuaciones.setVisibility(     View.VISIBLE                ) ;
+        /**/
+		// botón para ir al listado de clientes
+        bClientes = findViewById(   R.id.buttonVerClientes  ) ;
+        bClientes.setVisibility(    View.VISIBLE            ) ;
 
-        bActuaciones.setOnClickListener(new View.OnClickListener() {
+        bClientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intento = new Intent(ListadoClientes.this,ListadoContratos.class);
+                Intent intento = new Intent(ListadoContratos.this,ListadoClientes.class);
                 startActivity(intento);
             }
         });
+		/**/
+		// botón para añadir una actuación
+		bNuevaActuacion = findViewById(R.id.buttonNuevoContrato);
 
-
-		// botón para añadir un cliente
-        bNuevoCliente = findViewById(R.id.buttonNuevoCliente);
-
-        bNuevoCliente.setOnClickListener(new View.OnClickListener() {
+        bNuevaActuacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intento = new Intent(ListadoClientes.this,EditaCliente.class);
-                intento.putExtra( "Nuevo", true );
+                intento = new Intent(ListadoContratos.this,EditaContrato.class);
                 startActivity(intento);
             }
         });
-        */
 
     }
 
