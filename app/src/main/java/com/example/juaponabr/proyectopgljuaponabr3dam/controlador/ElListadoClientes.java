@@ -33,55 +33,66 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.Contrato;
 public class ElListadoClientes  extends ListFragment
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    //                                                                                        //
+    //                      A T E N C I Ó N  -  P R E G U N T A                               //
+    //                                                                                        //
+    //      clase ElListadoClientes                                                           //
+    //      String LOGTAG                                                                     //
+    //                                                                                        //
+    //                                                                                        //
+    //      ¿ A que se refiere esta variable ?                                                //
+    //                                                                                        //
+    //                                                                                        //
+    ////////////////////////////////////////////////////////////////////////////////////////////
     //private static final String LOGTAG = "Tiburcio - TablaListFragment";
 
     TablaCursorAdapter mAdapter;
     LoaderManager.LoaderCallbacks<Cursor> mCallbacks;
 
     //ActionMode mActionMode;
-    View viewSeleccionado;
+    View viewSeleccionado       ;
 
-    //Cliente unCliente = null;
+    Cliente unCliente = null    ;
+    Intent intento              ;
 
     public static ElListadoClientes newInstance() {
-        ElListadoClientes f = new ElListadoClientes();
 
-        return f;
+        ElListadoClientes f = new ElListadoClientes() ;
+        return f ;
+
     }
 
     /**
      * When creating, retrieve this instance's number from its arguments.
      */
-
     @Override
     public void onCreate( Bundle savedInstanceState ) {
 
         super.onCreate( savedInstanceState ) ;
-        activarEscuchaItems() ;
 
     }
 
-    private void activarEscuchaItems() {
-
-
-
-    }
 
     /**
      * The Fragment's UI is just a simple text view showing its
      * instance number.
      */
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        //Log.i(LOGTAG, "onCreateView");
-        View v = inflater.inflate(R.layout.el_listado_clientes, container, false);
+    public View onCreateView(   LayoutInflater  inflater            ,
+                                ViewGroup       container           ,
+                                Bundle          savedInstanceState  ) {
 
-        mAdapter = new TablaCursorAdapter( getActivity() ) ;
+        //Log.i(LOGTAG, "onCreateView");
+
+        View v      = inflater.inflate(         R.layout.el_listado_clientes    ,
+                                                container                       ,
+                                                false                           ) ;
+        mAdapter    = new TablaCursorAdapter(   getActivity()                   ) ;
+
         setListAdapter( mAdapter ) ;
 
-        return v;
+        return v ;
     }
 
 
@@ -89,11 +100,12 @@ public class ElListadoClientes  extends ListFragment
     public void onActivityCreated( Bundle savedInstanceState ) {
 
         super.onActivityCreated( savedInstanceState ) ;
+
         //Log.i(LOGTAG, "onActivityCreated");
 
         mCallbacks = this;
 
-        getLoaderManager().initLoader(0, null, mCallbacks);
+        getLoaderManager().initLoader( 0, null, mCallbacks ) ;
 
 
         getListView().setOnItemLongClickListener( new AdapterView.OnItemLongClickListener() {
@@ -104,36 +116,24 @@ public class ElListadoClientes  extends ListFragment
 
                 int cl_Id = 0 ;
 
-                view.setSelected( true ) ;
-                viewSeleccionado = view ;
+                view.setSelected( true )    ;
+                viewSeleccionado = view     ;
 
+                cl_Id = ( int ) viewSeleccionado.getTag();
 
+                unCliente   =       ClienteProveedor.read(  getActivity().getContentResolver()  ,
+                                                            cl_Id                               ) ;
+                intento     = new   Intent(                 getActivity()                       ,
+                                                            EditaCliente.class                  ) ;
 
-                cl_Id = (Integer) viewSeleccionado.getTag();
-
-                Cliente unCliente = ClienteProveedor.read( getActivity().getContentResolver(), cl_Id ) ;
-
-					//Log.i( "El identificador", unCliente.getCl_nombre() ) ;
-
-					//intent.putExtra("ID", ciclo.getID());
-					//intent.putExtra("Nombre", ciclo.getNombre());
-					//intent.putExtra("Abreviatura", ciclo.getAbreviatura());
-
-
-
-
-                Intent intento = new Intent( getActivity(), EditaCliente.class ) ;
-                intento.putExtra( "Nuevo", false );
-                intento.putExtra( "elCliente", unCliente ) ;
-                /**/
-                startActivity( intento ) ;
-
-
-
-
+                intento.putExtra(   "Nuevo"     , false     ) ;
+                intento.putExtra(   "elCliente" , unCliente ) ;
+                startActivity(      intento                 ) ;
 
                 return true;
+
             }
+
         });
 
         FloatingActionButton fab = getView().findViewById( R.id.bfNuevoCliente ) ;
@@ -143,9 +143,10 @@ public class ElListadoClientes  extends ListFragment
             @Override
             public void onClick(View view) {
 
-                Intent intento = new Intent( getActivity(), EditaCliente.class ) ;
-                intento.putExtra( "Nuevo", true ) ;
-                startActivity( intento ) ;
+                intento = new Intent( getActivity(), EditaCliente.class ) ;
+
+                intento.putExtra(   "Nuevo", true   ) ;
+                startActivity(      intento         ) ;
 
             }
 
@@ -217,7 +218,7 @@ public class ElListadoClientes  extends ListFragment
             TextDrawable drawable = TextDrawable.builder()
                     .buildRound(sVia.substring(0,1), color);
 
-            ImageView image = (ImageView) view.findViewById(R.id.image_view);
+            ImageView image = view.findViewById(R.id.image_view);
             image.setImageDrawable(drawable);
 
             view.setTag( nID ) ;
@@ -227,8 +228,10 @@ public class ElListadoClientes  extends ListFragment
         @Override
         public View newView( Context context, Cursor cursor, ViewGroup parent ) {
 
-            LayoutInflater  inflater    = LayoutInflater.from(  context                                         ) ;
-            View            v           = inflater.inflate(     R.layout.listado_cliente_item, parent, false    ) ;
+            LayoutInflater  inflater    = LayoutInflater.from(  context                         ) ;
+            View            v           = inflater.inflate(     R.layout.listado_cliente_item   ,
+                                                                parent                          ,
+                                                                false                           ) ;
 
             bindView( v, context, cursor ) ;
 

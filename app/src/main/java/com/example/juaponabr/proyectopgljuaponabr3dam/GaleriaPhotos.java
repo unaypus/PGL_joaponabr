@@ -1,9 +1,7 @@
 package com.example.juaponabr.proyectopgljuaponabr3dam;
 
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
-//import android.support.design.widget.Snackbar;
-//import android.support.design.widget.TabLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -11,8 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -58,6 +54,10 @@ public class GaleriaPhotos extends AppCompatActivity {
         mViewPager = findViewById(  R.id.container          ) ;
         mViewPager.setAdapter(      mSectionsPagerAdapter   ) ;
 
+        // Barra con el título de cada pestaña
+        TabLayout losTab = findViewById(    R.id.tabs   ) ;
+        losTab.setupWithViewPager(          mViewPager  ) ;
+
         //  cargar las fotos desde los recursos
         matImg = new int[ nPhotos ] ;
 
@@ -71,41 +71,6 @@ public class GaleriaPhotos extends AppCompatActivity {
         matImg[ 7 ] = R.mipmap.ic__f_f7 ;
 
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu( Menu menu ) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate( R.menu.menu_secciones, menu ) ;
-        return true ;
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected( MenuItem item ) {
-
-        switch ( item.getItemId() ){
-
-            case R.id.action_settings   :
-                modEnConstruccion()     ;
-                return true             ;
-
-            case R.id.action_help       :
-                modEnConstruccion()     ;
-                return true             ;
-
-        }
-
-        return super.onOptionsItemSelected( item ) ;
-
-    }
-
-
-
-
-
-
 
 
 
@@ -164,11 +129,6 @@ public class GaleriaPhotos extends AppCompatActivity {
 
     }
 
-
-
-
-
-
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -188,19 +148,15 @@ public class GaleriaPhotos extends AppCompatActivity {
         @Override
         public int getCount() { return nPhotos ;  }
 
+        @Override
+        public CharSequence getPageTitle( int position){
+
+            position++ ;
+            return "F : " + position ;
+
+        }
 
     }
 
-    protected void modEnConstruccion() {
-
-        //  Para los módulos en construcción
-        android.app.FragmentManager manejador   = getFragmentManager() ;
-
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )                                   ,
-                getString( R.string.txt_modulo_construccion )   ) ;
-
-        dMensaje.show(manejador,"elDialogoEnConstruccion");
-
-    }
 
 }

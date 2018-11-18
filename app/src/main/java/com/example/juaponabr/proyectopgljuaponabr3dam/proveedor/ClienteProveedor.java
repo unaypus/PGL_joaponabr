@@ -11,36 +11,43 @@ import android.net.Uri;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.pojos.Cliente;
 
-
+/**
+ *
+ * CRUD de la tabla Ciente
+ *
+ */
 public class ClienteProveedor {
 
+    static private ContentValues losValores = new ContentValues() ;
+
+    /**
+     *
+     * la C de CRUD Create ( insertar, añadir etc.. )
+     *
+     * @param resolvedor    para saber donde estamos
+     * @param cliente       el objeto cliente con los datos
+     *
+     */
     static public void      insert( ContentResolver resolvedor  , Cliente   cliente ){
 
         Uri uri = Contrato.TClientes.CONTENT_URI ;
 
-        ContentValues values = new ContentValues() ;
+        cargarValores( cliente ) ;
 
-        values.put( Contrato.TClientes.CL_NOMBRE        , cliente.getCl_nombre()        ) ;
-        values.put( Contrato.TClientes.CL_DNI           , cliente.getCl_dni()           ) ;
-        values.put( Contrato.TClientes.DIR_VIA          , cliente.getDir_via()          ) ;
-        values.put( Contrato.TClientes.DIR_NUM          , cliente.getDir_num()          ) ;
-        values.put( Contrato.TClientes.DIR_CP           , cliente.getDir_cp()           ) ;
-        values.put( Contrato.TClientes.DIR_MUNICIPIO    , cliente.getDir_localidad()    ) ;
-        values.put( Contrato.TClientes.DISTANCIA_KM     , cliente.getDistanacia()       ) ;
-        values.put( Contrato.TClientes.CL_TELEFONO      , cliente.getCl_telefono()      ) ;
-        values.put( Contrato.TClientes.CL_PER_CONTACTO  , cliente.getCl_per_contacto()  ) ;
-
-        resolvedor.insert( uri, values ) ;
+        resolvedor.insert( uri, losValores) ;
 
     }
 
-    static public void      delete( ContentResolver resolvedor  , int       cl_Id ){
-
-        Uri uri = Uri.parse( Contrato.TClientes.CONTENT_URI + "/" + cl_Id ) ;
-        resolvedor.delete( uri, null, null ) ;
-
-    }
-
+    /**
+     *
+     * la R de CRUD ( leer )
+     *
+     * @param resolvedor    para saber donde estamos
+     * @param cl_Id         el ID del cliente a buscar
+     *
+     * @return              un objeto cliente
+     *
+     */
     static public Cliente   read(   ContentResolver resolvedor  , int       cl_Id ) {
 
         Uri uri = Uri.parse( Contrato.TClientes.CONTENT_URI + "/" + cl_Id ) ;
@@ -81,6 +88,59 @@ public class ClienteProveedor {
 
     }
 
+    /**
+     *
+     * la U de CRUD ( actualizar )
+     *
+     * @param resolvedor    para saber donde estamos
+     * @param cliente       el objeto cliente con los datos
+     *
+     */
+    static public void update( ContentResolver resolvedor, Cliente cliente ){
+
+        Uri uri = Uri.parse( Contrato.TClientes.CONTENT_URI + "/" + cliente.getCl_id() ) ;
+
+        cargarValores( cliente ) ;
+
+        resolvedor.update( uri, losValores, null, null ) ;
+
+    }
+
+    /**
+     *
+     * y por último la D de CRUD ( borrar, eliminar )
+     *
+     * @param resolvedor    para saber donde estamos
+     * @param cl_Id         el ID del cliente a borrar
+     *
+     */
+    static public void      delete( ContentResolver resolvedor  , int       cl_Id ){
+
+        Uri uri = Uri.parse( Contrato.TClientes.CONTENT_URI + "/" + cl_Id ) ;
+        resolvedor.delete( uri, null, null ) ;
+
+    }
+
+    /**
+     *
+     * Carga la matriz de valores con los datos del objeto cliente
+     *
+     * @param cliente   el objeto cliente de donde se cargan los datos
+     *
+     */
+    private static void cargarValores( Cliente   cliente ) {
+
+        losValores.put( Contrato.TClientes.CL_NOMBRE        , cliente.getCl_nombre()        ) ;
+        losValores.put( Contrato.TClientes.CL_DNI           , cliente.getCl_dni()           ) ;
+        losValores.put( Contrato.TClientes.DIR_VIA          , cliente.getDir_via()          ) ;
+        losValores.put( Contrato.TClientes.DIR_NUM          , cliente.getDir_num()          ) ;
+        losValores.put( Contrato.TClientes.DIR_CP           , cliente.getDir_cp()           ) ;
+        losValores.put( Contrato.TClientes.DIR_MUNICIPIO    , cliente.getDir_localidad()    ) ;
+        losValores.put( Contrato.TClientes.DISTANCIA_KM     , cliente.getDistanacia()       ) ;
+        losValores.put( Contrato.TClientes.CL_TELEFONO      , cliente.getCl_telefono()      ) ;
+        losValores.put( Contrato.TClientes.CL_PER_CONTACTO  , cliente.getCl_per_contacto()  ) ;
+
+    }
 
 }
 

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
 package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
 
 import android.app.FragmentManager;
@@ -10,9 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.juaponabr.proyectopgljuaponabr3dam.DialogoMensaje;
-//import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoClientes;
-//import com.example.juaponabr.proyectopgljuaponabr3dam.ListadoContratos;
+import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 
 public class EditaRegistro extends AppCompatActivity {
@@ -38,6 +40,8 @@ public class EditaRegistro extends AppCompatActivity {
     // textos validadción
     private String sErrorValidacion;
     private String sDatosValidados ;
+
+    private boolean nuevoRegistro   = true  ;
 
     // intentos ( para lanzar activitys )
     //private Intent intento;
@@ -266,9 +270,30 @@ public class EditaRegistro extends AppCompatActivity {
 
     protected void guardarRegistro() {
 
+        if( getbNuevoRegistro() ){
+            insertarRegistro() ;
+        } else {
+            actualizarRegistro() ;
+        }
+
+    }
+
+    protected void actualizarRegistro() {
+
         FragmentManager manejador   = getFragmentManager() ;
         DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.titulo_guardando )  ,
-                                                            getsDatosValidados()                    ) ;
+                getsDatosValidados()                    ) ;
+
+        dMensaje.show(manejador,"elDialogoGuardar");
+        //Toast.makeText(EditaRegistro.this,R.string.bot_guardar,Toast.LENGTH_LONG).show();
+
+    }
+
+    protected void insertarRegistro() {
+
+        FragmentManager manejador   = getFragmentManager() ;
+        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.titulo_guardando )  ,
+                getsDatosValidados()                    ) ;
 
         dMensaje.show(manejador,"elDialogoGuardar");
         //Toast.makeText(EditaRegistro.this,R.string.bot_guardar,Toast.LENGTH_LONG).show();
@@ -297,9 +322,11 @@ public class EditaRegistro extends AppCompatActivity {
     }
 
 
-    protected String getsErrorValidacion()   { return this.sErrorValidacion  ; }
-    protected String getsDatosValidados()    { return this.sDatosValidados   ; }
+    protected   String  getsErrorValidacion()   { return this.sErrorValidacion  ; }
+    protected   String  getsDatosValidados()    { return this.sDatosValidados   ; }
+    protected   boolean getbNuevoRegistro()     { return this.nuevoRegistro     ; }
 
-    protected void setsErrorValidacion( String sErrorValidacion ){ this.sErrorValidacion    = sErrorValidacion  ; }
-    protected void setsDatosValidados(  String sDatosValidados  ){ this.sDatosValidados     = sDatosValidados   ; }
+    protected void setsErrorValidacion( String  sErrorValidacion    ){ this.sErrorValidacion    = sErrorValidacion  ; }
+    protected void setsDatosValidados(  String  sDatosValidados     ){ this.sDatosValidados     = sDatosValidados   ; }
+    protected void setNuevoRegistro(    boolean nuevoRegistro       ){ this.nuevoRegistro       = nuevoRegistro     ; }
 }

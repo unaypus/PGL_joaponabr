@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ElListadoClientes;
+import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
 
 public class Secciones extends AppCompatActivity {
 
@@ -115,17 +116,24 @@ public class Secciones extends AppCompatActivity {
 
         switch ( item.getItemId() ){
 
-            case R.id.action_settings   :
-                modEnConstruccion()     ;
-                return true             ;
-
             case R.id.action_help       :
-                modEnConstruccion()     ;
+                verLaAyuda()            ;
                 return true             ;
 
         }
 
         return super.onOptionsItemSelected( item ) ;
+
+    }
+
+    private void verLaAyuda() {
+
+        android.app.FragmentManager manejador   = getFragmentManager() ;
+
+        DialogoMensaje dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_ayuda_registros   )                                   ,
+                                                            getString( R.string.txt_texto_ayuda_registros)   ) ;
+
+        dMensaje.show(manejador,"elDialogoAyudaRegistros");
 
     }
 

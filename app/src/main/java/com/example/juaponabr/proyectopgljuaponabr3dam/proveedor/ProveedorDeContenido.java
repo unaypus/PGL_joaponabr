@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
 package com.example.juaponabr.proyectopgljuaponabr3dam.proveedor;
 
 import android.content.ContentProvider;
@@ -323,22 +327,32 @@ public class ProveedorDeContenido extends ContentProvider {
     }
 
     @Override
-    public int update(Uri uri, ContentValues values, String selection,
-                      String[] selectionArgs) {
+    public int update(  Uri             uri             ,
+                        ContentValues   values          ,
+                        String          selection       ,
+                        String[]        selectionArgs   ) {
+
         sqlDB = dbHelper.getWritableDatabase();
         // insert record in user table and get the row number of recently inserted record
 
-        String table = "";
-        switch (sUriMatcher.match(uri)) {
+        String table = "" ;
+
+        switch ( sUriMatcher.match( uri ) ) {
+
             case CLIENTE_ONE_REG:
-                if (null == selection) selection = "";
-                selection += Contrato.TClientes._ID + " = "
-                        + uri.getLastPathSegment();
-                table = CLIENTE_TABLE_NAME;
-                break;
+
+                if ( null == selection ) selection = "" ;
+
+                selection   +=  Contrato.TClientes._ID + " = " + uri.getLastPathSegment()   ;
+                table       =   CLIENTE_TABLE_NAME                                          ;
+
+                break ;
+
             case CLIENTE_ALL_REGS:
-                table = CLIENTE_TABLE_NAME;
-                break;
+
+                table = CLIENTE_TABLE_NAME ;
+
+                break ;
         }
 
         int rows = sqlDB.update(table, values, selection, selectionArgs);

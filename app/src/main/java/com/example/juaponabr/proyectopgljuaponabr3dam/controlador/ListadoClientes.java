@@ -14,7 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.example.juaponabr.proyectopgljuaponabr3dam.DialogoMensaje;
+import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 
 public class ListadoClientes extends AppCompatActivity {

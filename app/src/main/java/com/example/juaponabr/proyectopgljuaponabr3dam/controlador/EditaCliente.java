@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
 package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
 
 import android.os.Bundle;
@@ -12,8 +16,8 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ClienteProveedor
 public class EditaCliente extends EditaRegistro {
 
     // variables de clase
-    Cliente unCliente = null ;
-    int     clActual ;
+    Cliente unCliente       = null  ;
+    int     clActual        = -1    ;
 
     // variables de la vista
     EditText edtMat[] ;
@@ -34,15 +38,11 @@ public class EditaCliente extends EditaRegistro {
 
             unCliente = this.getIntent().getExtras().getParcelable( "elCliente" ) ;
             this.leerCliente() ;
+            this.setNuevoRegistro( false ) ;
 
         }
 
-
-
-
         activarEscuchadores(    EditaCliente.this               )   ;
-
-
 
     }
 
@@ -84,7 +84,7 @@ public class EditaCliente extends EditaRegistro {
 
     private void cargarCliente(){
 
-        unCliente.setCl_id(                             -1                                 ) ;
+        unCliente.setCl_id(                             clActual                           ) ;
         unCliente.setCl_nombre(                         edtMat[ 0 ].getText().toString()   ) ;
         unCliente.setCl_dni(                            edtMat[ 1 ].getText().toString()   ) ;
         unCliente.setDir_via(                           edtMat[ 2 ].getText().toString()   ) ;
@@ -122,13 +122,24 @@ public class EditaCliente extends EditaRegistro {
     }
 
     @Override
-    protected void guardarRegistro(){
+    protected void insertarRegistro(){
 
         cargarCliente();
         ClienteProveedor.insert( getContentResolver(), unCliente ) ;
         finish();
 
     }
+
+    @Override
+    protected void actualizarRegistro(){
+
+        cargarCliente();
+        ClienteProveedor.update( getContentResolver(), unCliente ); ;
+        finish();
+
+    }
+
+
 
     @Override
     protected void borrarRegistro(){

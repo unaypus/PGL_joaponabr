@@ -1,9 +1,14 @@
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
 package com.example.juaponabr.proyectopgljuaponabr3dam;
 
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,9 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaCliente;
-import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaContrato;
-import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoClientes;
+import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoCerrar;
+import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                        //
@@ -35,6 +39,19 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoCliente
 //      pasada del dedo                                                                   //
 //                                                                                        //
 //      ¿ Como puedo saber en que pestaña estoy ?                                         //
+//                                                                                        //
+//                                                                                        //
+////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                        //
+//                      A T E N C I Ó N  -  P R E G U N T A                               //
+//                                                                                        //
+//      clase ElListadoClientes                                                           //
+//      String LOGTAG                                                                     //
+//                                                                                        //
+//                                                                                        //
+//      ¿ A que se refiere esta variable ?                                                //
 //                                                                                        //
 //                                                                                        //
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,6 +81,16 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoCliente
  *  Histórico
  *
  *  de lo mas nuevo a lo mas antiguo
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Domingo   18/11/2018 13:03
+ *
+ * /////////////////////////////
+ *
+ *  Terminado el CRUD de Clientes procederemos a la limpieza y reorganización de las clases
+ *
+ * commit 'Terminado CRUD Clientes reordenar clases'
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
@@ -263,10 +290,10 @@ public class MainActivity   extends     AppCompatActivity
     // variables de clase
 	
 	// botones
-    Button  bActuaciones    ;
+    /*Button  bActuaciones    ;
     Button  bNuevaActuacion ;
     Button  bClientes       ;
-    Button  bNuevoCliente   ;
+    Button  bNuevoCliente   ;*/
     Button  bSalir          ;
 	
 	// intentos ( para lanzar activitys )
@@ -349,10 +376,10 @@ public class MainActivity   extends     AppCompatActivity
         // y según este número sabremos que opción se a pulsado
         switch ( item.getItemId() ){
 
-            case R.id.action_settings:
+            case R.id.action_settings   :
+                verSetings()            ;
+                return true             ;
 
-                modEnConstruccion() ;
-                return true ;
 
             case R.id.action_help :
 
@@ -405,6 +432,14 @@ public class MainActivity   extends     AppCompatActivity
     //  Navegación por botones
     //
     //////////////////////////
+    //
+    //      Cerrando la navegación por botones
+    //      de momento se comentan las acciones
+    //      cuando se haga la comprobación se
+    //      borrará definitivamente esa parte
+    //      del código.
+    //
+    ///////////////////////////////////////////////////////////////////////
 
 	/**
 	 *
@@ -413,6 +448,17 @@ public class MainActivity   extends     AppCompatActivity
 	 */
     private void activarEscuchadores() {
 
+        FloatingActionButton fab = findViewById( R.id.bfSalir ) ;
+
+        fab.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick( View v ) { cerrarSalir() ; }
+
+        });
+
+
+        /*
         ////////////////////////////////////////////////////////////////////////////////////////////
         //
         //  Botones Navegación entre Activitys      ////////////////////////////////////////////////
@@ -502,6 +548,7 @@ public class MainActivity   extends     AppCompatActivity
 
         }) ;
 
+
         ////////////////////////////////////////////
         //
         // botón de salida  ( se mantendrá en la navegación por pestañas )
@@ -518,6 +565,7 @@ public class MainActivity   extends     AppCompatActivity
             public void onClick( View v ) { cerrarSalir() ; }
 
         }) ;
+        */
 
     }
 
@@ -568,10 +616,19 @@ public class MainActivity   extends     AppCompatActivity
 
         //  Para los módulos en construcción
         FragmentManager manejador   = getFragmentManager()                                                    ;
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )   ,
+        DialogoMensaje dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )   ,
                                                             getString( R.string.txt_modulo_construccion )   ) ;
         dMensaje.show(                                      manejador, "elDialogoEnConstruccion"            ) ;
 
+    }
+
+    private void verSetings() {
+        android.app.FragmentManager manejador   = getFragmentManager() ;
+
+        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_setings   )                                   ,
+                getString( R.string.txt_texto_setings)   ) ;
+
+        dMensaje.show(manejador,"elDialogoSetings");
     }
 
     private void cerrarSalir(){

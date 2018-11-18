@@ -52,6 +52,12 @@
     <string name="txt_titulo_mensaje">Advertencia</string>
     <string name="txt_modulo_construccion">Módulo en construcción</string>
 
+
+    <string name="txt_titulo_ayuda_registros">Ayuda a la Edición de Registros</string>
+    <string name="txt_texto_ayuda_registros">Aquí se pondrá la ayuda referente a la edición de registros</string>
+    <string name="txt_titulo_setings">Parametros Customizables</string>
+    <string name="txt_texto_setings">Aquí se verán los parámetros ajustables por el usuario</string>
+
     <!--  dialogo guardando registro -->
     <string name="titulo_guardando">Datos a guardar</string>
 

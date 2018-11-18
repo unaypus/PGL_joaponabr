@@ -1,4 +1,8 @@
-package com.example.juaponabr.proyectopgljuaponabr3dam;
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
+package com.example.juaponabr.proyectopgljuaponabr3dam.dialogos;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -8,6 +12,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 
 
 public class DialogoCerrar extends DialogFragment {

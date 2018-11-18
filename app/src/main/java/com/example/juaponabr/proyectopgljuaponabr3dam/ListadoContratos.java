@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaContrato;
 import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoClientes;
+import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
 
 public class ListadoContratos extends AppCompatActivity {
 
@@ -122,7 +123,7 @@ public class ListadoContratos extends AppCompatActivity {
 
         //  Para los módulos en construcción
         FragmentManager manejador   = getFragmentManager();
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )    ,
+        DialogoMensaje dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )    ,
                 getString( R.string.txt_modulo_construccion )    ) ;
 
         dMensaje.show(manejador,"elDialogoEnConstruccion");
