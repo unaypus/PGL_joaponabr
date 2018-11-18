@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
 package com.example.juaponabr.proyectopgljuaponabr3dam.proveedor;
 
 import android.content.ContentResolver;
@@ -7,9 +11,10 @@ import android.net.Uri;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.pojos.Cliente;
 
+
 public class ClienteProveedor {
 
-    static public void insert( ContentResolver resolvedor, Cliente cliente ){
+    static public void      insert( ContentResolver resolvedor  , Cliente   cliente ){
 
         Uri uri = Contrato.TClientes.CONTENT_URI ;
 
@@ -25,11 +30,18 @@ public class ClienteProveedor {
         values.put( Contrato.TClientes.CL_TELEFONO      , cliente.getCl_telefono()      ) ;
         values.put( Contrato.TClientes.CL_PER_CONTACTO  , cliente.getCl_per_contacto()  ) ;
 
-        resolvedor.insert(uri, values);
+        resolvedor.insert( uri, values ) ;
 
     }
 
-    static public Cliente read( ContentResolver resolver, int cl_Id ) {
+    static public void      delete( ContentResolver resolvedor  , int       cl_Id ){
+
+        Uri uri = Uri.parse( Contrato.TClientes.CONTENT_URI + "/" + cl_Id ) ;
+        resolvedor.delete( uri, null, null ) ;
+
+    }
+
+    static public Cliente   read(   ContentResolver resolvedor  , int       cl_Id ) {
 
         Uri uri = Uri.parse( Contrato.TClientes.CONTENT_URI + "/" + cl_Id ) ;
 
@@ -44,7 +56,7 @@ public class ClienteProveedor {
                                 Contrato.TClientes.CL_PER_CONTACTO  ,
                                 Contrato.TClientes.CL_TELEFONO      } ;
 
-        Cursor cursor = resolver.query( uri, projection, null, null, null ) ;
+        Cursor cursor = resolvedor.query( uri, projection, null, null, null ) ;
 
         if ( cursor.moveToFirst() ){
 

@@ -30,6 +30,8 @@ public class Secciones extends AppCompatActivity {
      */
     private ViewPager mViewPager ;
 
+    private int quePestanya = 0 ;
+
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
 
@@ -56,23 +58,46 @@ public class Secciones extends AppCompatActivity {
         TabLayout losTab = findViewById(    R.id.tabs   ) ;
         losTab.setupWithViewPager(          mViewPager  ) ;
 
-
-
-
-
-
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //                                                                                        //
+        //                      A T E N C I Ó N  -  P R E G U N T A                               //
+        //                                                                                        //
+        //      clase Secciones                                                                   //
+        //      boton flotante  y menú para todas las pestañas                                    //
+        //                                                                                        //
+        //      No puedo usar la variable quePestanya para saber en que pestaña estoy. Al         //
+        //      parecer cuando  se carga en  SectionsPagerAdapter no  se recarga  en cada         //
+        //      pasada del dedo                                                                   //
+        //                                                                                        //
+        //      ¿ Como puedo saber en que pestaña estoy ?                                         //
+        //                                                                                        //
+        //                                                                                        //
+        ////////////////////////////////////////////////////////////////////////////////////////////
         /*
-
-        //  por ahora no usaremos este botón
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                switch ( quePestanya ) {
+
+                    case 1 :
+                        modEnConstruccion();
+                        break;
+
+                    case 2 :
+                        Intent intento = new Intent( Secciones.this,EditaCliente.class);
+                        intento.putExtra( "Nuevo", true );
+                        startActivity(intento);
+                        break;
+
+                }
+
             }
-        });*/
+
+        });
+        */
 
     }
 
@@ -125,7 +150,7 @@ public class Secciones extends AppCompatActivity {
             //
             /////////////////////////////////////////////////////
 
-            int quePestanya = position + 1;
+            quePestanya = position + 1;
 
             switch ( quePestanya ){
 

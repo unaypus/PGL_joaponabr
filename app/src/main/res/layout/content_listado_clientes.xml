@@ -87,7 +87,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/LayoutBotones"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -111,6 +111,7 @@
         app:layout_constraintTop_toBottomOf="@+id/LayoutCabecera" /> />
         -->
 
+    <!--
     <LinearLayout
         android:id="@+id/LayoutBotones"
         android:layout_width="match_parent"
@@ -125,14 +126,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- -->
+
         <Button
             android:id="@+id/buttonVerContratos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/ver_contratos" />
-        <!-- -->
+
 
         <Button
             android:id="@+id/buttonNuevoCliente"
@@ -141,5 +142,6 @@
             android:layout_weight="1"
             android:text="@string/guardar_cliente" />
     </LinearLayout>
+    -->
 
 </android.support.constraint.ConstraintLayout>

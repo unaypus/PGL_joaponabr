@@ -275,7 +275,7 @@ public class EditaRegistro extends AppCompatActivity {
 
     }
 
-    private void borrarRegistro() {
+    protected void borrarRegistro() {
 
         FragmentManager manejador   = getFragmentManager() ;
         DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.titulo_guardando )  ,

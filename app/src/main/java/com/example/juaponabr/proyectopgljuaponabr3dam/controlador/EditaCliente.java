@@ -13,6 +13,7 @@ public class EditaCliente extends EditaRegistro {
 
     // variables de clase
     Cliente unCliente = null ;
+    int     clActual ;
 
     // variables de la vista
     EditText edtMat[] ;
@@ -30,8 +31,10 @@ public class EditaCliente extends EditaRegistro {
         activarElementos()                                          ;
 
         if( !this.getIntent().getExtras().getBoolean( "Nuevo" ) ){
+
             unCliente = this.getIntent().getExtras().getParcelable( "elCliente" ) ;
-           this.leerCliente() ;
+            this.leerCliente() ;
+
         }
 
 
@@ -96,15 +99,25 @@ public class EditaCliente extends EditaRegistro {
 
     private void leerCliente(){
 
-        edtMat[ 0 ].setText( unCliente.getCl_nombre()       ) ;
-        edtMat[ 1 ].setText( unCliente.getCl_dni()          ) ;
-        edtMat[ 2 ].setText( unCliente.getDir_via()         ) ;
-        //edtMat[ 3 ].setText( unCliente.getDir_num()         ) ;
-        edtMat[ 4 ].setText( unCliente.getDir_localidad()   ) ;
-        edtMat[ 5 ].setText( unCliente.getDir_cp()          ) ;
-        //edtMat[ 6 ].setText( unCliente.getDistanacia()      ) ;
-        edtMat[ 7 ].setText( unCliente.getCl_per_contacto() ) ;
-        edtMat[ 8 ].setText( unCliente.getCl_telefono()     ) ;
+        clActual = unCliente.getCl_id() ;
+
+        edtMat[ 0 ].setText( unCliente.getCl_nombre()                       ) ;
+        edtMat[ 1 ].setText( unCliente.getCl_dni()                          ) ;
+        edtMat[ 2 ].setText( unCliente.getDir_via()                         ) ;
+        edtMat[ 3 ].setText( dameCadena(    unCliente.getDir_num()      )   ) ;
+        edtMat[ 4 ].setText( unCliente.getDir_localidad()                   ) ;
+        edtMat[ 5 ].setText( unCliente.getDir_cp()                          ) ;
+        edtMat[ 6 ].setText( dameCadena(    unCliente.getDistanacia()   )   ) ;
+        edtMat[ 7 ].setText( unCliente.getCl_per_contacto()                 ) ;
+        edtMat[ 8 ].setText( unCliente.getCl_telefono()                     ) ;
+
+    }
+
+    private String dameCadena( int laInt ){
+
+        String laCadena = " " + laInt + " ";
+
+        return laCadena.trim() ;
 
     }
 
@@ -117,6 +130,13 @@ public class EditaCliente extends EditaRegistro {
 
     }
 
+    @Override
+    protected void borrarRegistro(){
+
+        ClienteProveedor.delete( getContentResolver(), clActual);
+        finish();
+
+    }
 
 
 

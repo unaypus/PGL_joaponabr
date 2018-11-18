@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
 package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
 
 
@@ -6,14 +10,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
-import android.util.Log;
-import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +54,7 @@ public class ElListadoClientes  extends ListFragment
      */
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate( Bundle savedInstanceState ) {
 
         super.onCreate( savedInstanceState ) ;
         activarEscuchaItems() ;
@@ -76,7 +78,7 @@ public class ElListadoClientes  extends ListFragment
         //Log.i(LOGTAG, "onCreateView");
         View v = inflater.inflate(R.layout.el_listado_clientes, container, false);
 
-        mAdapter = new TablaCursorAdapter(getActivity());
+        mAdapter = new TablaCursorAdapter( getActivity() ) ;
         setListAdapter( mAdapter ) ;
 
         return v;
@@ -84,8 +86,9 @@ public class ElListadoClientes  extends ListFragment
 
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onActivityCreated( Bundle savedInstanceState ) {
+
+        super.onActivityCreated( savedInstanceState ) ;
         //Log.i(LOGTAG, "onActivityCreated");
 
         mCallbacks = this;
@@ -110,7 +113,7 @@ public class ElListadoClientes  extends ListFragment
 
                 Cliente unCliente = ClienteProveedor.read( getActivity().getContentResolver(), cl_Id ) ;
 
-					Log.i( "El identificador", unCliente.getCl_nombre() ) ;
+					//Log.i( "El identificador", unCliente.getCl_nombre() ) ;
 
 					//intent.putExtra("ID", ciclo.getID());
 					//intent.putExtra("Nombre", ciclo.getNombre());
@@ -132,6 +135,22 @@ public class ElListadoClientes  extends ListFragment
                 return true;
             }
         });
+
+        FloatingActionButton fab = getView().findViewById( R.id.bfNuevoCliente ) ;
+
+        fab.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Intent intento = new Intent( getActivity(), EditaCliente.class ) ;
+                intento.putExtra( "Nuevo", true ) ;
+                startActivity( intento ) ;
+
+            }
+
+        });
+
 
     }
 

@@ -19,6 +19,27 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaCliente;
 import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.EditaContrato;
 import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoClientes;
 
+////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                        //
+//                               DUDAS A RESOLVER                                         //
+//                                                                                        //
+////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                        //
+//                      A T E N C I Ó N  -  P R E G U N T A                               //
+//                                                                                        //
+//      clase Secciones                                                                   //
+//      boton flotante  y menú para todas las pestañas                                    //
+//                                                                                        //
+//      No puedo usar la variable quePestanya para saber en que pestaña estoy. Al         //
+//      parecer cuando  se carga en  SectionsPagerAdapter no  se recarga  en cada         //
+//      pasada del dedo                                                                   //
+//                                                                                        //
+//      ¿ Como puedo saber en que pestaña estoy ?                                         //
+//                                                                                        //
+//                                                                                        //
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
 /**
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,6 +64,17 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoCliente
  *  Histórico
  *
  *  de lo mas nuevo a lo mas antiguo
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Domingo   18/11/2018 10:10
+ *
+ * /////////////////////////////
+ *
+ *  Vamos ha dar por finalizada definitivamente la navegación por botones y se pasará solo a
+ *  la navegación por pestañas deslizantes.
+ *
+ * commit 'Se creara la rama 'navPestanyasDefinitiva' y abandonamos los botones'
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *

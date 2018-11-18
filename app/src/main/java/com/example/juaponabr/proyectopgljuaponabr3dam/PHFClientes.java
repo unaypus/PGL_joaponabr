@@ -70,7 +70,7 @@ public class PHFClientes extends Fragment{
     }
 
     private void activarEscuchadores() {
-
+/*
         // botón para ir al listado de actuaciones
         bActuaciones = getView().findViewById(  R.id.buttonVerContratos) ;
         bActuaciones.setVisibility(             View.INVISIBLE              ) ;
@@ -90,7 +90,7 @@ public class PHFClientes extends Fragment{
             }
 
         });
-
+*/
     }
 
 }

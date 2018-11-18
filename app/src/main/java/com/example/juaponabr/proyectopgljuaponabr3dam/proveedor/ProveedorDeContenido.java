@@ -20,6 +20,7 @@ public class ProveedorDeContenido extends ContentProvider {
     //                                                                                        //
     //                      A T E N C I Ó N  -  P R E G U N T A                               //
     //                                                                                        //
+    //      OK - CORRECTO   ////////////////////////////////////////////////////////////////////
     //                                                                                        //
     //      ¿ Aquí se ponen tanatas CONSTANTES como tablas hay en nuestra base de datos ?     //
     //                                                                                        //
@@ -81,6 +82,8 @@ public class ProveedorDeContenido extends ContentProvider {
         ////////////////////////////////////////////////////////////////////////////////////////////
         //                                                                                        //
         //                      A T E N C I Ó N  -  P R E G U N T A                               //
+        //                                                                                        //
+        //      OK - CORRECTO   ////////////////////////////////////////////////////////////////////
         //                                                                                        //
         //                                                                                        //
         //      ¿ Aquí se ponen tanatas URIs como tablas hay en nuestra base de datos ?           //
