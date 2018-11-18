@@ -67,6 +67,16 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoCliente
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
+ *      Domingo   18/11/2018 10:12
+ *
+ * /////////////////////////////
+ *
+ *  Se ha cometido un errror durante el commit se va ha repetir.
+ *
+ * commit 'Se creara la rama 'navPestanyasDefinitiva' y abandonamos los botones'
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
  *      Domingo   18/11/2018 10:10
  *
  * /////////////////////////////
