@@ -124,6 +124,24 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
+ *      Lunes   20/11/2018 19:32
+ *
+ * /////////////////////////////
+ *
+ *  Trabajo para esta rama
+ *
+ *          -   Renombrar clases del proveedor
+ *          -   Crear tabla Contarto
+ *          -   Relacionarla con Cliente
+ *          -   Crear POJO
+ *          -   Hacer el CRUD
+ *
+ * commit
+ *          a)  ruta_proyecto>git add .
+ *          b)  ruta_proyecto>git commit -m "Inicio rama ReestructurarDB"
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
  *      Lunes   20/11/2018 19:22
  *
  * /////////////////////////////
