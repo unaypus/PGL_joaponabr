@@ -18,13 +18,8 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 
 public class EditaRegistro extends AppCompatActivity {
-        //implements View.OnClickListener{
 
     // variables de clase
-
-    // botones actividades
-    //private Button bActuaciones;
-    //private Button bClientes ;
 
     // botones edición de registro
     private ImageButton bNuevo;
@@ -43,20 +38,13 @@ public class EditaRegistro extends AppCompatActivity {
 
     private boolean nuevoRegistro   = true  ;
 
-    // intentos ( para lanzar activitys )
-    //private Intent intento;
-    // En las clase hijas
-    // crear la variable : private Context elContexto ;
-    // crear la sentencia : elContexto = la_activity.this;
-    // antes de llamar a : activarEscuchadores( elContexto );
-
     @Override
     protected void onCreate(Bundle savedInstanceState) { super.onCreate( savedInstanceState ) ; }
 
     @Override
     public boolean onCreateOptionsMenu( Menu menu ) {
 
-        getMenuInflater().inflate( R.menu.main, menu ) ;
+        getMenuInflater().inflate( R.menu.menu_registros, menu ) ;
         return true ;
 
     }
@@ -65,12 +53,9 @@ public class EditaRegistro extends AppCompatActivity {
     public boolean onOptionsItemSelected( MenuItem item ) {
 
         switch ( item.getItemId() ){
-            case R.id.action_settings:
-                modEnConstruccion() ;
-                return true ;
-            case R.id.action_help :
-                modEnConstruccion( );
-                return true ;
+            case R.id.action_help       :
+                verLaAyuda()            ;
+                return true             ;
         }
 
         return super.onOptionsItemSelected( item ) ;
@@ -93,50 +78,7 @@ public class EditaRegistro extends AppCompatActivity {
      */
     protected void activarEscuchadores( final Context elContexto ) {
 
-        /*
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        //
-        //  Botones Navegación entre Activitys      ////////////////////////////////////////////////
-        //
-        ////////////////////////////////////////////
-        //
-        // botón para ir al listado de actuaciones
-        //
-
-        bActuaciones = findViewById(R.id.buttonVerContratos);
-
-        bActuaciones.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Intent intento = new Intent(elContexto,ListadoContratos.class);
-                startActivity(intento);
-            }
-
-        });
-
-        ////////////////////////////////////////////
-        //
-        // botón para ir al listado de clientes
-        //
-
-        bClientes = findViewById(R.id.buttonVerClientes);
-
-        bClientes.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                intento = new Intent(elContexto,ListadoClientes.class);
-                startActivity(intento);
-
-            }
-
-        });
-        */
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
+         ////////////////////////////////////////////////////////////////////////////////////////////
         //
         //  Botones Edición Registro        ////////////////////////////////////////////////////////
         //
@@ -249,8 +191,6 @@ public class EditaRegistro extends AppCompatActivity {
 
     }
 
-
-
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //
     //  Métodos
@@ -259,7 +199,7 @@ public class EditaRegistro extends AppCompatActivity {
     protected void mensajeNoValidado() {
 
         FragmentManager manejador   = getFragmentManager() ;
-        DialogoMensaje dMensaje    = new DialogoMensaje(   getString( R.string.atencion )  ,
+        DialogoMensaje dMensaje     = new DialogoMensaje(   getString( R.string.atencion )  ,
                                                             getsErrorValidacion()           ) ;
 
         dMensaje.show(manejador,"elDialogoNoValidado");
@@ -271,9 +211,13 @@ public class EditaRegistro extends AppCompatActivity {
     protected void guardarRegistro() {
 
         if( getbNuevoRegistro() ){
+
             insertarRegistro() ;
+
         } else {
+
             actualizarRegistro() ;
+
         }
 
     }
@@ -282,7 +226,7 @@ public class EditaRegistro extends AppCompatActivity {
 
         FragmentManager manejador   = getFragmentManager() ;
         DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.titulo_guardando )  ,
-                getsDatosValidados()                    ) ;
+                                                            getsDatosValidados()                    ) ;
 
         dMensaje.show(manejador,"elDialogoGuardar");
         //Toast.makeText(EditaRegistro.this,R.string.bot_guardar,Toast.LENGTH_LONG).show();
@@ -293,7 +237,7 @@ public class EditaRegistro extends AppCompatActivity {
 
         FragmentManager manejador   = getFragmentManager() ;
         DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.titulo_guardando )  ,
-                getsDatosValidados()                    ) ;
+                                                            getsDatosValidados()                    ) ;
 
         dMensaje.show(manejador,"elDialogoGuardar");
         //Toast.makeText(EditaRegistro.this,R.string.bot_guardar,Toast.LENGTH_LONG).show();
@@ -321,6 +265,15 @@ public class EditaRegistro extends AppCompatActivity {
 
     }
 
+    private void verLaAyuda() {
+
+        FragmentManager manejador   = getFragmentManager() ;
+        DialogoMensaje dMensaje     = new DialogoMensaje(   getString( R.string.txt_titulo_ayuda_registros   )                                   ,
+                                                            getString( R.string.txt_texto_ayuda_registros)   ) ;
+
+        dMensaje.show(manejador,"elDialogoAyudaRegistros");
+
+    }
 
     protected   String  getsErrorValidacion()   { return this.sErrorValidacion  ; }
     protected   String  getsDatosValidados()    { return this.sDatosValidados   ; }
@@ -329,4 +282,5 @@ public class EditaRegistro extends AppCompatActivity {
     protected void setsErrorValidacion( String  sErrorValidacion    ){ this.sErrorValidacion    = sErrorValidacion  ; }
     protected void setsDatosValidados(  String  sDatosValidados     ){ this.sDatosValidados     = sDatosValidados   ; }
     protected void setNuevoRegistro(    boolean nuevoRegistro       ){ this.nuevoRegistro       = nuevoRegistro     ; }
+
 }

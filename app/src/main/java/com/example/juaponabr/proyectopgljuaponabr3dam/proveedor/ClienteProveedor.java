@@ -96,7 +96,7 @@ public class ClienteProveedor {
      * @param cliente       el objeto cliente con los datos
      *
      */
-    static public void update( ContentResolver resolvedor, Cliente cliente ){
+    static public void      update( ContentResolver resolvedor, Cliente cliente ){
 
         Uri uri = Uri.parse( Contrato.TClientes.CONTENT_URI + "/" + cliente.getCl_id() ) ;
 

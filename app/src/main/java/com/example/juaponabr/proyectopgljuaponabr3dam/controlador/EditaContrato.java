@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018.  juaponabr 3º DAM Semipresencial
+ */
+
 package com.example.juaponabr.proyectopgljuaponabr3dam.controlador;
 
 import android.os.Bundle;
@@ -16,7 +20,6 @@ import java.util.Calendar;
 public class EditaContrato extends EditaRegistro {
 
     // variables de clase
-    //private Context elContexto              ;
     private int     nDias           = 0     ;
     private String  sPeriodicidad   = ""    ;
 
@@ -34,11 +37,11 @@ public class EditaContrato extends EditaRegistro {
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
 
-        super.onCreate( savedInstanceState )                ;
-        setContentView( R.layout.activity_edita_contrato)   ;
-        iniBarraHerramientas()                              ;
-        activarEscuchadores( EditaContrato.this )           ;
-        activarElementos()                                  ;
+        super.onCreate(         savedInstanceState                  )   ;
+        setContentView(         R.layout.activity_edita_contrato    )   ;
+        iniBarraHerramientas()                                          ;
+        activarEscuchadores(    EditaContrato.this                  )   ;
+        activarElementos()                                              ;
 
     }
 
@@ -373,10 +376,6 @@ public class EditaContrato extends EditaRegistro {
             sValidado = sValidado + getString( R.string.txt_periodicida ) + "\n" + sPeriodicidad + "\n\n" ;
 
         }
-
-
-
-
 
         /////////////////////////////////////
         //

@@ -38,20 +38,23 @@ public class ProveedorDeContenido extends ContentProvider {
 
     //private static final String LOGTAG = "juaponabr - ProveedorDeContenido";
 
+    //      tabla Cliente
     private static final    String          CLIENTE_TABLE_NAME      = "Cliente"     ;
     //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido/Cliente/#
     private static final    int             CLIENTE_ONE_REG         = 1             ;
     //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido/Cliente
     private static final    int             CLIENTE_ALL_REGS        = 2             ;
 
+    //      tabla Contratos
     private static final    String          CONTRATOS_TABLE_NAME    = "Contratos"   ;
     //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido/Contratos/#
     private static final    int             CONTRATOS_ONE_REG       = 3             ;
     //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido/Contratos
     private static final    int             CONTRATOS_ALL_REGS      = 4             ;
 
+    //      la base de datos
     private                 SQLiteDatabase  sqlDB                                   ;
-    public                  DatabaseHelper  dbHelper                                ;
+    public                  DatabaseHelper  dbAsistente                             ;
     private static final    String          DATABASE_NAME           = "JPLM.db"     ;
     private static final    int             DATABASE_VERSION        = 1             ;
 
@@ -147,7 +150,7 @@ public class ProveedorDeContenido extends ContentProvider {
         @Override
         public void onCreate(SQLiteDatabase db) {
 
-            // create table to store
+            // crear tabla Clientes
 
             db.execSQL( "Create table "                         + CLIENTE_TABLE_NAME        +
                         "( _id INTEGER PRIMARY KEY ON CONFLICT ROLLBACK AUTOINCREMENT, "    +
@@ -217,22 +220,34 @@ public class ProveedorDeContenido extends ContentProvider {
     @Override
     public boolean onCreate() {
 
-        dbHelper = new DatabaseHelper(getContext());
-        return (dbHelper == null) ? false : true;
+        dbAsistente = new DatabaseHelper(getContext());
+        return (dbAsistente == null) ? false : true;
 
     }
 
     public void resetDatabase() {
 
-        dbHelper.close();
-        dbHelper = new DatabaseHelper(getContext());
+        dbAsistente.close();
+        dbAsistente = new DatabaseHelper(getContext());
 
     }
 
+    //////////////////////////////////////////////
+    //
+    //  El CRUD genérico para todads las tablas
+    //
+
+    /**
+     * C    insertar, crear registro
+     *
+     * @param uri
+     * @param values
+     * @return
+     */
     @Override
     public Uri insert( Uri uri, ContentValues values ) {
 
-        sqlDB = dbHelper.getWritableDatabase() ;
+        sqlDB = dbAsistente.getWritableDatabase() ;
 
         String table = "" ;
 
@@ -259,11 +274,106 @@ public class ProveedorDeContenido extends ContentProvider {
         throw new SQLException( "Failed to insert row into " + uri ) ;
     }
 
+    /**
+     * U    actualizar  1 / varios registros
+     *
+     * @param uri
+     * @param projection
+     * @param selection
+     * @param selectionArgs
+     * @param sortOrder
+     * @return
+     */
+    @Override
+    public Cursor query(Uri uri, String[] projection, String selection,
+                        String[] selectionArgs, String sortOrder) {
 
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        SQLiteDatabase db = dbAsistente.getReadableDatabase();
+
+        String query = null;
+
+        switch (sUriMatcher.match(uri)) {
+            case CLIENTE_ONE_REG:
+                if (null == selection) selection = "";
+                selection += Contrato.TClientes._ID + " = "
+                        + uri.getLastPathSegment();
+                qb.setTables(CLIENTE_TABLE_NAME);
+                break;
+            case CLIENTE_ALL_REGS:
+                if (TextUtils.isEmpty(sortOrder)) sortOrder =
+                        Contrato.TClientes._ID + " ASC";
+                qb.setTables(CLIENTE_TABLE_NAME);
+                break;
+        }
+
+        Cursor c;
+        c = qb.query(db, projection, selection, selectionArgs, null, null,
+                        sortOrder);
+        c.setNotificationUri(getContext().getContentResolver(), uri);
+
+        return c;
+    }
+
+    /**
+     * R    consultar, leer 1 / varios registros
+     *
+     * @param uri
+     * @param values
+     * @param selection
+     * @param selectionArgs
+     * @return
+     */
+    @Override
+    public int update(  Uri             uri             ,
+                        ContentValues   values          ,
+                        String          selection       ,
+                        String[]        selectionArgs   ) {
+
+        sqlDB = dbAsistente.getWritableDatabase();
+        // insert record in user table and get the row number of recently inserted record
+
+        String table = "" ;
+
+        switch ( sUriMatcher.match( uri ) ) {
+
+            case CLIENTE_ONE_REG:
+
+                if ( null == selection ) selection = "" ;
+
+                selection   +=  Contrato.TClientes._ID + " = " + uri.getLastPathSegment()   ;
+                table       =   CLIENTE_TABLE_NAME                                          ;
+
+                break ;
+
+            case CLIENTE_ALL_REGS:
+
+                table = CLIENTE_TABLE_NAME ;
+
+                break ;
+        }
+
+        int rows = sqlDB.update(table, values, selection, selectionArgs);
+        if (rows > 0) {
+            getContext().getContentResolver().notifyChange(uri, null);
+
+            return rows;
+        }
+        throw new SQLException("Failed to update row into " + uri);
+    }
+
+    /**
+     * D    borrar 1 / varios registros
+     *
+     * @param uri
+     * @param selection
+     * @param selectionArgs
+     * @return
+     */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
 
-        sqlDB = dbHelper.getWritableDatabase();
+        sqlDB = dbAsistente.getWritableDatabase();
         // insert record in user table and get the row number of recently inserted record
 
         String table = "";
@@ -295,72 +405,4 @@ public class ProveedorDeContenido extends ContentProvider {
         throw new SQLException("Failed to delete row into " + uri);
     }
 
-    @Override
-    public Cursor query(Uri uri, String[] projection, String selection,
-                        String[] selectionArgs, String sortOrder) {
-
-        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        String query = null;
-
-        switch (sUriMatcher.match(uri)) {
-            case CLIENTE_ONE_REG:
-                if (null == selection) selection = "";
-                selection += Contrato.TClientes._ID + " = "
-                        + uri.getLastPathSegment();
-                qb.setTables(CLIENTE_TABLE_NAME);
-                break;
-            case CLIENTE_ALL_REGS:
-                if (TextUtils.isEmpty(sortOrder)) sortOrder =
-                        Contrato.TClientes._ID + " ASC";
-                qb.setTables(CLIENTE_TABLE_NAME);
-                break;
-        }
-
-        Cursor c;
-        c = qb.query(db, projection, selection, selectionArgs, null, null,
-                        sortOrder);
-        c.setNotificationUri(getContext().getContentResolver(), uri);
-
-        return c;
-    }
-
-    @Override
-    public int update(  Uri             uri             ,
-                        ContentValues   values          ,
-                        String          selection       ,
-                        String[]        selectionArgs   ) {
-
-        sqlDB = dbHelper.getWritableDatabase();
-        // insert record in user table and get the row number of recently inserted record
-
-        String table = "" ;
-
-        switch ( sUriMatcher.match( uri ) ) {
-
-            case CLIENTE_ONE_REG:
-
-                if ( null == selection ) selection = "" ;
-
-                selection   +=  Contrato.TClientes._ID + " = " + uri.getLastPathSegment()   ;
-                table       =   CLIENTE_TABLE_NAME                                          ;
-
-                break ;
-
-            case CLIENTE_ALL_REGS:
-
-                table = CLIENTE_TABLE_NAME ;
-
-                break ;
-        }
-
-        int rows = sqlDB.update(table, values, selection, selectionArgs);
-        if (rows > 0) {
-            getContext().getContentResolver().notifyChange(uri, null);
-
-            return rows;
-        }
-        throw new SQLException("Failed to update row into " + uri);
-    }
 }

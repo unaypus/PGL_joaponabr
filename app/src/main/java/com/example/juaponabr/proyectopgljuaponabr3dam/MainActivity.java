@@ -18,7 +18,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoCerrar;
 import com.example.juaponabr.proyectopgljuaponabr3dam.dialogos.DialogoMensaje;
@@ -33,7 +32,7 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
 //                                                                                        //
 //                      A T E N C I Ó N  -  P R E G U N T A                               //
 //                                                                                        //
-//      clase GestionDatos                                                                   //
+//      clase GestionDatos                                                                //
 //      boton flotante  y menú para todas las pestañas                                    //
 //                                                                                        //
 //      No puedo usar la variable quePestanya para saber en que pestaña estoy. Al         //
@@ -54,6 +53,43 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
 //                                                                                        //
 //                                                                                        //
 //      ¿ A que se refiere esta variable ?                                                //
+//                                                                                        //
+//                                                                                        //
+////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                        //
+//                      A T E N C I Ó N  -  P R E G U N T A                               //
+//                                                                                        //
+//      clase ProveedorDeContenidos                                                       //
+//                                                                                        //
+//      ¿ Quién la usa ?                                                                  //
+//          a) no hay ningun referencia a ella desde mis clases                           //
+//          b) ninguna de ellas la importa                                                //
+//                                                                                        //
+//                                                                                        //
+////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                        //
+//                      A T E N C I Ó N  -  P R E G U N T A                               //
+//                                                                                        //
+//      clase DialogoMensaje                                                              //
+//                                                                                        //
+//      Me dice que no debo usar un constructor sino un Fragment#setArgumens(Bundle)      //
+//                                                                                        //
+//                                                                                        //
+////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                        //
+//                      A T E N C I Ó N  -  P R E G U N T A                               //
+//                                                                                        //
+//      carpeta  layout                                                                   //
+//                                                                                        //
+//      ¿  cómo puedo organizarla en subcarpetas ?                                        //
+//      Si se pueden crear directorios , pero no se ven                                   //
+//      necesitaría organizar los xml como organizo las clases                            //
 //                                                                                        //
 //                                                                                        //
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -83,6 +119,17 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
  *  Histórico
  *
  *  de lo mas nuevo a lo mas antiguo
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Lunes   20/11/2018 15:40
+ *
+ * /////////////////////////////
+ *
+ *  Terminada  la reestructuración de clases y limpieza de código, despues cierre de la rama
+ *  navPestanyasDefinitiva y de la rama entrega3 haciendo los merges correspondientes
+ *
+ * commit 'Terminada reestructuración y limpieza clases'
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
@@ -301,14 +348,7 @@ public class MainActivity   extends     AppCompatActivity
                                         DialogoCerrar.EscuchadorDialogoCerrar {
 
     // variables de clase
-	
-	// botones
-    /*Button  bActuaciones    ;
-    Button  bNuevaActuacion ;
-    Button  bClientes       ;
-    Button  bNuevoCliente   ;*/
-    Button  bSalir          ;
-	
+
 	// intentos ( para lanzar activitys )
     Intent  intento         ;
 
@@ -387,9 +427,11 @@ public class MainActivity   extends     AppCompatActivity
 
         // esta función nos devuelve el id de un item de menú
         // y según este número sabremos que opción se a pulsado
+
         switch ( item.getItemId() ){
 
             case R.id.action_settings   :
+
                 verSetings()            ;
                 return true             ;
 
@@ -440,19 +482,6 @@ public class MainActivity   extends     AppCompatActivity
 
     }
 
-    //////////////////////////////////////////////////////////////////////
-    //
-    //  Navegación por botones
-    //
-    //////////////////////////
-    //
-    //      Cerrando la navegación por botones
-    //      de momento se comentan las acciones
-    //      cuando se haga la comprobación se
-    //      borrará definitivamente esa parte
-    //      del código.
-    //
-    ///////////////////////////////////////////////////////////////////////
 
 	/**
 	 *
@@ -461,124 +490,22 @@ public class MainActivity   extends     AppCompatActivity
 	 */
     private void activarEscuchadores() {
 
-        FloatingActionButton fab = findViewById( R.id.bfSalir ) ;
+        ////////////////////////////////////////////
+        //
+        // botón de salida  ( el botón flotante )
+        //
+        // que lanza un cuadro de dialogo para preguntar
+        // al usuario si desea cerrar la aplicación
+        //
 
-        fab.setOnClickListener( new View.OnClickListener() {
+        FloatingActionButton fabSalir = findViewById( R.id.bfSalir ) ;
+
+        fabSalir.setOnClickListener( new View.OnClickListener() {
 
             @Override
             public void onClick( View v ) { cerrarSalir() ; }
 
         });
-
-
-        /*
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        //
-        //  Botones Navegación entre Activitys      ////////////////////////////////////////////////
-        //
-        ////////////////////////////////////////////
-        //
-		//	botones actuaciones
-		//
-        ////////////////////////////////////////////
-        //
-        // botón para ir al listado de actuaciones
-		//
-
-        bActuaciones = findViewById( R.id.buttonContratos) ;
-
-        bActuaciones.setOnClickListener( new View.OnClickListener() {
-
-            @Override
-            public void onClick( View v ) {
-
-                intento = new Intent( MainActivity.this, ListadoContratos.class ) ;
-                startActivity( intento ) ;
-
-            }
-
-        }) ;
-
-        ////////////////////////////////////////////
-        //
-        // botón para crear una nueva
-        //
-
-		bNuevaActuacion = findViewById( R.id.buttonNueva ) ;
-
-        bNuevaActuacion.setOnClickListener( new View.OnClickListener() {
-
-            @Override
-            public void onClick( View v ) {
-
-                intento = new Intent( MainActivity.this, EditaContrato.class ) ;
-                startActivity( intento ) ;
-
-            }
-
-        }) ;
-
-        ////////////////////////////////////////////
-        //
-		//	botones cliente
-		//
-        ////////////////////////////////////////////
-        //
-        // botón para ir al listado de clientes
-		//
-
-        bClientes = findViewById( R.id.buttonClientes ) ;
-
-        bClientes.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick( View v ) {
-
-                intento = new Intent( MainActivity.this, ListadoClientes.class ) ;
-                startActivity( intento ) ;
-
-            }
-
-        }) ;
-
-        ////////////////////////////////////////////
-        //
-        // botón para crear uno nuevo
-        //
-
-        bNuevoCliente = findViewById( R.id.buttonNuevo ) ;
-
-        bNuevoCliente.setOnClickListener( new View.OnClickListener() {
-
-            @Override
-            public void onClick( View v ) {
-
-                intento = new Intent( MainActivity.this, EditaCliente.class ) ;
-                intento.putExtra( "Nuevo", true );
-                startActivity( intento ) ;
-
-            }
-
-        }) ;
-
-
-        ////////////////////////////////////////////
-        //
-        // botón de salida  ( se mantendrá en la navegación por pestañas )
-		//
-		// que lanza un cuadro de dialogo para preguntar
-		// al usuario si desea cerrar la aplicación
-		//
-
-		bSalir = findViewById( R.id.buttonSalir ) ;
-
-        bSalir.setOnClickListener( new View.OnClickListener() {
-
-            @Override
-            public void onClick( View v ) { cerrarSalir() ; }
-
-        }) ;
-        */
 
     }
 
@@ -606,6 +533,8 @@ public class MainActivity   extends     AppCompatActivity
 		//
         // usamos la segunda forma porque queremas cerrar la
 		// aplicación del todo
+        //
+        // Problema : necesita mínimo la API 21 y queríamos la 15
 		//
 		
         MainActivity.super.finishAndRemoveTask() ;
@@ -625,21 +554,12 @@ public class MainActivity   extends     AppCompatActivity
 
     }
 
-    protected void modEnConstruccion() {
-
-        //  Para los módulos en construcción
-        FragmentManager manejador   = getFragmentManager()                                                    ;
-        DialogoMensaje dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )   ,
-                                                            getString( R.string.txt_modulo_construccion )   ) ;
-        dMensaje.show(                                      manejador, "elDialogoEnConstruccion"            ) ;
-
-    }
 
     private void verSetings() {
         android.app.FragmentManager manejador   = getFragmentManager() ;
 
         DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_setings   )                                   ,
-                getString( R.string.txt_texto_setings)   ) ;
+                                                            getString( R.string.txt_texto_setings)   ) ;
 
         dMensaje.show(manejador,"elDialogoSetings");
     }

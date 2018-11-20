@@ -203,11 +203,14 @@ public class ElListadoClientes  extends ListFragment
         @Override
         public void bindView( View view, Context context, Cursor cursor ) {
 
-            int     nID         = cursor.getInt(    cursor.getColumnIndex( Contrato.TClientes._ID       ) ) ;
-
-            String  sNombre     = "Cliente : " +  cursor.getString( cursor.getColumnIndex( Contrato.TClientes.CL_NOMBRE ) ) ;
-            int     laDistancia = cursor.getInt(    cursor.getColumnIndex( Contrato.TClientes.DISTANCIA_KM    ) ) ;
-            String  sDistancia  = "Distancia : " + laDistancia + " Km.";
+            int     nID         =   cursor.getInt(      cursor.getColumnIndex( Contrato.TClientes._ID           ) ) ;
+            String  sNombre     =   "Cliente : "    +
+                                    nID             +
+                                    " - |"          +
+                                    cursor.getString(   cursor.getColumnIndex( Contrato.TClientes.CL_NOMBRE     ) ) ;
+            int     laDistancia =   cursor.getInt(      cursor.getColumnIndex( Contrato.TClientes.DISTANCIA_KM  ) ) ;
+            String  sDistancia  =   "Distancia : "  +
+                                    laDistancia     + " Km." ;
 
             TextView textviewNombre     = view.findViewById( R.id.tvListCLnombre    ) ;
             TextView textviewDistancia  = view.findViewById( R.id.tvListDistancia   ) ;

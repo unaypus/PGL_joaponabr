@@ -18,6 +18,9 @@ public class Cliente implements Parcelable {
     private String  cl_telefono     ;
     private String  cl_per_contacto ; // persona de contacto del cliente
 
+    /**
+     * Constructor del objeto con valores por defecto
+     */
     public Cliente(){
 
         this.cl_id              = 0     ;
@@ -33,6 +36,21 @@ public class Cliente implements Parcelable {
 
     }
 
+    /**
+     * Constructor del objeto recibiendo los datos
+     * de edición o procedentesde la lectura de la tabla
+     *
+     * @param cl_id
+     * @param cl_nombre
+     * @param cl_dni
+     * @param dir_via
+     * @param dir_num
+     * @param dir_cp
+     * @param dir_localidad
+     * @param distanacia
+     * @param cl_telefono
+     * @param cl_per_contacto
+     */
     public Cliente( int     cl_id            , String   cl_nombre       , String cl_dni ,
                     String  dir_via          , int      dir_num         , String dir_cp ,
                     String  dir_localidad    , int      distanacia      ,
@@ -51,31 +69,55 @@ public class Cliente implements Parcelable {
 
     }
 
-    protected Cliente(Parcel in) {
-        cl_id = in.readInt();
-        cl_nombre = in.readString();
-        cl_dni = in.readString();
-        dir_via = in.readString();
-        dir_num = in.readInt();
-        dir_cp = in.readString();
-        dir_localidad = in.readString();
-        distanacia = in.readInt();
-        cl_telefono = in.readString();
-        cl_per_contacto = in.readString();
+    ////////////////////////////////
+    //
+    // parseable para pasar de una
+    // actividad a otra
+    //
+    ////////////////////////////////
+
+    /**
+     * Constructor parseable
+     * @param in
+     */
+    protected Cliente( Parcel in ) {
+
+        cl_id           = in.readInt()      ;
+        cl_nombre       = in.readString()   ;
+        cl_dni          = in.readString()   ;
+        dir_via         = in.readString()   ;
+        dir_num         = in.readInt()      ;
+        dir_cp          = in.readString()   ;
+        dir_localidad   = in.readString()   ;
+        distanacia      = in.readInt()      ;
+        cl_telefono     = in.readString()   ;
+        cl_per_contacto = in.readString()   ;
+
     }
 
     public static final Creator<Cliente> CREATOR = new Creator<Cliente>() {
+
         @Override
-        public Cliente createFromParcel(Parcel in) {
-            return new Cliente(in);
+        public Cliente createFromParcel( Parcel in ) {
+
+            return new Cliente( in ) ;
+
         }
 
         @Override
-        public Cliente[] newArray(int size) {
-            return new Cliente[size];
+        public Cliente[] newArray( int size ) {
+
+            return new Cliente[ size ] ;
+
         }
+
     };
 
+    ///////////////////////
+    //
+    // geters y seters
+    //
+    ///////////////////////
     public int getCl_id() {
         return cl_id;
     }
@@ -156,6 +198,13 @@ public class Cliente implements Parcelable {
         this.cl_per_contacto = cl_per_contacto;
     }
 
+
+    //////////////////////////////////////////
+    //
+    // auxiliares de parseable
+    // para pasrlos de una actividad a otra
+    //
+    //////////////////////////////////////////
     @Override
     public int describeContents() {
         return 0;
@@ -180,4 +229,5 @@ public class Cliente implements Parcelable {
 
 
     }
+
 }

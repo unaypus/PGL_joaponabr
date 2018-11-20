@@ -190,17 +190,6 @@ public class GestionDatos extends AppCompatActivity {
             return null;
 
         }
-    }
-
-    protected void modEnConstruccion() {
-
-        //  Para los módulos en construcción
-        android.app.FragmentManager manejador   = getFragmentManager() ;
-
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )                                   ,
-                                                            getString( R.string.txt_modulo_construccion )   ) ;
-
-        dMensaje.show(manejador,"elDialogoEnConstruccion");
 
     }
 

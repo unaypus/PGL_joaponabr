@@ -22,9 +22,9 @@ public class EditaCliente extends EditaRegistro {
     int     clActual        = -1    ;
 
     // variables de la vista
-    EditText edtMat[] ;
-    ImageButton unBotonImg ;
-    int idCabeceras[]   ;
+    EditText    edtMat[]        ;
+    ImageButton unBotonImg      ;
+    int         idCabeceras[]   ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -21,10 +21,9 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 
 public class GaleriaPhotos extends AppCompatActivity {
 
-    private int nPhotos = 8 ;
-
-    private static int matImg[] ;
-
+    // variables de clase
+    private         int nPhotos = 8 ;
+    private static  int matImg[]    ;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -77,8 +76,6 @@ public class GaleriaPhotos extends AppCompatActivity {
         matImg[ 7 ] = R.mipmap.ic__f_f7 ;
 
     }
-
-
 
     /**
      * A placeholder fragment containing a simple view.
@@ -163,6 +160,5 @@ public class GaleriaPhotos extends AppCompatActivity {
         }
 
     }
-
 
 }

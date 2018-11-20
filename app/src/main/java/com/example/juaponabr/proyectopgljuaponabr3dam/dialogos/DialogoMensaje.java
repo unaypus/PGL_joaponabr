@@ -16,9 +16,11 @@ public class DialogoMensaje extends DialogFragment {
     private String elTitulo;
     private String elMensaje ;
 
-    public DialogoMensaje( String elTitulo, String elMensaje){
-        this.elTitulo = elTitulo;
-        this.elMensaje = elMensaje;
+    public DialogoMensaje( String elTitulo, String elMensaje ){
+
+        this.elTitulo   = elTitulo  ;
+        this.elMensaje  = elMensaje ;
+
     }
     ///////////////////////////////////////////////////////////////////////////
     /**
@@ -27,13 +29,13 @@ public class DialogoMensaje extends DialogFragment {
      *
      */
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    public Dialog onCreateDialog( Bundle savedInstanceState ) {
 
-         return new AlertDialog.Builder(getActivity())
-                 .setTitle( this.elTitulo )
-                 .setMessage( this.elMensaje )
-                 .setPositiveButton( R.string.bAceptar, null)
-                 .create();
+         return new AlertDialog.Builder(    getActivity()           )
+                    .setTitle(              this.elTitulo           )
+                    .setMessage(            this.elMensaje          )
+                    .setPositiveButton(     R.string.bAceptar, null )
+                    .create()                                       ;
 
     }
     //
