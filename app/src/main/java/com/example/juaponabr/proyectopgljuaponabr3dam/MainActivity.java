@@ -122,6 +122,17 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
+ *      Lunes   20/11/2018 15:55
+ *
+ * /////////////////////////////
+ *
+ *  Realizado desde navPestanyasDefinitiva : git checkout entrega3
+ *  y desde allí : git merge navPestanasDefinitiva
+ *
+ * commit 'Cerrada navPestanasDefinitiva y unida a entrega3'
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
  *      Lunes   20/11/2018 15:40
  *
  * /////////////////////////////
