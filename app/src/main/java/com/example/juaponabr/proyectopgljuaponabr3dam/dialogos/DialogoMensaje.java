@@ -22,6 +22,8 @@ public class DialogoMensaje extends DialogFragment {
         this.elMensaje  = elMensaje ;
 
     }
+    public DialogoMensaje(){}
+
     ///////////////////////////////////////////////////////////////////////////
     /**
      *
@@ -40,5 +42,8 @@ public class DialogoMensaje extends DialogFragment {
     }
     //
     ///////////////////////////////////////////////////////////////////////////////
+
+    public void setElTitulo(    String elTitulo     ) { this.elTitulo   = elTitulo  ; }
+    public void setElMensaje(   String elMensaje    ) { this.elMensaje  = elMensaje ; }
 
 }

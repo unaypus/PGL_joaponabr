@@ -7,7 +7,9 @@ package com.example.juaponabr.proyectopgljuaponabr3dam;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -119,6 +121,23 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
  *  Histórico
  *
  *  de lo mas nuevo a lo mas antiguo
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Lunes   20/11/2018 19:22
+ *
+ * /////////////////////////////
+ *
+ *  Vamos a crear una nueva rama para terminar de definir la base de datos añadiendo la tabla
+ *  Contrato.
+ *
+ *  Para ello desde master
+ *
+ *      a)  ruta_proyecto>git add .
+ *      b)  ruta_proyecto>git commit -m "Preparar rama ReestructurarDB para añadir tabla Contrato"
+ *      c)  ruta_proyecto>git checkout -b ReestructurarDB
+ *
+ * commit 'Preparar rama ReestructurarDB para añadir tabla Contrato'
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
@@ -537,6 +556,7 @@ public class MainActivity   extends     AppCompatActivity
 	 * que cierra la aplicación y libera la memoria
 	 *
 	 */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void DialogoCerrarClickPositivo( DialogFragment dialog ) {
 		
@@ -578,20 +598,25 @@ public class MainActivity   extends     AppCompatActivity
 
 
     private void verSetings() {
-        android.app.FragmentManager manejador   = getFragmentManager() ;
 
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_setings   )                                   ,
-                                                            getString( R.string.txt_texto_setings)   ) ;
+       FragmentManager manejador   = getFragmentManager() ;
+
+        DialogoMensaje  dMensaje    = new DialogoMensaje() ;
+
+        dMensaje.setElTitulo(  getString( R.string.txt_titulo_setings    ) ) ;
+        dMensaje.setElMensaje( getString( R.string.txt_texto_setings     ) ) ;
 
         dMensaje.show(manejador,"elDialogoSetings");
     }
 
     private void verLaAyuda() {
 
-        android.app.FragmentManager manejador   = getFragmentManager() ;
+        FragmentManager manejador   = getFragmentManager() ;
 
-        DialogoMensaje dMensaje    = new DialogoMensaje(    getString( R.string.txt_titulo_ayuda_app    )                                   ,
-                                                            getString( R.string.txt_texto_ayuda_app     )   ) ;
+        DialogoMensaje dMensaje    = new DialogoMensaje();
+
+        dMensaje.setElTitulo(  getString( R.string.txt_titulo_ayuda_app    ) ) ;
+        dMensaje.setElMensaje( getString( R.string.txt_texto_ayuda_app     ) ) ;
 
         dMensaje.show(manejador,"elDialogoAyudaRegistros");
 

@@ -206,7 +206,7 @@ public class ElListadoClientes  extends ListFragment
             int     nID         =   cursor.getInt(      cursor.getColumnIndex( Contrato.TClientes._ID           ) ) ;
             String  sNombre     =   "Cliente : "    +
                                     nID             +
-                                    " - |"          +
+                                    " - | "         +
                                     cursor.getString(   cursor.getColumnIndex( Contrato.TClientes.CL_NOMBRE     ) ) ;
             int     laDistancia =   cursor.getInt(      cursor.getColumnIndex( Contrato.TClientes.DISTANCIA_KM  ) ) ;
             String  sDistancia  =   "Distancia : "  +
@@ -221,7 +221,7 @@ public class ElListadoClientes  extends ListFragment
             ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT
             int color = generator.getColor( "." + laDistancia + "." ) ; //Genera un color según el nombre
             TextDrawable drawable = TextDrawable.builder()
-                    .buildRound( sDistancia.substring( 12, 14 ), color ) ;
+                    .buildRound( sDistancia.substring( 12, 15 ), color ) ;
 
             ImageView image = view.findViewById(R.id.image_view);
             image.setImageDrawable(drawable);
