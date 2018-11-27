@@ -124,6 +124,32 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
+ *      Martes   27/11/2018 21:21
+ *
+ * /////////////////////////////
+ *
+ *  Trabajo para esta rama
+ *
+ *          -   Renombrar clases del proveedor              ok
+ *          -   Crear tabla Contrato                        ok
+ *          -   Relacionarla con Cliente                    ok
+ *
+ *          -   Se ha añadido el campo cl_baja en Clientes  ok
+ *
+ * Seguir con
+ *
+ *          -   Generalizar ListadoRegistros
+ *          -   Crear POJO
+ *          -   Hacer el CRUD al mismo tiempo que se va
+ *              comprobando la generalización Gestor y
+ *              borrando lo que está comentado
+ *
+ * commit
+ *          a)  ruta_proyecto>git add .
+ *          b)  ruta_proyecto>git commit -m "Generalizar ListadoRegistros"
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
  *      Martes   27/11/2018 21:15
  *
  * /////////////////////////////
