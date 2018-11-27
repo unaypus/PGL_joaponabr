@@ -13,13 +13,14 @@ import android.widget.TextView;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 import com.example.juaponabr.proyectopgljuaponabr3dam.pojos.Cliente;
-import com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ClienteProveedor;
+import com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ClienteCLAB;
 
 public class EditaCliente extends EditaRegistro {
 
     // variables de clase
     Cliente unCliente       = null  ;
     int     clActual        = -1    ;
+    int     clBaja          = 0     ;
 
     // variables de la vista
     EditText    edtMat[]        ;
@@ -92,22 +93,24 @@ public class EditaCliente extends EditaRegistro {
 
     private void cargarCliente(){
 
-        unCliente.setCl_id(                             clActual                           ) ;
-        unCliente.setCl_nombre(                         edtMat[ 0 ].getText().toString()   ) ;
-        unCliente.setCl_dni(                            edtMat[ 1 ].getText().toString()   ) ;
-        unCliente.setDir_via(                           edtMat[ 2 ].getText().toString()   ) ;
-        unCliente.setDir_num(       Integer.parseInt(   edtMat[ 3 ].getText().toString() ) ) ;
-        unCliente.setDir_localidad(                     edtMat[ 4 ].getText().toString()   ) ;
-        unCliente.setDir_cp(                            edtMat[ 5 ].getText().toString()   ) ;
-        unCliente.setDistanacia(    Integer.parseInt(   edtMat[ 6 ].getText().toString() ) ) ;
-        unCliente.setCl_per_contacto(                   edtMat[ 7 ].getText().toString()   ) ;
-        unCliente.setCl_telefono(                       edtMat[ 8 ].getText().toString()   ) ;
+        unCliente.setCl_id(                             clActual                            ) ;
+        unCliente.setCl_nombre(                         edtMat[ 0 ].getText().toString()    ) ;
+        unCliente.setCl_dni(                            edtMat[ 1 ].getText().toString()    ) ;
+        unCliente.setDir_via(                           edtMat[ 2 ].getText().toString()    ) ;
+        unCliente.setDir_num(       Integer.parseInt(   edtMat[ 3 ].getText().toString() )  ) ;
+        unCliente.setDir_localidad(                     edtMat[ 4 ].getText().toString()    ) ;
+        unCliente.setDir_cp(                            edtMat[ 5 ].getText().toString()    ) ;
+        unCliente.setDistanacia(    Integer.parseInt(   edtMat[ 6 ].getText().toString() )  ) ;
+        unCliente.setCl_per_contacto(                   edtMat[ 7 ].getText().toString()    ) ;
+        unCliente.setCl_telefono(                       edtMat[ 8 ].getText().toString()    ) ;
+        unCliente.setCl_baja(                           clBaja                              ) ;
 
     }
 
     private void leerCliente(){
 
-        clActual = unCliente.getCl_id() ;
+        clActual    = unCliente.getCl_id()      ;
+        clBaja      = unCliente.getCl_baja()    ;
 
         edtMat[ 0 ].setText( unCliente.getCl_nombre()                       ) ;
         edtMat[ 1 ].setText( unCliente.getCl_dni()                          ) ;
@@ -133,7 +136,7 @@ public class EditaCliente extends EditaRegistro {
     protected void insertarRegistro(){
 
         cargarCliente();
-        ClienteProveedor.insert( getContentResolver(), unCliente ) ;
+        ClienteCLAB.insert( getContentResolver(), unCliente ) ;
         finish();
 
     }
@@ -142,18 +145,23 @@ public class EditaCliente extends EditaRegistro {
     protected void actualizarRegistro(){
 
         cargarCliente();
-        ClienteProveedor.update( getContentResolver(), unCliente ); ;
+        ClienteCLAB.update( getContentResolver(), unCliente );
         finish();
 
     }
 
-
-
     @Override
     protected void borrarRegistro(){
 
-        ClienteProveedor.delete( getContentResolver(), clActual);
-        finish();
+        clBaja = 1 ;
+        this.actualizarRegistro() ;
+        ////////////////////////////////////////////////////////
+        //
+        // esto para cuando exista el filtro ADMINISTRADOR
+        // que si podrá borrar
+        //
+        //ClienteCLAB.delete( getContentResolver(), clActual ) ;
+        //finish() ;
 
     }
 

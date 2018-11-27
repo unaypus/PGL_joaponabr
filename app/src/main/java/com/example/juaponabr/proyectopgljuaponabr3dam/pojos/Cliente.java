@@ -18,6 +18,8 @@ public class Cliente implements Parcelable {
     private String  cl_telefono     ;
     private String  cl_per_contacto ; // persona de contacto del cliente
 
+    private int     cl_baja         ; // por si se borra de la tabla
+
     /**
      * Constructor del objeto con valores por defecto
      */
@@ -33,6 +35,7 @@ public class Cliente implements Parcelable {
         this.distanacia         = 0     ;
         this.cl_telefono        = ""    ;
         this.cl_per_contacto    = ""    ;
+        this.cl_baja            = 0     ;
 
     }
 
@@ -51,10 +54,10 @@ public class Cliente implements Parcelable {
      * @param cl_telefono
      * @param cl_per_contacto
      */
-    public Cliente( int     cl_id            , String   cl_nombre       , String cl_dni ,
-                    String  dir_via          , int      dir_num         , String dir_cp ,
+    public Cliente( int     cl_id            , String   cl_nombre       , String    cl_dni  ,
+                    String  dir_via          , int      dir_num         , String    dir_cp  ,
                     String  dir_localidad    , int      distanacia      ,
-                    String  cl_telefono      , String   cl_per_contacto ) {
+                    String  cl_telefono      , String   cl_per_contacto , int       cl_baja ) {
 
         this.cl_id              = cl_id             ;
         this.cl_nombre          = cl_nombre         ;
@@ -66,6 +69,7 @@ public class Cliente implements Parcelable {
         this.distanacia         = distanacia        ;
         this.cl_telefono        = cl_telefono       ;
         this.cl_per_contacto    = cl_per_contacto   ;
+        this.cl_baja            = cl_baja           ;
 
     }
 
@@ -92,6 +96,7 @@ public class Cliente implements Parcelable {
         distanacia      = in.readInt()      ;
         cl_telefono     = in.readString()   ;
         cl_per_contacto = in.readString()   ;
+        cl_baja         = in.readInt()      ;
 
     }
 
@@ -198,6 +203,13 @@ public class Cliente implements Parcelable {
         this.cl_per_contacto = cl_per_contacto;
     }
 
+    public int getCl_baja() {
+        return cl_baja;
+    }
+
+    public void setCl_baja(int cl_baja) {
+        this.cl_baja = cl_baja;
+    }
 
     //////////////////////////////////////////
     //
@@ -227,6 +239,7 @@ public class Cliente implements Parcelable {
         dest.writeString(   this.cl_telefono        ) ;
         dest.writeString(   this.cl_per_contacto    ) ;
 
+        dest.writeInt(      this.cl_baja            ) ;
 
     }
 

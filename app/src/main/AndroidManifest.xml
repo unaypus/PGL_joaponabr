@@ -59,8 +59,8 @@
         </activity>
 
         <provider
-            android:name=".proveedor.ProveedorDeContenido"
-            android:authorities="com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ProveedorDeContenido"
+            android:name=".proveedor.Gestor"
+            android:authorities="com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.Gestor"
             android:enabled="true"
             android:exported="true" />
 

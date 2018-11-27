@@ -124,14 +124,36 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
- *      Lunes   20/11/2018 19:32
+ *      Martes   27/11/2018 21:15
+ *
+ * /////////////////////////////
+ *
+ *  Trabajo para esta rama
+ *
+ *          -   Renombrar clases del proveedor              ok
+ *          -   Crear tabla Contrato                        ok
+ *          -   Relacionarla con Cliente                    ok
+ *
+ *          -   Se ha añadido el campo cl_baja en Clientes  ok
+ *
+ * Seguir con
+ *          -   Crear POJO
+ *          -   Hacer el CRUD
+ *
+ * commit
+ *          a)  ruta_proyecto>git add .
+ *          b)  ruta_proyecto>git commit -m "CRUD Clientes con nuevo campo ok"
+ *
+ * /////////////////////////////////////////////////////////////////////////////////////////////////
+ *
+ *      Martes   20/11/2018 19:32
  *
  * /////////////////////////////
  *
  *  Trabajo para esta rama
  *
  *          -   Renombrar clases del proveedor
- *          -   Crear tabla Contarto
+ *          -   Crear tabla Contrato
  *          -   Relacionarla con Cliente
  *          -   Crear POJO
  *          -   Hacer el CRUD
@@ -142,24 +164,24 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
- *      Lunes   20/11/2018 19:22
+ *      Martes   20/11/2018 19:22
  *
  * /////////////////////////////
  *
  *  Vamos a crear una nueva rama para terminar de definir la base de datos añadiendo la tabla
- *  Contrato.
+ *  Tablas.
  *
  *  Para ello desde master
  *
  *      a)  ruta_proyecto>git add .
- *      b)  ruta_proyecto>git commit -m "Preparar rama ReestructurarDB para añadir tabla Contrato"
+ *      b)  ruta_proyecto>git commit -m "Preparar rama ReestructurarDB para añadir tabla Tablas"
  *      c)  ruta_proyecto>git checkout -b ReestructurarDB
  *
- * commit 'Preparar rama ReestructurarDB para añadir tabla Contrato'
+ * commit 'Preparar rama ReestructurarDB para añadir tabla Tablas'
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
- *      Lunes   20/11/2018 16:00
+ *      Martes   20/11/2018 16:00
  *
  * /////////////////////////////
  *
@@ -170,7 +192,7 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
- *      Lunes   20/11/2018 15:55
+ *      Martes   20/11/2018 15:55
  *
  * /////////////////////////////
  *
@@ -181,7 +203,7 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
  *
  * /////////////////////////////////////////////////////////////////////////////////////////////////
  *
- *      Lunes   20/11/2018 15:40
+ *      Martes   20/11/2018 15:40
  *
  * /////////////////////////////
  *
@@ -282,7 +304,7 @@ import com.example.juaponabr.proyectopgljuaponabr3dam.secciones.GestionDatos;
  *
  * /////////////////////////////
  *
- * Se añade la entidad Contrato y se cambian los nombres y referencias de las actividades y los
+ * Se añade la entidad Tablas y se cambian los nombres y referencias de las actividades y los
  * leyouts que llevan la palabra actuacion y similares
  *
  * commit 'Reestructurado Actuaciones por Contratos'

@@ -27,8 +27,8 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 import com.example.juaponabr.proyectopgljuaponabr3dam.pojos.Cliente;
-import com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ClienteProveedor;
-import com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.Contrato;
+import com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.ClienteCLAB;
+import com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.Tablas;
 
 public class ElListadoClientes  extends ListFragment
         implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -121,10 +121,10 @@ public class ElListadoClientes  extends ListFragment
 
                 cl_Id = ( int ) viewSeleccionado.getTag();
 
-                unCliente   =       ClienteProveedor.read(  getActivity().getContentResolver()  ,
-                                                            cl_Id                               ) ;
-                intento     = new   Intent(                 getActivity()                       ,
-                                                            EditaCliente.class                  ) ;
+                unCliente   =       ClienteCLAB.read(  getActivity().getContentResolver()  ,
+                                                       cl_Id                               ) ;
+                intento     = new   Intent(            getActivity()                       ,
+                                                       EditaCliente.class                  ) ;
 
                 intento.putExtra(   "Nuevo"     , false     ) ;
                 intento.putExtra(   "elCliente" , unCliente ) ;
@@ -161,27 +161,29 @@ public class ElListadoClientes  extends ListFragment
         // sample only has one Loader, so we don't care about the ID.
         // First, pick the base URI to use depending on whether we are
         // currently filtering.
-        String columns[] = new String[] { Contrato.TClientes._ID,
-                Contrato.TClientes.CL_NOMBRE,
-                Contrato.TClientes.DISTANCIA_KM
-        };
+        String columns[] = new String[] {   Tablas.TClientes._ID            ,
+                                            Tablas.TClientes.CL_NOMBRE      ,
+                                            Tablas.TClientes.DISTANCIA_KM   } ;
 
-        Uri baseUri = Contrato.TClientes.CONTENT_URI;
+        Uri baseUri = Tablas.TClientes.CLIENTES_URI;
 
         // Now create and return a CursorLoader that will take care of
         // creating a Cursor for the data being displayed.
 
-        String selection = null;
+        String selection = Tablas.TClientes.CL_BAJA + " = 0 " ; //null;
 
-        return new CursorLoader(getActivity(), baseUri,
-                columns, selection, null, null);
+        return new CursorLoader(    getActivity()   ,
+                                    baseUri         ,
+                                    columns         ,
+                                    selection       ,
+                                    null, null      ) ;
     }
 
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         // Swap the new cursor in.  (The framework will take care of closing the
         // old cursor once we return.)
 
-        Uri laUriBase = Uri.parse("content://"+Contrato.AUTHORITY+"/" + Contrato.TABLA_CLIENTES);
+        Uri laUriBase = Uri.parse("content://"+ Tablas.AUTHORITY+"/" + Tablas.TABLA_CLIENTES);
         data.setNotificationUri(getActivity().getContentResolver(), laUriBase);
 
         mAdapter.swapCursor(data);
@@ -196,19 +198,19 @@ public class ElListadoClientes  extends ListFragment
 
     public class TablaCursorAdapter extends CursorAdapter {
 
-        public TablaCursorAdapter(Context context) {
-            super(context, null, false);
+        public TablaCursorAdapter( Context context ) {
+            super( context, null, false ) ;
         }
 
         @Override
         public void bindView( View view, Context context, Cursor cursor ) {
 
-            int     nID         =   cursor.getInt(      cursor.getColumnIndex( Contrato.TClientes._ID           ) ) ;
+            int     nID         =   cursor.getInt(      cursor.getColumnIndex( Tablas.TClientes._ID           ) ) ;
             String  sNombre     =   "Cliente : "    +
                                     nID             +
                                     " - | "         +
-                                    cursor.getString(   cursor.getColumnIndex( Contrato.TClientes.CL_NOMBRE     ) ) ;
-            int     laDistancia =   cursor.getInt(      cursor.getColumnIndex( Contrato.TClientes.DISTANCIA_KM  ) ) ;
+                                    cursor.getString(   cursor.getColumnIndex( Tablas.TClientes.CL_NOMBRE     ) ) ;
+            int     laDistancia =   cursor.getInt(      cursor.getColumnIndex( Tablas.TClientes.DISTANCIA_KM  ) ) ;
             String  sDistancia  =   "Distancia : "  +
                                     laDistancia     + " Km." ;
 

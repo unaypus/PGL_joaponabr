@@ -53,9 +53,12 @@ public class EditaRegistro extends AppCompatActivity {
     public boolean onOptionsItemSelected( MenuItem item ) {
 
         switch ( item.getItemId() ){
+
             case R.id.action_help       :
+
                 verLaAyuda()            ;
                 return true             ;
+
         }
 
         return super.onOptionsItemSelected( item ) ;
@@ -109,9 +112,13 @@ public class EditaRegistro extends AppCompatActivity {
             public void onClick(View v) {
 
                 if( validarDatos()) {
-                    guardarRegistro();
+
+                    guardarRegistro() ;
+
                 }else{
-                    mensajeNoValidado();
+
+                    mensajeNoValidado() ;
+
                 }
 
             }
@@ -155,10 +162,14 @@ public class EditaRegistro extends AppCompatActivity {
         //
         //  Botón Anterior
         //
+
         bAnterior = findViewById(R.id.imgBtonAnterior);
+
         bAnterior.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) { modEnConstruccion(); }
+
         });
 
         /////////////////////////////////////
@@ -199,8 +210,10 @@ public class EditaRegistro extends AppCompatActivity {
     protected void mensajeNoValidado() {
 
         FragmentManager manejador   = getFragmentManager() ;
-        DialogoMensaje dMensaje     = new DialogoMensaje(   getString( R.string.atencion )  ,
-                                                            getsErrorValidacion()           ) ;
+        DialogoMensaje dMensaje     = new DialogoMensaje() ;
+
+        dMensaje.setElTitulo(  getString( R.string.atencion )   ) ;
+        dMensaje.setElMensaje( getsErrorValidacion()            ) ;
 
         dMensaje.show(manejador,"elDialogoNoValidado");
 
@@ -225,8 +238,10 @@ public class EditaRegistro extends AppCompatActivity {
     protected void actualizarRegistro() {
 
         FragmentManager manejador   = getFragmentManager() ;
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.titulo_guardando )  ,
-                                                            getsDatosValidados()                    ) ;
+        DialogoMensaje  dMensaje    = new DialogoMensaje() ;
+
+        dMensaje.setElTitulo(  getString( R.string.titulo_guardando )   ) ;
+        dMensaje.setElMensaje( getsDatosValidados()                     ) ;
 
         dMensaje.show(manejador,"elDialogoGuardar");
         //Toast.makeText(EditaRegistro.this,R.string.bot_guardar,Toast.LENGTH_LONG).show();
@@ -236,8 +251,10 @@ public class EditaRegistro extends AppCompatActivity {
     protected void insertarRegistro() {
 
         FragmentManager manejador   = getFragmentManager() ;
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.titulo_guardando )  ,
-                                                            getsDatosValidados()                    ) ;
+        DialogoMensaje  dMensaje    = new DialogoMensaje() ;
+
+        dMensaje.setElTitulo(  getString( R.string.titulo_guardando )   ) ;
+        dMensaje.setElMensaje( getsDatosValidados()                     ) ;
 
         dMensaje.show(manejador,"elDialogoGuardar");
         //Toast.makeText(EditaRegistro.this,R.string.bot_guardar,Toast.LENGTH_LONG).show();
@@ -247,8 +264,10 @@ public class EditaRegistro extends AppCompatActivity {
     protected void borrarRegistro() {
 
         FragmentManager manejador   = getFragmentManager() ;
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.titulo_guardando )  ,
-                                                            getsDatosValidados()                    ) ;
+        DialogoMensaje  dMensaje    = new DialogoMensaje() ;
+
+        dMensaje.setElTitulo(  getString( R.string.titulo_guardando )   ) ;
+        dMensaje.setElMensaje( getsDatosValidados()                     ) ;
 
         dMensaje.show(manejador,"elDialogoBorrar");
 
@@ -258,8 +277,10 @@ public class EditaRegistro extends AppCompatActivity {
 
         //  Para los módulos en construcción
         FragmentManager manejador   = getFragmentManager();
-        DialogoMensaje  dMensaje    = new DialogoMensaje(   getString( R.string.txt_titulo_mensaje      )    ,
-                                                            getString( R.string.txt_modulo_construccion )    ) ;
+        DialogoMensaje  dMensaje    = new DialogoMensaje() ;
+
+        dMensaje.setElTitulo(  getString( R.string.txt_titulo_mensaje       ) ) ;
+        dMensaje.setElMensaje( getString( R.string.txt_modulo_construccion  ) ) ;
 
         dMensaje.show(manejador,"elDialogoEnConstruccion");
 
@@ -268,8 +289,10 @@ public class EditaRegistro extends AppCompatActivity {
     private void verLaAyuda() {
 
         FragmentManager manejador   = getFragmentManager() ;
-        DialogoMensaje dMensaje     = new DialogoMensaje(   getString( R.string.txt_titulo_ayuda_registros   )                                   ,
-                                                            getString( R.string.txt_texto_ayuda_registros)   ) ;
+        DialogoMensaje dMensaje     = new DialogoMensaje() ;
+
+        dMensaje.setElTitulo(  getString( R.string.txt_titulo_ayuda_registros    ) ) ;
+        dMensaje.setElMensaje( getString( R.string.txt_texto_ayuda_registros     ) ) ;
 
         dMensaje.show(manejador,"elDialogoAyudaRegistros");
 
