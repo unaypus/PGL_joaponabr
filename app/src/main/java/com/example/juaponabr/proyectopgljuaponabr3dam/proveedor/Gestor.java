@@ -4,6 +4,7 @@
 
 package com.example.juaponabr.proyectopgljuaponabr3dam.proveedor;
 
+import android.annotation.TargetApi;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -13,6 +14,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.SparseArray;
 
@@ -66,15 +69,17 @@ public class Gestor extends ContentProvider {
 
     //private static final String LOGTAG = "juaponabr - Gestor";
 
-    private static final String LAS_TABLAS[]    = Tablas.getLasTablas().clone() ;
+    private static final String LAS_TABLAS[]    = Tablas.getLasTablas().clone()         ;
+    private static final String LAS_RELACIONES[][]  = Tablas.getLasRelaciones().clone()    ;
 
     //      tabla Cliente
     //private static final    String          CLIENTES_TABLE_NAME     = LAS_TABLAS[0]    ;
 
     //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.Gestor/Clientes/#
-    private static final    int TABLA_ONE_REG = 1             ;
+    private static final    int TABLA_ONE_REG       = 1             ;
     //com.example.juaponabr.proyectopgljuaponabr3dam.proveedor.Gestor/Clientes
-    private static final    int TABLA_ALL_REGS = 2             ;
+    private static final    int TABLA_ALL_REGS      = 2;
+    private static final    int TABLAS_RELACIONADAS = 3 ;//  Esto AHORA no se usa
 
     //      la base de datos
     private SQLiteDatabase  sqlDB       ;
@@ -96,7 +101,8 @@ public class Gestor extends ContentProvider {
      */
     static {
 
-        int    nTablas         = LAS_TABLAS.length             ;
+        int nTablas     = LAS_TABLAS.length     ;
+        int nRelaciones = LAS_RELACIONES.length ;
 
         // Creates an object that associates content URIs with numeric codes
         sUriMatcher = new UriMatcher(0);
@@ -126,6 +132,10 @@ public class Gestor extends ContentProvider {
         //                                                                                        //
         ////////////////////////////////////////////////////////////////////////////////////////////
 
+        /////////////////////////////////////////////////////////////////
+        //
+        //      uris simples 1reg o varios de una sola tabla
+        //
         for( int contTablas = 0 ; contTablas < nTablas ; contTablas++ ) {
 
             //  uris tablas
@@ -153,9 +163,42 @@ public class Gestor extends ContentProvider {
                             Tablas.AUTHORITY                +
                             "."                             +
                             LAS_TABLAS[ contTablas ]        ) ;
+            // Especificaciones MIME tablas
 
         }
 
+        /////////////////////////////////////////////////////////////////
+        //
+        //      uris compuestas de tablas relacionadas
+        //
+        //for( int contador = 0 ; contador < nRelaciones ; contador++ ){
+
+            /*
+            sUriMatcher.addURI( Tablas.AUTHORITY                ,
+                                LAS_RELACIONES[ contador ][ 0 ] ,
+                                TABLAS_RELACIONADAS             ) ;
+
+            sMimeTypes.put(     TABLAS_RELACIONADAS,
+                                "vnd.android.cursor.dir/vnd."   +
+                                Tablas.AUTHORITY                +
+                                "."                             +
+                                LAS_RELACIONES[ contador ][ 1 ] ) ;
+                                /**/
+            /**/
+        //}
+
+        //////////////////////////////////////////////////////
+        /// esto AHORA no SE USA
+        /*
+        sUriMatcher.addURI( Tablas.AUTHORITY                ,
+                            "Contratos/Clientes"            ,
+                TABLAS_RELACIONADAS) ;
+
+        sMimeTypes.put(TABLAS_RELACIONADAS,
+                            "vnd.android.cursor.dir/vnd."   +
+                            Tablas.AUTHORITY                +
+                            "."                             +
+                            "Contratos.Clientes"            ) ;*/
     }
 
     public Gestor() {
@@ -283,6 +326,8 @@ public class Gestor extends ContentProvider {
      * @param sortOrder
      * @return
      */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public Cursor query(    Uri         uri             ,
                             String[]    projection      ,
@@ -292,7 +337,9 @@ public class Gestor extends ContentProvider {
 
         SQLiteQueryBuilder  qb      = new SQLiteQueryBuilder()              ;
         SQLiteDatabase      db      = dbAsistente.getReadableDatabase()     ;
-        //String              query   = null                                  ;
+        String              query   =
+                "SELECT Contratos.*, Clientes.* FROM Contratos, Clientes where Contratos.ID_Cliente=Clientes._ID AND Clientes.Baja=0" ;
+        Cursor c ;
 
         switch ( sUriMatcher.match( uri ) ) {
 
@@ -308,7 +355,25 @@ public class Gestor extends ContentProvider {
                 //  *****************************************************************
                 //qb.setTables( uri.getPathSegments().get( 0 ) ) ; //CLIENTES_TABLE_NAME );
 
-                break ;
+                qb.setTables( uri.getPathSegments().get( 0 ) ) ; //CLIENTES_TABLE_NAME );
+
+
+                c = qb.query( db, projection, selection, selectionArgs, null, null, sortOrder ) ;
+                c.setNotificationUri( getContext().getContentResolver(), uri ) ;
+
+                return c ;
+                //break ;
+
+            case TABLAS_RELACIONADAS:
+
+                //Cursor c ;
+
+                c = db.rawQuery( query,null ) ;
+                //c = qb.query( db, projection, selection, null, null, null, null ) ;
+                c.setNotificationUri( getContext().getContentResolver(), uri ) ;
+
+                return c ;
+
 
             case TABLA_ALL_REGS:
 
@@ -319,17 +384,24 @@ public class Gestor extends ContentProvider {
 
                 //qb.setTables( uri.getLastPathSegment() ); //qb.setTables(CLIENTES_TABLE_NAME);
 
-                break ;
+                qb.setTables( uri.getPathSegments().get( 0 ) ) ; //CLIENTES_TABLE_NAME );
+
+
+                c = qb.query( db, projection, selection, selectionArgs, null, null, sortOrder ) ;
+                c.setNotificationUri( getContext().getContentResolver(), uri ) ;
+
+                return c ;
+               // break ;
 
         }
 
-        qb.setTables( uri.getPathSegments().get( 0 ) ) ; //CLIENTES_TABLE_NAME );
+        /*qb.setTables( uri.getPathSegments().get( 0 ) ) ; //CLIENTES_TABLE_NAME );
 
-        Cursor c ;
+
         c = qb.query( db, projection, selection, selectionArgs, null, null, sortOrder ) ;
-        c.setNotificationUri( getContext().getContentResolver(), uri ) ;
+        c.setNotificationUri( getContext().getContentResolver(), uri ) ;*/
 
-        return c ;
+        return null;//c ;
     }
 
     /**

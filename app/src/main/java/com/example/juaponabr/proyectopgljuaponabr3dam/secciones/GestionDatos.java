@@ -15,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoActuaciones;
+import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ListadoContratos;
 import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.PHFContratos;
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
 import com.example.juaponabr.proyectopgljuaponabr3dam.controlador.ElListadoClientes;
@@ -152,7 +154,7 @@ public class GestionDatos extends AppCompatActivity {
         public SectionsPagerAdapter( FragmentManager fm ) { super( fm ) ; }
 
         @Override
-        public int getCount() { return 2 ; }
+        public int getCount() { return 3 ; }
 
         @Override
         public Fragment getItem( int position ) {
@@ -168,8 +170,9 @@ public class GestionDatos extends AppCompatActivity {
 
             switch ( quePestanya ){
 
-                case 1: return PHFContratos.newInstance(  quePestanya ) ;
+                case 3: return ListadoContratos.newInstance() ;//PHFContratos.newInstance(  quePestanya ) ;
                 case 2: return ElListadoClientes.newInstance() ;
+                case 1: return ListadoActuaciones.newInstance() ;
 
             }
 
@@ -182,8 +185,9 @@ public class GestionDatos extends AppCompatActivity {
 
             switch ( position ) {
 
-                case 0: return "Contratos"  ;
+                case 2: return "Contratos"  ;
                 case 1: return "Clientes"   ;
+                case 0: return "Actuaciones";
 
             }
 

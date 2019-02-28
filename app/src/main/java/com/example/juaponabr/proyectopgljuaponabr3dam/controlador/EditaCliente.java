@@ -28,7 +28,7 @@ public class EditaCliente extends EditaRegistro {
     int         idCabeceras[]   ;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState ) {
 
         unCliente = new Cliente();
 
@@ -124,13 +124,7 @@ public class EditaCliente extends EditaRegistro {
 
     }
 
-    private String dameCadena( int laInt ){
 
-        String laCadena = " " + laInt + " ";
-
-        return laCadena.trim() ;
-
-    }
 
     @Override
     protected void insertarRegistro(){

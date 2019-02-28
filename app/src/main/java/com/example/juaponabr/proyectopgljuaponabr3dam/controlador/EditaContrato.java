@@ -14,16 +14,23 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.juaponabr.proyectopgljuaponabr3dam.R;
+import com.example.juaponabr.proyectopgljuaponabr3dam.pojos.Cliente;
+import com.example.juaponabr.proyectopgljuaponabr3dam.pojos.Contrato;
 
 import java.util.Calendar;
 
 public class EditaContrato extends EditaRegistro {
 
     // variables de clase
+    Contrato unContrato = null ;
+    Cliente unCliente = null ;
     private int     nDias           = 0     ;
     private String  sPeriodicidad   = ""    ;
 
     // variables de la vista
+    EditText    edtMat[]        ;
+    ImageButton unBotonImg      ;
+
     private ImageButton bBuscarCliente  ;
     private CheckBox    chBoxDias []    ;
     private RadioGroup  rGpPeriodicidad ;
@@ -37,22 +44,54 @@ public class EditaContrato extends EditaRegistro {
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
 
+        unContrato = new Contrato();
+        unCliente = new Cliente();
+
         super.onCreate(         savedInstanceState                  )   ;
         setContentView(         R.layout.activity_edita_contrato    )   ;
         iniBarraHerramientas()                                          ;
-        activarEscuchadores(    EditaContrato.this                  )   ;
+
         activarElementos()                                              ;
+
+        /**/
+        if( !this.getIntent().getExtras().getBoolean( "Nuevo" ) ){
+
+            unContrato = this.getIntent().getExtras().getParcelable( "elContrato" ) ;
+            unCliente = this.getIntent().getExtras().getParcelable( "elCliente" ) ;
+
+
+            this.leerRegistro() ;
+
+            this.setNuevoRegistro( false ) ;
+           // unBotonImg.setVisibility( View.VISIBLE ) ;
+
+        } else {
+            //unBotonImg.setVisibility( View.INVISIBLE ) ;
+        }
+         /**/
+
+        activarEscuchadores(    EditaContrato.this                  )   ;
 
     }
 
     private void activarElementos() {
+
+        edtMat      = new EditText[ 4 ] ;
+
+        unBotonImg = findViewById( R.id.imgBtonBorrar ) ;
+
+        edtMat[ 0 ] = findViewById( R.id.editTextCliente    ) ;
+        edtMat[ 1 ] = findViewById( R.id.editTextPrecio     ) ;
+
+        edtMat[ 2 ] = findViewById( R.id.editTextMes     ) ;
+        edtMat[ 3 ] = findViewById( R.id.editTextDia        ) ;
 
         //////////////////////////////////////////////////////////////
         //
         //  EdiText para el cliente
         //
 
-        edtCliente = findViewById( R.id.editTextCliente );
+        //edtCliente = findViewById( R.id.editTextCliente );
 
         //////////////////////////////////////////////////////////////
         //
@@ -70,8 +109,8 @@ public class EditaContrato extends EditaRegistro {
         //  EdiText para la fecha
         //
 
-        edtDia = findViewById( R.id.editTextDia );
-        edtMes = findViewById( R.id.editTextMes );
+        //edtDia = findViewById( R.id.editTextDia );
+        //edtMes = findViewById( R.id.editTextMes );
 
 
         //////////////////////////////////////////////////////////////
@@ -79,7 +118,7 @@ public class EditaContrato extends EditaRegistro {
         //  EdiText para el precio
         //
 
-        edtPrecio = findViewById( R.id.editTextPrecio ) ;
+        //edtPrecio = findViewById( R.id.editTextPrecio ) ;
 
 
         ///////////////////////////////////////////////////////
@@ -159,6 +198,20 @@ public class EditaContrato extends EditaRegistro {
 
         } ) ;
      
+    }
+
+    /////////////////////////////////////
+    //
+    //      MÉTODOS DE ACCESO A DATOS
+    //
+
+    private void leerRegistro(){
+
+        edtMat[ 0 ].setText(                unContrato.getCtr_cliente()                   ) ;
+        edtMat[ 1 ].setText( dameCadena(    unContrato.getAct_precio() )                ) ;
+        edtMat[ 2 ].setText(                unContrato.getCtr_mes()) ;
+        edtMat[ 3 ].setText(                unContrato.getCtr_dia() ) ;
+
     }
 
     /**

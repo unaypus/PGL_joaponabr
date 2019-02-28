@@ -306,4 +306,17 @@ public class EditaRegistro extends AppCompatActivity {
     protected void setsDatosValidados(  String  sDatosValidados     ){ this.sDatosValidados     = sDatosValidados   ; }
     protected void setNuevoRegistro(    boolean nuevoRegistro       ){ this.nuevoRegistro       = nuevoRegistro     ; }
 
+    //////////////////////////
+    //
+    //  Métodos Auxiliares
+    //
+
+    protected String dameCadena( int laInt ){
+
+        String laCadena = " " + laInt + " ";
+
+        return laCadena.trim() ;
+
+    }
+
 }

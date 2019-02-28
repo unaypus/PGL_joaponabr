@@ -74,6 +74,13 @@ public final class AsistenteDB extends SQLiteOpenHelper {
         lasTablas  = Tablas.getLasTablas().clone()  ;
         nTablas    = lasTablas.length               ;
 
+        ////////////////////////////////////////////
+        //
+        //      Este bucle destruye las tablas
+        //      por lo que al reconstruirlas se
+        //      perderán los datos sustituyendose
+        //      por los datos de muestra.
+        //
         for( int contTablas = 0 ; contTablas < nTablas ; contTablas++ ) {
 
             db.execSQL( "DROP TABLE IF EXISTS " + lasTablas[ contTablas ] ) ;
